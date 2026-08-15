@@ -1,0 +1,335 @@
+*, *::before, *::after {
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
+}
+
+body {
+  background-color: #fff6fc; /* Blank white canvas */
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  display: flex;
+  flex-direction: column;
+  width: 100%;
+  min-height: 100vh; /* Ensures the canvas covers the full screen height */
+  overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+}
+
+#cursor-revolve-text {
+  position: fixed;
+  top: 0;
+  left: 0;
+  /* Collapse the container to a single point exactly on the mouse */
+  width: 0; 
+  height: 0;
+  z-index: 9999;
+  pointer-events: none; /* CRITICAL: So you can click through it */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.revolve-letter {
+  position: absolute;
+  /* This ensures the letters rotate cleanly from their base */
+  transform-origin: bottom center; 
+  
+  font-family: 'Indie Flower', cursive; /* Or your preferred font */
+  font-size: 0.8rem;
+  font-weight: bold;
+  color: #DF599B;
+}
+
+.play-design-cont {
+  position: absolute;
+  width: 250px;
+  height: 250px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  /* border: 1px solid black; */
+  z-index: 1;
+}
+
+.hero-star {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 150px;
+  /* border: 1px solid black; */
+}
+
+.hero-star img {
+  width: 100%;
+  height: 100%;
+  animation: spin 10s linear infinite;
+}
+
+.play-design-cont p {
+  position: absolute;
+  width: 100%;
+  height: 100%;
+  margin: 0;
+  pointer-events: none; 
+}
+
+.char-span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 20px;
+  height: 120px; /* The radius (Half of 260px) */
+  margin-left: -10px; 
+  transform-origin: top center; 
+  display: flex;
+  align-items: flex-end; 
+  justify-content: center;
+  font-size: 1.rem;
+  font-weight: 400;
+  color: #3f689b; 
+}
+
+.hero-grid {
+  position: absolute; /* Use 'fixed' instead if you want it to stay centered while scrolling */
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  display: grid;
+  grid-template-columns: repeat(12, max-content); 
+  width: max-content; 
+  z-index: 2; 
+}
+
+.tiny-square {
+  width: 25px;
+  height: 25px;
+  margin: 1px;
+  border: 1px solid black;
+  box-sizing: border-box; 
+   background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,   /* Lower opacity so blurred background shows */
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(200%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  translate: var(--repel-x, 0px) var(--repel-y, 0px);
+  animation: structural-scale 3s infinite ease-in-out;
+  transition: translate 0.05s ease-out;
+  /* animation: procedural-ripple 3s infinite ease-in-out; */
+  /* animation: opacity-pulse 3s infinite ease-in-out; */
+}
+
+@keyframes structural-scale {
+  0%, 100% { 
+      transform: scale(0.9); 
+      border-radius: 2px; 
+  }
+  50% { 
+      transform: scale(1.1); 
+      border-radius: 4px; 
+  }
+}
+
+/* @keyframes opacity-pulse {
+    0%, 100% { opacity: 1; }
+    50% { opacity: 0.1; }
+} */
+
+/* @keyframes z-axis-lift {
+    0%, 100% { 
+        transform: translateY(0); 
+        box-shadow: 0 0 0 rgba(0,0,0,0); 
+    }
+    50% { 
+        transform: translateY(-4px); 
+        box-shadow: 0 6px 12px rgba(0,0,0,0.15); 
+    }
+} */
+
+.window-container {
+  width: 295px; 
+  height: 365px; 
+  border-radius: 500px 500px 30px 30px; 
+  overflow: hidden; 
+  margin: 150px auto 0px auto; 
+  position: relative;
+  outline: 1px solid #F655A6;
+  outline-offset: 5px;
+  z-index: 3;
+}
+
+.window-container img {
+  width: 100%;
+  height: 100%;
+  object-fit: cover; 
+}
+
+.window-container .cloud-png {
+  position: absolute;
+  top: 10px; 
+  width: 70px; 
+  height: auto; 
+  z-index: 5;
+  animation: floatCloud 8s linear infinite;
+}
+
+
+@keyframes floatCloud {
+  0% {
+    left: 100%;
+    transform: translateX(0);
+  }
+  100% {
+    left: 0;
+    transform: translateX(-100%);
+}
+}
+
+@media screen and (min-width: 768px) {
+}
+
+@media screen and (min-width: 1024px) {
+}
+
+.star-svg1 {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-150%, 400%);
+  scale: 5;
+}
+
+.star-svg2 {
+  position: fixed;
+  top: -8%;
+  left: 50%;
+  transform: translate(250%, 0%);
+}
+
+.star-svg1 img, .star-svg2 img {
+  display: block;
+  width: 100%;
+  transform-origin: center;
+  animation: spin 10s linear infinite;
+}
+
+@keyframes spin {
+  0% { transform: rotate(0deg); }
+  100% { transform: rotate(360deg); }
+}
+
+#nav-bar {
+  position: fixed;
+  top: 15px;
+  left: 50%;
+  transform: translateX(-50%);
+  z-index: 100;
+  /* border: 1px solid black; */
+  border-radius: 9999px;
+  padding: 5px 20px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,   /* Lower opacity so blurred background shows */
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(200%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
+}
+
+/* Nav bar animation */
+#nav-bar.nav-scrolled {
+    width: 250px; /* Tweak this pixel value until it perfectly fits just your name */
+}
+
+.name {
+  margin: 0 70px 0 0;
+  white-space: nowrap;
+  display: flex;
+  align-items: center;
+}
+
+.nav-links {
+  display: flex;
+  gap: 15px; /* Adjust space between the buttons */
+  align-items: center;
+  opacity: 1;
+  visibility: visible;
+  white-space: nowrap;
+  transition: opacity 0.5s ease, visibility 0.5s ease;
+}
+
+/* Nav bar animation */
+#nav-bar.nav-scrolled .nav-links {
+    opacity: 0;
+    visibility: hidden;
+}
+
+.nav-btn {
+  background: none;
+  border: none;
+  padding: 2px 10px;
+  cursor: pointer;
+}
+
+.btn-wrapper {
+    position: relative;
+    display: inline-block; 
+}
+
+.btn-hover-svg {
+    position: absolute;
+    top: -2px; 
+    right: -2px; 
+    z-index: 10; 
+    width: 10px; 
+    opacity: 0;
+    visibility: hidden;
+    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+    pointer-events: none;
+    transform: scale(0.5) rotate(-90deg);
+    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+/*Reveal the SVG when hovering over the WRAPPER */
+.btn-wrapper:hover .btn-hover-svg {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) rotate(0deg);
+}
+
+
+/* .body-centre {
+  flex: 0 0 90%;
+  height: auto;
+  border: 1px solid rgb(158, 154, 154);
+  margin: 0 10px 0 10px;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.4) 0%,   /* Brighter where light hits */
+    rgba(255, 255, 255, 0.5) 100%   /* More transparent at the bottom */
+  );
+  backdrop-filter: blur(16px);
+  -webkit-backdrop-filter: blur(16px);
+  border-top: 1px solid rgba(255, 255, 255, 0.6);
+  border-left: 1px solid rgba(255, 255, 255, 0.6);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  border-right: 1px solid rgba(255, 255, 255, 0.2);
+  border-radius: 10px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+} */
+
+
+
