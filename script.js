@@ -1,27 +1,23 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio canvas loaded and ready!');
-    
-    // Future interactivity (animations, scroll effects, mobile menus) will go here
-});
 
-// Nav bar animation
-window.addEventListener('scroll', () => {
-    // Grab the nav bar from the HTML
-    const navBar = document.getElementById('nav-bar');
+// // Nav bar animation
+// window.addEventListener('scroll', () => {
+//     // Grab the nav bar from the HTML
+//     const navBar = document.getElementById('nav-bar');
     
-    // window.innerHeight gets the exact pixel height of the user's visible screen (100vh)
-    // window.scrollY gets how far down the user has scrolled
-    if (window.scrollY > window.innerHeight) {
-        // If they scrolled past the first page height, shrink it!
-        navBar.classList.add('nav-scrolled');
-    } else {
-        // If they scroll back up to the top, expand it!
-        navBar.classList.remove('nav-scrolled');
-    }
-});
+//     // window.innerHeight gets the exact pixel height of the user's visible screen (100vh)
+//     // window.scrollY gets how far down the user has scrolled
+//     if (window.scrollY > window.innerHeight) {
+//         // If they scrolled past the first page height, shrink it!
+//         navBar.classList.add('nav-scrolled');
+//     } else {
+//         // If they scroll back up to the top, expand it!
+//         navBar.classList.remove('nav-scrolled');
+//     }
+// });
 
 // Play & Design text
-document.addEventListener('DOMContentLoaded', () => {
     const textContainer = document.querySelector('.play-design-cont p');
     if (!textContainer) return; 
     const textString = textContainer.textContent.trim();
@@ -40,40 +36,37 @@ document.addEventListener('DOMContentLoaded', () => {
         span.style.transform = `rotate(${currentAngle}deg)`;
         
         textContainer.appendChild(span);
-    });
 });
 
 // Hero Grid array
-const gridContainer = document.querySelector('.hero-grid');
-
-// 12x12 grid = 144 squares
-for (let i = 0; i < 144; i++) {
-    const square = document.createElement('div');
-    square.classList.add('tiny-square');
-    
-    // 1. Calculate the current Row (0-11) and Column (0-11)
-    let col = i % 12;
-    let row = Math.floor(i / 12);
-    
-    // 2. The exact center of a 12x12 grid is at coordinate (5.5, 5.5)
-    // We use the Pythagorean theorem to find the distance from the center!
-    let distFromCenter = Math.pow(col - 5.5, 2) + Math.pow(row - 5.5, 2);
-    
-    // 3. The Mask: If the distance is greater than our radius threshold (38), hide it!
-    if (distFromCenter > 38) {
-        // visibility: hidden keeps the physical space in the CSS Grid intact, 
-        // it just makes the square completely transparent.
-        square.style.visibility = 'hidden'; 
-    }
-    
-    gridContainer.appendChild(square);
-    square.style.animationDelay = `${distFromCenter * 0.05}s`;
-    // square.style.animationDuration = `${3 + (distFromCenter * 0.1)}s`;
-    // square.style.animationDelay = `${Math.random() * 3}s`;
+    const gridContainer = document.querySelector('.hero-grid');
+    if (gridContainer) {
+        for (let i = 0; i < 144; i++) {
+            const square = document.createElement('div');
+            square.classList.add('tiny-square');
+            
+            let col = i % 12;
+            let row = Math.floor(i / 12);
+            
+            // Defined correctly!
+            let deltaX = col - 5.5;
+            let deltaY = row - 5.5;
+            let distFromCenter = Math.pow(deltaX, 2) + Math.pow(deltaY, 2);
+            
+            if (distFromCenter > 38) {
+                square.style.visibility = 'hidden'; 
+            } else {
+                square.style.animationDelay = `${distFromCenter * 0.05}s`; 
+                square.style.setProperty('--explode-x', `${deltaX * 30}px`);
+                square.style.setProperty('--explode-y', `${deltaY * 30}px`);
+                square.style.setProperty('--explode-delay', `${distFromCenter * 0.015}s`);
+            }
+            gridContainer.appendChild(square);
+        } 
 }
 
 // Hero grid cursor repel aimation
-setTimeout(() => {
+    setTimeout(() => {
     const squares = document.querySelectorAll('.tiny-square');
     if (squares.length === 0) {
         console.error("The repel script can't find the squares! Check your script order.");
@@ -108,51 +101,60 @@ setTimeout(() => {
     });
 }, 100); // 100ms delay ensures the grid is fully generated first
 
-// Cursor text animation
-// // 1. The text (added a bullet and space for a clean loop)
-// const textString = "Play & Design • "; 
-// const container = document.getElementById('cursor-revolve-text');
 
-// // 2. The size of the orbit (Distance from the cursor in pixels)
-// const radius = 20; 
+// Hero grid Explode animation & nav bar hide & reveal
+    let revealTimer; 
+    const navBar = document.getElementById('nav-bar'); 
+    let isAnimating = false; // Prevents triggering multiple times
 
-// // 3. Create the circular layout
-// textString.split('').forEach((char, index) => {
-//     const span = document.createElement('span');
-//     span.textContent = char;
-//     span.className = 'revolve-letter';
+    window.addEventListener('wheel', (e) => {
+    const gridContainer = document.querySelector('.hero-grid');
+    if (!gridContainer) return; 
+
+    // Triggered on the first downward scroll
+    if (e.deltaY > 0 && !isAnimating) {
+        isAnimating = true;
+        e.preventDefault(); 
+        
+        // --- STEP 1: Explode the grid immediately ---
+        gridContainer.classList.add('exploded');
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+
+        // --- STEP 2: After a 1-second delay, start the 500px growth and fade ---
+        setTimeout(() => {
+            document.body.classList.add('hero-zoomed');
+        }, 1550); 
+
+        // --- STEP 3: Reveal the navigation bar and UI elements after the growth finishes ---
+        clearTimeout(revealTimer);
+        revealTimer = setTimeout(() => {
+            document.body.classList.add('reveal-ui');
+        }, 1500); 
+
+    } 
     
-//     // Math: Divide 360 degrees by the number of letters to get the angle spacing
-//     const angle = (360 / textString.length) * index;
-    
-//     // Rotate the letter to its angle, then push it outward by the radius distance
-//     span.style.transform = `rotate(${angle}deg) translateY(-${radius}px)`;
-    
-//     container.appendChild(span);
-// });
+    // Reset if scrolling back up at the top
+    else if (e.deltaY < 0 && window.scrollY <= 10 && isAnimating) {
+        e.preventDefault();
+        isAnimating = false;
+        gridContainer.classList.remove('exploded');
+        document.body.classList.remove('hero-zoomed');
+        document.body.classList.remove('reveal-ui');
+        clearTimeout(revealTimer);
+    }
+}, { passive: false });
 
-// // 4. Track the mouse position
-// let mouseX = 0;
-// let mouseY = 0;
+// Nav bar show
+window.addEventListener('scroll', () => {
+    if (navBar && document.body.classList.contains('reveal-ui')) {
+        if (window.scrollY > window.innerHeight) {
+            navBar.classList.add('nav-scrolled');
+        } else {
+            navBar.classList.remove('nav-scrolled');
+        }
+    }
+});
 
-// window.addEventListener('mousemove', (e) => {
-//     mouseX = e.clientX;
-//     mouseY = e.clientY;
-// });
 
-// // 5. The Animation Loop
-// let currentRotation = 0;
 
-// function animateRevolve() {
-//     // Controls the spin speed (higher = faster)
-//     currentRotation += 1; 
-    
-//     // Move the center point to the cursor, and spin the entire container
-//     container.style.transform = `translate(${mouseX}px, ${mouseY}px) rotate(${currentRotation}deg)`;
-
-//     // Request the next frame for an endless loop
-//     requestAnimationFrame(animateRevolve);
-// }
-
-// // Start the animation
-// animateRevolve();
+});
