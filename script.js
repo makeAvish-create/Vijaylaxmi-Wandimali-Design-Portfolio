@@ -123,7 +123,7 @@ document.addEventListener('DOMContentLoaded', () => {
         // --- STEP 2: After a 1-second delay, start the 500px growth and fade ---
         setTimeout(() => {
             document.body.classList.add('hero-zoomed');
-        }, 1550); 
+        }, 1200); 
 
         // --- STEP 3: Reveal the navigation bar and UI elements after the growth finishes ---
         clearTimeout(revealTimer);
@@ -154,6 +154,53 @@ window.addEventListener('scroll', () => {
         }
     }
 });
+
+// Window-container image cursor animation
+    const windowContainer = document.querySelector('.window-container');
+
+    if (windowContainer) {
+    const windowImg = windowContainer.querySelector('img');
+
+    // When the mouse moves inside the container
+    windowContainer.addEventListener('mousemove', (e) => {
+        const rect = windowContainer.getBoundingClientRect();
+        const centerX = rect.left + (rect.width / 2);
+        const centerY = rect.top + (rect.height / 2);
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
+        const maxMove = 10; // Max movement in pixels
+        const moveX = (mouseX / (rect.width / 2)) * maxMove;
+        const moveY = (mouseY / (rect.height / 2)) * maxMove;
+        
+        // Apply the transform movement to the image
+        if (windowImg) {
+            windowImg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`; 
+            // Note: scale(1.05) prevents white edges from showing when it shifts!
+        }
+    });
+
+    // When the mouse leaves the container, snap back to the center
+    windowContainer.addEventListener('mouseleave', () => {
+        if (windowImg) {
+            windowImg.style.transform = `translate(0px, 0px) scale(1)`;
+        }
+    });
+}
+
+// Landing CSS transform animation
+window.addEventListener('scroll', () => {
+    const landingContainer = document.querySelector('.landing');
+    if (!landingContainer) return;
+
+    // Adjust '100' to control how far down the user must scroll before the transformation triggers
+    if (window.scrollY > 100) {
+        landingContainer.classList.add('layout-transformed');
+    } else {
+        landingContainer.classList.remove('layout-transformed');
+    }
+});
+
+
 
 
 
