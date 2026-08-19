@@ -12,6 +12,10 @@ body {
   width: 100%;
   min-height: 200vh; /* Ensures the canvas covers the full screen height */
   overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
+  font-family: "Alan Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
 }
 
 .play-design-cont, 
@@ -132,6 +136,47 @@ body.hero-zoomed .play-design-cont {
     }
 }
 
+.Scroll-hint {
+  /* border: 1px solid black; */
+  position: fixed;
+  bottom: 0;
+  margin-bottom: 100px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 100%;
+  text-align: center;
+  font-size: 17px;
+  font-weight: 400;
+  color: #F655A6;
+  animation: bounceAndFloat 2s ease-in-out infinite;
+  transition: opacity 0.4s ease, transform 0.4s ease;
+}
+
+@keyframes bounceAndFloat {
+  0%, 100% {
+      transform: translateX(-50%) translateY(0px);
+  }
+  50% {
+      transform: translateX(-50%) translateY(-15px);
+  }
+  /* Creates a subtle bounce impact right as it hits the bottom */
+  65% {
+      transform: translateX(-50%) translateY(0px);
+  }
+  75% {
+      transform: translateX(-50%) translateY(-5px);
+  }
+  85% {
+      transform: translateX(-50%) translateY(0px);
+  }
+}
+
+.Scroll-hint.vanished {
+    opacity: 0;
+    pointer-events: none;
+    transform: translateX(-50%) translateY(20px); /* Drops slightly as it fades out */
+}
+
 .landing-page-cont {
     opacity: 0;
     pointer-events: none; 
@@ -233,8 +278,8 @@ body.reveal-ui .landing-page-cont {
 
 /* Nav bar animation */
 #nav-bar.nav-scrolled .nav-links {
-    opacity: 0;
-    visibility: hidden;
+  opacity: 0;
+  visibility: hidden;
 }
 
 .nav-btn {
@@ -251,17 +296,17 @@ body.reveal-ui .landing-page-cont {
 }
 
 .btn-hover-svg {
-    position: absolute;
-    top: -2px; 
-    right: -2px; 
-    z-index: 10; 
-    width: 10px; 
-    opacity: 0;
-    visibility: hidden;
-    transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
-    pointer-events: none;
-    transform: scale(0.5) rotate(-90deg);
-    transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+  position: absolute;
+  top: -2px; 
+  right: -2px; 
+  z-index: 10; 
+  width: 10px; 
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  pointer-events: none;
+  transform: scale(0.5) rotate(-90deg);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
 /*Reveal the SVG when hovering over the WRAPPER */
@@ -272,26 +317,33 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing {
-  /* border: 1px solid black; */
-  position: fixed;
-  display: flex;
-  width: 1250px;
-  left: 50%;
-  transform: translateX(-50%);
-  margin-top: 150px;
-  gap: 20px;
-  background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25) 0%,   /* Lower opacity so blurred background shows */
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  backdrop-filter: blur(10px) saturate(200%);
-  -webkit-backdrop-filter: blur(10px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-  overflow: hidden;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+    position: fixed;
+    display: flex;
+    width: 1250px;
+    left: 50%;
+    /* Combine transform for centering and scaling */
+    transform: translateX(-50%) scale(1);
+    transform-origin: top center;
+    margin-top: 150px;
+    gap: 20px;
+    z-index: 100;
+    background: linear-gradient(
+        135deg, 
+        rgba(255, 255, 255, 0.25) 0%, 
+        rgba(255, 255, 255, 0.05) 100%
+    );
+    backdrop-filter: blur(10px) saturate(200%);
+    -webkit-backdrop-filter: blur(10px) saturate(200%);
+    border: 1px solid rgba(255, 255, 255, 0.3);
+    border-radius: 20px;
+    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    
+    /* Smooth GPU-accelerated transition on transform and opacity only */
+    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                width 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                padding 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+                opacity 0.4s ease;
 }
 
 .landing-left {
@@ -300,7 +352,7 @@ body.reveal-ui .landing-page-cont {
   width: 300px;
   margin: 15px 20px 15px 50px;
   display: block;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease-in-out;
 }
 
 .window-container {
@@ -314,7 +366,7 @@ body.reveal-ui .landing-page-cont {
   outline-offset: 5px;
   z-index: 3;
   cursor: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='20' height='20' viewBox='0 0 20 20'%3E%3Ccircle cx='10' cy='10' r='6' fill='none' stroke='%23000000' stroke-width='1'/%3E%3C/svg%3E") 10 10, auto;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease-in-out;
 }
 
 .window-container img {
@@ -355,11 +407,14 @@ body.reveal-ui .landing-page-cont {
   z-index: 3;
   text-align: left;
   color: #1E6C98;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease-in-out;
 }
 
 .intro h4 {
-  margin: 5px 0 10px 0;
+  margin: 0px 0 10px 0;
+  font-weight: 400;
+  font-style: italic;
+  font-size: 15px;
 }
 
 .landing-right {
@@ -369,18 +424,23 @@ body.reveal-ui .landing-page-cont {
   padding: 10px;
   display: flex;
   flex-direction: column;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease-in-out;
 }
 
 .landing-right > *:last-child {
   margin-top: auto; 
 }
 
+.intro-qstn {
+  font-weight: 500;
+  font-style: italic;
+}
+
 .content-landing {
   /* border: 1px solid black; */
   margin: 0 0 30px 0;
   color: #1E6C98;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease-in-out;
 }
 
 .contact-landing {
@@ -388,14 +448,14 @@ body.reveal-ui .landing-page-cont {
   /* border: 1px solid black; */
   margin: 120px 0 0 0;
   color: #1E6C98;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease-in-out;
 }
 
 .social-cont {
   display: flex;
   justify-content: space-between;
   margin: 5px 0 0 0;
-  transition: all 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.4s ease-in-out;
 }
 
 .social-btn {
@@ -412,16 +472,16 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing.layout-transformed {
-  position: fixed;
-  top: 15px;       
+  top: 15px;
   left: 20px;
+  /* Reset translate so it anchors cleanly to top:15px, left:20px */
+  transform: translateX(0) scale(1); 
   flex-direction: column;
   align-items: flex-start;
   width: 250px;
   height: auto;
   margin: 0;
-  padding: 20px 10px 20px 10px;
-  transform: translateX(0%);
+  padding: 20px 10px;
 }
 
 .landing.layout-transformed .landing-left {
@@ -441,7 +501,8 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing.layout-transformed .intro h4 {
-  margin: 5px 0 5px 0;
+  margin: 0px 0 5px 0;
+  font-size: 12px;
 }
 
 .landing.layout-transformed .landing-right {
@@ -464,4 +525,20 @@ body.reveal-ui .landing-page-cont {
   font-size: calc(1rem * 0.8);
   margin: 10px 0 0 0;
   width: 100%;
+}
+
+.landing-star {
+  position: fixed;
+  z-index: 2;
+  top: 50%;
+  left: 50%;
+  transform: translateX(300%);
+  width: 200px;
+  height: 200px;
+  /* border: 1px solid black; */
+}
+
+.landing-star-svg {
+  width: 100%;
+  animation: spin 10s linear infinite;
 }

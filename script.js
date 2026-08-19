@@ -103,46 +103,80 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 // Hero grid Explode animation & nav bar hide & reveal
-    let revealTimer; 
-    const navBar = document.getElementById('nav-bar'); 
-    let isAnimating = false; // Prevents triggering multiple times
+let revealTimer;
+let isAnimating = false;
+let sequenceCompleted = false; // Tracks if the hero intro sequence is done
 
-    window.addEventListener('wheel', (e) => {
+window.addEventListener('wheel', (e) => {
     const gridContainer = document.querySelector('.hero-grid');
-    if (!gridContainer) return; 
+    const landingContainer = document.querySelector('.landing');
+    const scrollHint = document.querySelector('.Scroll-hint');
+    if (scrollHint) {
+        scrollHint.classList.add('vanished');}
+    if (!gridContainer) return;
 
-    // Triggered on the first downward scroll
-    if (e.deltaY > 0 && !isAnimating) {
-        isAnimating = true;
-        e.preventDefault(); 
+    // --- PHASE 1: HERO INTRO SEQUENCE (Locked at top) ---
+    if (!sequenceCompleted) {
+        // Triggered on the first downward scroll
+        if (e.deltaY > 0 && !isAnimating) {
+            isAnimating = true;
+            e.preventDefault(); 
+            
+            // Step 1: Explode the grid immediately
+            gridContainer.classList.add('exploded');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+
+            // Step 2: Growth and fade delay
+            setTimeout(() => {
+                document.body.classList.add('hero-zoomed');
+            }, 1200); 
+
+            // Step 3: Reveal UI and unlock normal scrolling
+            clearTimeout(revealTimer);
+            revealTimer = setTimeout(() => {
+                document.body.classList.add('reveal-ui');
+                isAnimating = false;
+                sequenceCompleted = true; // Intro is finished, free up the scroll!
+            }, 1500); 
+        } 
         
-        // --- STEP 1: Explode the grid immediately ---
-        gridContainer.classList.add('exploded');
-        window.scrollTo({ top: 0, behavior: 'smooth' });
+        // Reset if scrolling back up at the top
+        else if (e.deltaY < 0 && window.scrollY <= 10 && isAnimating) {
+            e.preventDefault();
+            isAnimating = false;
+            gridContainer.classList.remove('exploded');
+            document.body.classList.remove('hero-zoomed');
+            document.body.classList.remove('reveal-ui');
+            clearTimeout(revealTimer);
+        }
+        
+        return; // Stop here until sequenceCompleted is true
+    }
 
-        // --- STEP 2: After a 1-second delay, start the 500px growth and fade ---
-        setTimeout(() => {
-            document.body.classList.add('hero-zoomed');
-        }, 1200); 
-
-        // --- STEP 3: Reveal the navigation bar and UI elements after the growth finishes ---
-        clearTimeout(revealTimer);
-        revealTimer = setTimeout(() => {
-            document.body.classList.add('reveal-ui');
-        }, 1500); 
-
-    } 
-    
-    // Reset if scrolling back up at the top
-    else if (e.deltaY < 0 && window.scrollY <= 10 && isAnimating) {
-        e.preventDefault();
-        isAnimating = false;
-        gridContainer.classList.remove('exploded');
-        document.body.classList.remove('hero-zoomed');
-        document.body.classList.remove('reveal-ui');
-        clearTimeout(revealTimer);
+    // --- PHASE 2: NORMAL SCROLL & LANDING TRANSFORM ---
+    // Once the hero intro is done, regular scrolling takes over.
+    // We check scroll position here to toggle your layout transformation smoothly.
+    if (landingContainer) {
+        if (window.scrollY > 50) {
+            landingContainer.classList.add('layout-transformed');
+        } else {
+            landingContainer.classList.remove('layout-transformed');
+        }
     }
 }, { passive: false });
+
+// Fallback standard scroll listener just in case they use a trackpad scrollbar drag
+window.addEventListener('scroll', () => {
+    if (!sequenceCompleted) return;
+    const landingContainer = document.querySelector('.landing');
+    if (!landingContainer) return;
+
+    if (window.scrollY > 50) {
+        landingContainer.classList.add('layout-transformed');
+    } else {
+        landingContainer.classList.remove('layout-transformed');
+    }
+});
 
 // Nav bar show
 window.addEventListener('scroll', () => {
@@ -187,18 +221,7 @@ window.addEventListener('scroll', () => {
     });
 }
 
-// Landing CSS transform animation
-window.addEventListener('scroll', () => {
-    const landingContainer = document.querySelector('.landing');
-    if (!landingContainer) return;
 
-    // Adjust '100' to control how far down the user must scroll before the transformation triggers
-    if (window.scrollY > 100) {
-        landingContainer.classList.add('layout-transformed');
-    } else {
-        landingContainer.classList.remove('layout-transformed');
-    }
-});
 
 
 
