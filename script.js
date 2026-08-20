@@ -1,21 +1,36 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio canvas loaded and ready!');
+    const popSound = new Audio('Assets/pop-sound.wav');
+    const heroGrid = document.querySelector('.hero-grid');
 
-// // Nav bar animation
-// window.addEventListener('scroll', () => {
-//     // Grab the nav bar from the HTML
-//     const navBar = document.getElementById('nav-bar');
-    
-//     // window.innerHeight gets the exact pixel height of the user's visible screen (100vh)
-//     // window.scrollY gets how far down the user has scrolled
-//     if (window.scrollY > window.innerHeight) {
-//         // If they scrolled past the first page height, shrink it!
-//         navBar.classList.add('nav-scrolled');
-//     } else {
-//         // If they scroll back up to the top, expand it!
-//         navBar.classList.remove('nav-scrolled');
-//     }
-// });
+    let isInsideGrid = false;
+    let lastMoveTime = 0;
+    const playInterval = 150; // Controls how fast the sound repeats while moving (in milliseconds)
+
+    if (heroGrid) {
+        // Track when the cursor enters the grid
+        heroGrid.addEventListener('mouseenter', () => {
+            isInsideGrid = true;
+        });
+
+        // Track when the cursor leaves the grid
+        heroGrid.addEventListener('mouseleave', () => {
+            isInsideGrid = false;
+        });
+
+        // Track movement while inside the grid
+        heroGrid.addEventListener('mousemove', () => {
+            if (!isInsideGrid) return;
+
+            const now = Date.now();
+            // If enough time has passed since the last sound, play again
+            if (now - lastMoveTime > playInterval) {
+                popSound.currentTime = 0;
+                popSound.play().catch(e => console.log("Audio blocked:", e));
+                lastMoveTime = now;
+            }
+        });
+    }
 
 // Play & Design text
     const textContainer = document.querySelector('.play-design-cont p');
@@ -101,6 +116,8 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 }, 100); // 100ms delay ensures the grid is fully generated first
 
+
+// Grid interaction animation sound
 
 // Hero grid Explode animation & nav bar hide & reveal
 let revealTimer;

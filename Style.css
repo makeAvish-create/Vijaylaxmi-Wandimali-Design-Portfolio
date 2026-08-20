@@ -86,6 +86,7 @@ body {
   grid-template-columns: repeat(12, max-content); 
   width: max-content; 
   z-index: 2; 
+  /* border: 1px solid black; */
 }
 
 .tiny-square {
@@ -127,11 +128,11 @@ body.hero-zoomed .play-design-cont {
 
 @keyframes structural-scale {
     0%, 100% { 
-        scale: 0.9; 
+        scale: 0.8; 
         border-radius: 2px; 
     }
     50% { 
-        scale: 1.1; 
+        scale: 1.2; 
         border-radius: 4px; 
     }
 }
@@ -233,6 +234,10 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  font-family: "Alan Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 300;
+  font-style: normal;
   background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.25) 0%,   /* Lower opacity so blurred background shows */
@@ -288,11 +293,15 @@ body.reveal-ui .landing-page-cont {
   padding: 2px 10px;
   cursor: pointer;
   color: #1E6C98;
+  font-family: "Alan Sans", sans-serif;
+  font-optical-sizing: auto;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .btn-wrapper {
-    position: relative;
-    display: inline-block; 
+  position: relative;
+  display: inline-block; 
 }
 
 .btn-hover-svg {
@@ -436,6 +445,19 @@ body.reveal-ui .landing-page-cont {
   font-style: italic;
 }
 
+.intro-ans {
+  color: rgb(33, 31, 31);
+}
+
+.email-callout {
+  font-weight: 500;
+  font-style: italic;
+}
+
+.email-btn {
+  color: rgb(33, 31, 31);
+}
+
 .content-landing {
   /* border: 1px solid black; */
   margin: 0 0 30px 0;
@@ -446,7 +468,7 @@ body.reveal-ui .landing-page-cont {
 .contact-landing {
   width: 230px;
   /* border: 1px solid black; */
-  margin: 120px 0 0 0;
+  margin: 110px 0 0 0;
   color: #1E6C98;
   transition: opacity 0.4s ease-in-out;
 }
@@ -469,6 +491,32 @@ body.reveal-ui .landing-page-cont {
   border: none;
   padding: 0;
   cursor: pointer;
+}
+
+.social-btn-wrapper {
+  position: relative;
+  display: inline-block; 
+}
+
+.social-btn-hover-svg {
+  position: absolute;
+  top: -8px; 
+  right: -10px; 
+  z-index: 10; 
+  width: 10px; 
+  opacity: 0;
+  visibility: hidden;
+  transition: opacity 0.2s ease-in-out, visibility 0.2s ease-in-out;
+  pointer-events: none;
+  transform: scale(0.5) rotate(-90deg);
+  transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
+}
+
+/*Reveal the SVG when hovering over the WRAPPER */
+.social-btn-wrapper:hover .social-btn-hover-svg {
+    opacity: 1;
+    visibility: visible;
+    transform: scale(1) rotate(0deg);
 }
 
 .landing.layout-transformed {
@@ -523,7 +571,7 @@ body.reveal-ui .landing-page-cont {
 
 .landing.layout-transformed .contact-landing {
   font-size: calc(1rem * 0.8);
-  margin: 10px 0 0 0;
+  margin: 20px 0 0 0;
   width: 100%;
 }
 
