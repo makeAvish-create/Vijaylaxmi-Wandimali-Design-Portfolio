@@ -429,7 +429,7 @@ body.reveal-ui .landing-page-cont {
 .landing-right {
   /* border: 1px solid black; */
   margin: 15px 20px 15px 50px;
-  width: 700px;
+  width: 750px;
   padding: 10px;
   display: flex;
   flex-direction: column;
@@ -466,17 +466,22 @@ body.reveal-ui .landing-page-cont {
 }
 
 .contact-landing {
-  width: 230px;
+  width: 260px;
   /* border: 1px solid black; */
   margin: 110px 0 0 0;
   color: #1E6C98;
   transition: opacity 0.4s ease-in-out;
 }
 
+.social-callout {
+  /* border: 1px solid black; */
+}
+
 .social-cont {
+  /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
-  margin: 5px 0 0 0;
+  margin: 10px 0 0 0;
   transition: opacity 0.4s ease-in-out;
 }
 
@@ -486,7 +491,7 @@ body.reveal-ui .landing-page-cont {
   filter: brightness(0) saturate(100%) invert(38%) sepia(34%) saturate(1455%) hue-rotate(167deg) brightness(96%) contrast(92%);
 }
 
-.x-btn, .linkedin-btn, .behance-btn, .git-btn {
+.email-btn, .x-btn, .linkedin-btn, .behance-btn, .git-btn {
   background: none;
   border: none;
   padding: 0;
@@ -517,6 +522,31 @@ body.reveal-ui .landing-page-cont {
     opacity: 1;
     visibility: visible;
     transform: scale(1) rotate(0deg);
+}
+
+.resume-btn {
+  background-color: #FFE54F;
+  border: none;
+  margin: 40px 0 0 0;
+  border-radius: 20px;
+  padding: 8px 20px;
+  color: #1E6C98;
+  cursor: pointer;
+  font-weight: bold;
+  font-style: normal;
+  font-size: 16px;
+  box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  animation: pulseLift 3s ease-in-out infinite;
+}
+
+.resume-btn:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.CTA-svg {
+  height: 12px;
 }
 
 .landing.layout-transformed {
@@ -575,6 +605,16 @@ body.reveal-ui .landing-page-cont {
   width: 100%;
 }
 
+.landing.layout-transformed .resume-btn {
+  margin: 30px 0 0 50px;
+  padding: 8px 20px;
+  font-size: 12px;
+}
+
+.landing.layout-transformed .CTA-svg {
+  height: 8px;
+}
+
 .landing-star {
   position: fixed;
   z-index: 2;
@@ -589,4 +629,9 @@ body.reveal-ui .landing-page-cont {
 .landing-star-svg {
   width: 100%;
   animation: spin 10s linear infinite;
+}
+
+.selected-work {
+  border: 1px solid black;
+  width: 990px;
 }
