@@ -141,35 +141,14 @@ body.hero-zoomed .play-design-cont {
   /* border: 1px solid black; */
   position: fixed;
   bottom: 0;
-  margin-bottom: 100px;
+  margin-bottom: 80px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   text-align: center;
   font-size: 17px;
   font-weight: 400;
-  color: #F655A6;
-  animation: bounceAndFloat 2s ease-in-out infinite;
-  transition: opacity 0.4s ease, transform 0.4s ease;
-}
-
-@keyframes bounceAndFloat {
-  0%, 100% {
-      transform: translateX(-50%) translateY(0px);
-  }
-  50% {
-      transform: translateX(-50%) translateY(-15px);
-  }
-  /* Creates a subtle bounce impact right as it hits the bottom */
-  65% {
-      transform: translateX(-50%) translateY(0px);
-  }
-  75% {
-      transform: translateX(-50%) translateY(-5px);
-  }
-  85% {
-      transform: translateX(-50%) translateY(0px);
-  }
+  color: #222222;
 }
 
 .Scroll-hint.vanished {
@@ -253,7 +232,7 @@ body.reveal-ui .landing-page-cont {
 
 /* Nav bar animation */
 #nav-bar.nav-scrolled {
-    width: 250px; /* Tweak this pixel value until it perfectly fits just your name */
+  width: 250px; /* Tweak this pixel value until it perfectly fits just your name */
 }
 
 .name {
@@ -262,7 +241,10 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   align-items: center;
   color: #1E6C98;
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
   font-weight: 500;
+  font-style: italic;
 }
 
 .logo-svg {
@@ -326,33 +308,33 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing {
-    position: fixed;
-    display: flex;
-    width: 1250px;
-    left: 50%;
-    /* Combine transform for centering and scaling */
-    transform: translateX(-50%) scale(1);
-    transform-origin: top center;
-    margin-top: 150px;
-    gap: 20px;
-    z-index: 100;
-    background: linear-gradient(
-        135deg, 
-        rgba(255, 255, 255, 0.25) 0%, 
-        rgba(255, 255, 255, 0.05) 100%
-    );
-    backdrop-filter: blur(10px) saturate(200%);
-    -webkit-backdrop-filter: blur(10px) saturate(200%);
-    border: 1px solid rgba(255, 255, 255, 0.3);
-    border-radius: 20px;
-    box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    
-    /* Smooth GPU-accelerated transition on transform and opacity only */
-    transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                width 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                padding 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
-                opacity 0.4s ease;
+  position: fixed;
+  display: flex;
+  width: 1250px;
+  left: 50%;
+  /* Combine transform for centering and scaling */
+  transform: translateX(-50%) scale(1);
+  transform-origin: top center;
+  margin-top: 150px;
+  gap: 20px;
+  z-index: 100;
+  background: linear-gradient(
+      135deg, 
+      rgba(255, 255, 255, 0.25) 0%, 
+      rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(100%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  
+  /* Smooth GPU-accelerated transition on transform and opacity only */
+  transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              width 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              padding 0.6s cubic-bezier(0.16, 1, 0.3, 1), 
+              opacity 0.4s ease;
 }
 
 .landing-left {
@@ -417,13 +399,27 @@ body.reveal-ui .landing-page-cont {
   text-align: left;
   color: #1E6C98;
   transition: opacity 0.4s ease-in-out;
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: italic;
 }
 
 .intro h4 {
   margin: 0px 0 10px 0;
   font-weight: 400;
-  font-style: italic;
   font-size: 15px;
+  color: #222222;
+  font-family: "Alan Sans", sans-serif;
+  font-style: normal;
+}
+
+.intro p {
+  font-weight: 400;
+  font-size: 15px;
+  color: #222222;
+  font-family: "Alan Sans", sans-serif;
+  font-style: normal;
 }
 
 .landing-right {
@@ -441,6 +437,7 @@ body.reveal-ui .landing-page-cont {
 }
 
 .intro-qstn {
+  font-family: "Libre Baskerville", serif;
   font-weight: 500;
   font-style: italic;
 }
@@ -449,13 +446,9 @@ body.reveal-ui .landing-page-cont {
   color: rgb(33, 31, 31);
 }
 
-.email-callout {
-  font-weight: 500;
-  font-style: italic;
-}
-
-.email-btn {
-  color: rgb(33, 31, 31);
+.exp-btn {
+  color: #222222;
+  text-decoration: none;
 }
 
 .content-landing {
@@ -473,22 +466,17 @@ body.reveal-ui .landing-page-cont {
   transition: opacity 0.4s ease-in-out;
 }
 
-.social-callout {
+.social-callout p {
   /* border: 1px solid black; */
+  color: #222222;
 }
 
 .social-cont {
   /* border: 1px solid black; */
   display: flex;
   justify-content: space-between;
-  margin: 10px 0 0 0;
+  margin: 15px 0 0 0;
   transition: opacity 0.4s ease-in-out;
-}
-
-.social-btn {
-  width: 20px;
-  height: 20px;
-  filter: brightness(0) saturate(100%) invert(38%) sepia(34%) saturate(1455%) hue-rotate(167deg) brightness(96%) contrast(92%);
 }
 
 .email-btn, .x-btn, .linkedin-btn, .behance-btn, .git-btn {
@@ -519,18 +507,18 @@ body.reveal-ui .landing-page-cont {
 
 /*Reveal the SVG when hovering over the WRAPPER */
 .social-btn-wrapper:hover .social-btn-hover-svg {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1) rotate(0deg);
+  opacity: 1;
+  visibility: visible;
+  transform: scale(1) rotate(0deg);
 }
 
 .resume-btn {
-  background-color: #FFE54F;
+  background-color: #F655A6;
   border: none;
-  margin: 40px 0 0 0;
+  margin: 35px 0 0 0;
   border-radius: 20px;
   padding: 8px 20px;
-  color: #1E6C98;
+  color: white;
   cursor: pointer;
   font-weight: bold;
   font-style: normal;
@@ -547,6 +535,7 @@ body.reveal-ui .landing-page-cont {
 
 .CTA-svg {
   height: 12px;
+  /* border: 1px solid black; */
 }
 
 .landing.layout-transformed {
@@ -583,6 +572,11 @@ body.reveal-ui .landing-page-cont {
   font-size: 12px;
 }
 
+.landing.layout-transformed .intro p {
+  margin: 0px 0 5px 0;
+  font-size: 12px;
+}
+
 .landing.layout-transformed .landing-right {
   width: 100%;
   margin: 0;
@@ -606,7 +600,7 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing.layout-transformed .resume-btn {
-  margin: 30px 0 0 50px;
+  margin: 30px 0 0 60px;
   padding: 8px 20px;
   font-size: 12px;
 }
@@ -620,7 +614,7 @@ body.reveal-ui .landing-page-cont {
   z-index: 2;
   top: 50%;
   left: 50%;
-  transform: translateX(300%);
+  transform: translateX(250%);
   width: 200px;
   height: 200px;
   /* border: 1px solid black; */
@@ -631,7 +625,23 @@ body.reveal-ui .landing-page-cont {
   animation: spin 10s linear infinite;
 }
 
-.selected-work {
+/* Base state: Hidden and shifted down slightly */
+.landing-page-sections {
+    opacity: 0;
+    transform: translateY(30px);
+    pointer-events: none;
+    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+/* Revealed state: Triggered when the landing page shrinks/moves */
+body.reveal-ui .landing-page-sections,
+.landing.layout-transformed ~ .landing-page-sections {
+    opacity: 1;
+    transform: translateY(0);
+    pointer-events: auto;
+}
+
+.selected-work-section {
   border: 1px solid black;
   width: 990px;
 }

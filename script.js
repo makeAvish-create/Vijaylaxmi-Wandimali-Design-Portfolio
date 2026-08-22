@@ -1,36 +1,46 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio canvas loaded and ready!');
     const popSound = new Audio('Assets/pop-sound.wav');
-    const heroGrid = document.querySelector('.hero-grid');
+const heroGrid = document.querySelector('.hero-grid');
 
-    let isInsideGrid = false;
-    let lastMoveTime = 0;
-    const playInterval = 150; // Controls how fast the sound repeats while moving (in milliseconds)
+let isInsideGrid = false;
+let lastMoveTime = 0;
+const playInterval = 150; // Controls how fast the sound repeats while moving (in milliseconds)
 
-    if (heroGrid) {
-        // Track when the cursor enters the grid
-        heroGrid.addEventListener('mouseenter', () => {
-            isInsideGrid = true;
-        });
+if (heroGrid) {
+    // Track when the cursor enters the grid
+    heroGrid.addEventListener('mouseenter', () => {
+        isInsideGrid = true;
+    });
 
-        // Track when the cursor leaves the grid
-        heroGrid.addEventListener('mouseleave', () => {
-            isInsideGrid = false;
-        });
+    // Track when the cursor leaves the grid
+    heroGrid.addEventListener('mouseleave', () => {
+        isInsideGrid = false;
+    });
 
-        // Track movement while inside the grid
-        heroGrid.addEventListener('mousemove', () => {
-            if (!isInsideGrid) return;
+    // Track movement while inside the grid
+    heroGrid.addEventListener('mousemove', () => {
+        if (!isInsideGrid) return;
 
-            const now = Date.now();
-            // If enough time has passed since the last sound, play again
-            if (now - lastMoveTime > playInterval) {
-                popSound.currentTime = 0;
-                popSound.play().catch(e => console.log("Audio blocked:", e));
-                lastMoveTime = now;
-            }
-        });
-    }
+        // --- CHECK IF ANIMATION OR SCREEN TRANSITION HAS TRIGGERED ---
+        const isExploded = heroGrid.classList.contains('exploded');
+        const isZoomed = document.body.classList.contains('hero-zoomed');
+        const landingEl = document.querySelector('.landing');
+        const isTransformed = landingEl && landingEl.classList.contains('layout-transformed');
+
+        // If any state change has happened, block the sound completely
+        if (isExploded || isZoomed || isTransformed) return;
+        // -----------------------------------------------------------
+
+        const now = Date.now();
+        // If enough time has passed since the last sound, play again
+        if (now - lastMoveTime > playInterval) {
+            popSound.currentTime = 0;
+            popSound.play().catch(e => console.log("Audio blocked:", e));
+            lastMoveTime = now;
+        }
+    });
+}
 
 // Play & Design text
     const textContainer = document.querySelector('.play-design-cont p');
