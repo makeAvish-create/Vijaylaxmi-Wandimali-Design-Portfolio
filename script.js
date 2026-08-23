@@ -248,7 +248,16 @@ window.addEventListener('scroll', () => {
     });
 }
 
+// --- Reveal sections wrapper on scroll ---
+window.addEventListener('scroll', () => {
+    const scrollPosition = window.scrollY;
 
+    if (scrollPosition > 30) {
+        document.body.classList.add('scrolled');
+    } else {
+        document.body.classList.remove('scrolled');
+    }
+});
 
 
 

@@ -316,6 +316,7 @@ body.reveal-ui .landing-page-cont {
   transform: translateX(-50%) scale(1);
   transform-origin: top center;
   margin-top: 150px;
+  padding: 20px 25px;
   gap: 20px;
   z-index: 100;
   background: linear-gradient(
@@ -625,23 +626,88 @@ body.reveal-ui .landing-page-cont {
   animation: spin 10s linear infinite;
 }
 
-/* Base state: Hidden and shifted down slightly */
-.landing-page-sections {
-    opacity: 0;
-    transform: translateY(30px);
-    pointer-events: none;
-    transition: opacity 0.8s cubic-bezier(0.16, 1, 0.3, 1), transform 0.8s cubic-bezier(0.16, 1, 0.3, 1);
+.landing-sections {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  /* border: 1px solid black; */
+  width: auto;
+  height: 800px;
+  z-index: 20;
+  padding: 5px;
+  top: 200px;
+  left: 300px;
+  right: 40px;
+  opacity: 0;
+  transform: translateY(30px);
+  pointer-events: none;
+  transition: opacity 0.5s ease, transform 0.3s ease;
 }
 
-/* Revealed state: Triggered when the landing page shrinks/moves */
-body.reveal-ui .landing-page-sections,
-.landing.layout-transformed ~ .landing-page-sections {
-    opacity: 1;
-    transform: translateY(0);
-    pointer-events: auto;
+.section-card {
+  display: flex;
+  flex-direction: column;
+  width: auto;
+  height: auto;
+  padding: 20px 30px;
+  gap: 10px;
+  background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.25) 0%, 
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(100%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  /* overflow: hidden; */
 }
 
-.selected-work-section {
+body.scrolled .landing-sections {
+  opacity: 1;
+  transform: translateY(0);
+  pointer-events: auto;
+}
+
+.project-card {
+  display: flex;
+  gap: 20px;
+  width: auto;
+  height: auto;
+  padding: 12px;
   border: 1px solid black;
-  width: 990px;
+   background: linear-gradient(
+    135deg, 
+    rgba(255, 255, 255, 0.25) 0%, 
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(100%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  /* border: 1px solid rgba(255, 255, 255, 0.3); */
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  /* overflow: hidden; */
+}
+
+.project-info {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+  border: 1px solid black;
+}
+
+.project-category, .project-workstream {
+  display: flex;
+  gap: 20px;
+  border: 1px solid black;
+
+}
+
+.project-category p, .project-workstream p {
+  background-color: #1E6C98;
+  color: white;
+  padding: 5px 10px;
+  border-radius: 10px;
 }
