@@ -1,6 +1,13 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio canvas loaded and ready!');
     
+// Global helper to clamp wheel/trackpad delta values safely across the project
+function getSafeDelta(event) {
+    let safeDelta = Math.min(Math.abs(event.deltaY), 20);
+    if (event.deltaY < 0) safeDelta = -safeDelta;
+    return safeDelta;
+}
+
 
 // Grid interaction animation sound
 const popSound = new Audio('Assets/pop-sound.wav');
@@ -153,7 +160,9 @@ window.addEventListener('wheel', (e) => {
         // ALWAYS lock scroll position to 0 while the intro sequence is handling or animating
         window.scrollTo(0, 0);
 
-        scrollAccumulator += e.deltaY;
+        // Use the global helper function here!
+        let delta = getSafeDelta(e);
+        scrollAccumulator += delta;
 
         if (e.deltaY < 0) {
             scrollAccumulator = 0;

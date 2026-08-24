@@ -636,12 +636,12 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   flex-direction: column;
   gap: 50px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   width: auto;
-  height: 800px;
+  height: auto;
   z-index: 20;
   padding: 5px;
-  top: 200px;
+  top: 700px;
   left: 300px;
   right: 40px;
   opacity: 0;
@@ -651,23 +651,26 @@ body.reveal-ui .landing-page-cont {
 }
 
 .section-card {
-  display: flex;
-  flex-direction: column;
-  width: auto;
+  display: grid;
+    place-items: center; /* Centers the item both horizontally and vertically in one line */
+    width: 100%;
   height: auto;
   padding: 20px 30px;
-  gap: 10px;
-  background: linear-gradient(
-    135deg, 
-    rgba(255, 255, 255, 0.25) 0%, 
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  backdrop-filter: blur(10px) saturate(100%);
-  -webkit-backdrop-filter: blur(10px) saturate(200%);
-  border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-  /* overflow: hidden; */
+  gap: 200px;
+  border: 1px solid black;
+}
+
+.section-card h4, .section-card p  {
+  text-align: center;
+  border: 1px solid black;
+}
+
+.section-card h4{
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 30px;
+  color: #1E6C98;
 }
 
 body.scrolled .landing-sections {
@@ -677,12 +680,15 @@ body.scrolled .landing-sections {
 }
 
 .project-card {
+  position: relative;
   display: flex;
+  flex-direction: column;
   gap: 20px;
-  width: auto;
+  width: fit-content;
   height: auto;
   padding: 12px;
-  border: 1px solid black;
+  
+  /* border: 1px solid black; */
    background: linear-gradient(
     135deg, 
     rgba(255, 255, 255, 0.25) 0%, 
@@ -696,11 +702,23 @@ body.scrolled .landing-sections {
   /* overflow: hidden; */
 }
 
+.project-card h4 {
+  border: 1px solid black;
+  width: 200px;
+}
+
+.project-card-img {
+  border: 1px solid black;
+  width: 400px;
+  padding: 0;
+}
+
 .project-info {
   display: flex;
   flex-direction: column;
   gap: 10px;
   border: 1px solid black;
+  width: 400px;
 }
 
 .project-category, .project-workstream {
