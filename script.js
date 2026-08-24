@@ -1,12 +1,17 @@
 document.addEventListener('DOMContentLoaded', () => {
     console.log('Portfolio canvas loaded and ready!');
-    const popSound = new Audio('Assets/pop-sound.wav');
+    
+
+// Grid interaction animation sound
+const popSound = new Audio('Assets/pop-sound.wav');
 const heroGrid = document.querySelector('.hero-grid');
 
 let isInsideGrid = false;
 let lastMoveTime = 0;
 const playInterval = 150; // Controls how fast the sound repeats while moving (in milliseconds)
 
+
+// Generate hero grid of tiny squares
 if (heroGrid) {
     // Track when the cursor enters the grid
     heroGrid.addEventListener('mouseenter', () => {
@@ -127,35 +132,46 @@ if (heroGrid) {
 }, 100); // 100ms delay ensures the grid is fully generated first
 
 
-// Grid interaction animation sound
 
 // Hero grid Explode animation & nav bar hide & reveal
 let revealTimer;
 let isAnimating = false;
-let sequenceCompleted = false; // Tracks if the hero intro sequence is done
+let sequenceCompleted = false; 
+let scrollAccumulator = 0;
 
 window.addEventListener('wheel', (e) => {
     const gridContainer = document.querySelector('.hero-grid');
     const landingContainer = document.querySelector('.landing');
     const scrollHint = document.querySelector('.Scroll-hint');
     if (scrollHint) {
-        scrollHint.classList.add('vanished');}
+        scrollHint.classList.add('vanished');
+    }
     if (!gridContainer) return;
 
     // --- PHASE 1: HERO INTRO SEQUENCE (Locked at top) ---
     if (!sequenceCompleted) {
-        // Triggered on the first downward scroll
-        if (e.deltaY > 0 && !isAnimating) {
+        // ALWAYS lock scroll position to 0 while the intro sequence is handling or animating
+        window.scrollTo(0, 0);
+
+        scrollAccumulator += e.deltaY;
+
+        if (e.deltaY < 0) {
+            scrollAccumulator = 0;
+        }
+
+        // Triggered on swipe/scroll
+        if (scrollAccumulator > 15 && !isAnimating) {
             isAnimating = true;
             e.preventDefault(); 
             
-            // Step 1: Explode the grid immediately
+            // Step 1: Explode the grid immediately & lock scroll to top
             gridContainer.classList.add('exploded');
-            window.scrollTo({ top: 0, behavior: 'smooth' });
+            window.scrollTo(0, 0);
 
             // Step 2: Growth and fade delay
             setTimeout(() => {
                 document.body.classList.add('hero-zoomed');
+                window.scrollTo(0, 0); // Keep locking it during zoom
             }, 1200); 
 
             // Step 3: Reveal UI and unlock normal scrolling
@@ -164,25 +180,15 @@ window.addEventListener('wheel', (e) => {
                 document.body.classList.add('reveal-ui');
                 isAnimating = false;
                 sequenceCompleted = true; // Intro is finished, free up the scroll!
+                scrollAccumulator = 0;
             }, 1500); 
         } 
         
-        // Reset if scrolling back up at the top
-        else if (e.deltaY < 0 && window.scrollY <= 10 && isAnimating) {
-            e.preventDefault();
-            isAnimating = false;
-            gridContainer.classList.remove('exploded');
-            document.body.classList.remove('hero-zoomed');
-            document.body.classList.remove('reveal-ui');
-            clearTimeout(revealTimer);
-        }
-        
-        return; // Stop here until sequenceCompleted is true
+        e.preventDefault(); // Prevent any natural scroll bleed while intro is active
+        return; 
     }
 
     // --- PHASE 2: NORMAL SCROLL & LANDING TRANSFORM ---
-    // Once the hero intro is done, regular scrolling takes over.
-    // We check scroll position here to toggle your layout transformation smoothly.
     if (landingContainer) {
         if (window.scrollY > 50) {
             landingContainer.classList.add('layout-transformed');
@@ -252,7 +258,7 @@ window.addEventListener('scroll', () => {
 window.addEventListener('scroll', () => {
     const scrollPosition = window.scrollY;
 
-    if (scrollPosition > 30) {
+    if (scrollPosition > 60) {
         document.body.classList.add('scrolled');
     } else {
         document.body.classList.remove('scrolled');
