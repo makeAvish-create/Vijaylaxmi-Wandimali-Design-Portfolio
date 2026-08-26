@@ -275,6 +275,42 @@ window.addEventListener('scroll', () => {
 });
 
 
+// Project card magnetic animation
+const projectCard = document.querySelector('.project-card');
+
+if (projectCard) {
+    projectCard.addEventListener('mousemove', (e) => {
+        const rect = projectCard.getBoundingClientRect();
+        
+        // Find the center of the card
+        const centerX = rect.left + rect.width / 2;
+        const centerY = rect.top + rect.height / 2;
+        
+        // Calculate mouse distance from center (-1 to 1 range approximately)
+        const mouseX = e.clientX - centerX;
+        const mouseY = e.clientY - centerY;
+        
+        // Adjust the multiplier (e.g., 15) to control how intense the tilt is
+        const rotateX = (-mouseY / (rect.height / 2)) * 8; 
+        const rotateY = (mouseX / (rect.width / 2)) * 8;
+
+        // Apply the 3D tilt transform
+        projectCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+    });
+
+    // Reset the tilt smoothly when the mouse leaves the card
+    projectCard.addEventListener('mouseleave', () => {
+        projectCard.style.transition = 'transform 0.5s ease-in-out';
+        projectCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+    });
+
+    // Re-enable snappy tracking when re-entering
+    projectCard.addEventListener('mouseenter', () => {
+        projectCard.style.transition = 'transform 0.1s ease-out';
+    });
+}
+
+
 
 
 
