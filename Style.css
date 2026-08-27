@@ -620,7 +620,7 @@ body.reveal-ui .landing-page-cont {
   z-index: 2;
   top: 50%;
   left: 50%;
-  transform: translateX(250%);
+  transform: translateX(350%);
   width: 200px;
   height: 200px;
   /* border: 1px solid black; */
@@ -687,8 +687,32 @@ body.scrolled .landing-sections {
 
 #project-card-2 {
   position: sticky;
-  top: 250px;
+  top: 150px;
   z-index: 20;
+}
+
+#project-card-3 {
+  position: sticky;
+  top: 200px;
+  z-index: 25;
+}
+
+#project-card-4 {
+  position: sticky;
+  top: 250px;
+  z-index: 30;
+}
+
+#project-card-1, 
+#project-card-2, 
+#project-card-3, 
+#project-card-4 {
+  transform-origin: top center;
+  transition: transform 0.3s ease-out;
+}
+
+.stacked-shrink {
+    transform: scale(0.8); 
 }
 
 .project-card {
@@ -725,6 +749,12 @@ body.scrolled .landing-sections {
   /* border: 1px solid black; */
   width: 100%;
   padding: 0;
+  height: auto;
+}
+
+.project-card-img img {
+  display: block;
+  width: 100%;
   height: auto;
 }
 
@@ -777,22 +807,34 @@ body.scrolled .landing-sections {
   position: absolute;
   top: 150px;
   left: 470px;
-  width: 200px;
+  width: 400px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
 }
 
+.haati-project-img-1 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .haati-project-img-2 {
   position: absolute;
   top: 300px;
   left: -420px;
-  width: 150px;
+  width: 350px;
   opacity: 0;
   visibility: hidden;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.haati-project-img-2 img {
+  display: block;
+  width: 100%;
+  height: auto;
 }
 
 .project-card:hover ~ #haati-info {
@@ -813,6 +855,195 @@ body.scrolled .landing-sections {
   transform: translateY(0);
 }
 
+#Earth-info {
+  position: absolute;
+  top: 100px;
+  left: -270px;
+  width: 220px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.earth-project-img-1 {
+  position: absolute;
+  top: 150px;
+  left: 470px;
+  width: 370px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.earth-project-img-1 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.earth-project-img-2 {
+  position: absolute;
+  top: 300px;
+  left: -450px;
+  width: 410px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.earth-project-img-2 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-card:hover ~ #Earth-info {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.project-card:hover ~ .earth-project-img-1 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.project-card:hover ~ .earth-project-img-2 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#Vivid-info {
+  position: absolute;
+  top: 70px;
+  left: -240px;
+  width: 200px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.vivid-project-img-1 {
+  position: absolute;
+  top: 175px;
+  left: 450px;
+  width: 450px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.vivid-project-img-1 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.vivid-project-img-2 {
+  position: absolute;
+  top: 280px;
+  left: -400px;
+  width: 330px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.vivid-project-img-2 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-card:hover ~ #Vivid-info {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.project-card:hover ~ .vivid-project-img-1 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.project-card:hover ~ .vivid-project-img-2 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+#Thread-info {
+  position: absolute;
+  top: 120px;
+  left: -270px;
+  width: 250px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.thread-project-img-1 {
+  position: absolute;
+  top: 110px;
+  left: 470px;
+  width: 380px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.thread-project-img-1 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.thread-project-img-2 {
+  position: absolute;
+  top: 250px;
+  left: -400px;
+  width: 320px;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.thread-project-img-2 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+.project-card:hover ~ #Thread-info {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.project-card:hover ~ .thread-project-img-1 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
+.project-card:hover ~ .thread-project-img-2 {
+  opacity: 1;
+  visibility: visible;
+  transform: translateY(0);
+}
+
 .Brand-info p {
   text-align: left;
   font-size: 12px;
@@ -820,6 +1051,40 @@ body.scrolled .landing-sections {
 
 .Brand-info {
   padding: 15px;
+  background: linear-gradient(
+  135deg, 
+  rgba(255, 255, 255, 0.25) 0%, 
+  rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(100%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 20px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+#design-blueprint {
+  position: relative;
+  margin-top: 50px;
+  z-index: 40;
+  width: 100%;
+  height: auto;
+  overflow: hidden;
+  border: 1px solid black;
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+}
+
+.design-blp {
+  width: 100%;
+  height: auto;
+  padding: 15px;
+  text-align: left;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start; 
+  justify-content: flex-start;
   background: linear-gradient(
   135deg, 
   rgba(255, 255, 255, 0.25) 0%, 

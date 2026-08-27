@@ -276,39 +276,142 @@ window.addEventListener('scroll', () => {
 
 
 // Project card magnetic animation
-const projectCard = document.querySelector('.project-card');
+const projectCards = document.querySelectorAll('.project-card');
 
-if (projectCard) {
+projectCards.forEach(projectCard => {
+    // 2. Find the parent wrapper for THIS specific card
+    const projectContainer = projectCard.closest('[id^="project-card-"]'); 
+    
+    if (!projectContainer) return;
+
+    // 3. Get all sibling elements inside this specific row
+    const siblings = projectContainer.querySelectorAll(':scope > div');
+
     projectCard.addEventListener('mousemove', (e) => {
         const rect = projectCard.getBoundingClientRect();
-        
-        // Find the center of the card
         const centerX = rect.left + rect.width / 2;
         const centerY = rect.top + rect.height / 2;
         
-        // Calculate mouse distance from center (-1 to 1 range approximately)
         const mouseX = e.clientX - centerX;
         const mouseY = e.clientY - centerY;
         
-        // Adjust the multiplier (e.g., 15) to control how intense the tilt is
-        const rotateX = (-mouseY / (rect.height / 2)) * 8; 
-        const rotateY = (mouseX / (rect.width / 2)) * 8;
+        const rotateX = (-mouseY / (rect.height / 2)) * 5; 
+        const rotateY = (mouseX / (rect.width / 2)) * 5;
 
-        // Apply the 3D tilt transform
-        projectCard.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        siblings.forEach(sibling => {
+            sibling.style.transition = 'none';
+            sibling.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
+        });
     });
 
-    // Reset the tilt smoothly when the mouse leaves the card
     projectCard.addEventListener('mouseleave', () => {
-        projectCard.style.transition = 'transform 0.5s ease-in-out';
-        projectCard.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        siblings.forEach(sibling => {
+            sibling.style.transition = 'transform 0.5s ease-in-out';
+            sibling.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
+        });
     });
+});
 
-    // Re-enable snappy tracking when re-entering
-    projectCard.addEventListener('mouseenter', () => {
-        projectCard.style.transition = 'transform 0.1s ease-out';
+
+// Card shrink animation
+window.addEventListener('scroll', () => {
+    const cardWrappers = [
+        document.getElementById('project-card-1'),
+        document.getElementById('project-card-2'),
+        document.getElementById('project-card-3'),
+        document.getElementById('project-card-4')
+    ];
+
+    // Track how many cards are currently "active/overlapping" from top to bottom
+    cardWrappers.forEach((card, index) => {
+        if (!card) return;
+
+        let cumulativeShrink = 0;
+        const scrollRange = 300;
+
+        // Check every subsequent card to see how much it has overlapped this card
+        for (let j = index + 1; j < cardWrappers.length; j++) {
+            const nextCard = cardWrappers[j];
+            const nextStickyTop = 100 + (j * 50);
+            const nextRect = nextCard.getBoundingClientRect();
+            const distanceToSticky = nextRect.top - nextStickyTop;
+
+            if (distanceToSticky <= 0) {
+                // The card has fully locked in place above us -> add a full layer of shrink (e.g., ~0.03 per layer)
+                cumulativeShrink += 0.03; 
+            } else if (distanceToSticky <= scrollRange) {
+                // The card is currently scrolling into place -> add partial/gradual shrink
+                const progress = 1 - (distanceToSticky / scrollRange);
+                cumulativeShrink += (0.03 * progress);
+            }
+        }
+
+        // Base scale is 1, subtract the cumulative shrink for every card stacked on top
+        const finalScale = Math.max(0.80, 1 - cumulativeShrink); // 0.80 prevents it from shrinking past a safe threshold
+
+        card.style.transform = `scale(${finalScale})`;
+        card.style.transformOrigin = 'top center';
+        card.style.transition = 'transform 0.1s ease-out';
     });
-}
+});
+
+
+
+let currentTranslateY = 0;
+let targetTranslateY = 0;
+
+window.addEventListener('scroll', () => {
+    const cardWrappers = [
+        document.getElementById('project-card-1'),
+        document.getElementById('project-card-2'),
+        document.getElementById('project-card-3'),
+        document.getElementById('project-card-4')
+    ];
+
+    const blueprint = document.getElementById('design-blueprint');
+    
+    // 1. Calculate the exact target slide amount based on the blueprint position
+    if (blueprint) {
+        const blueprintRect = blueprint.getBoundingClientRect();
+        if (blueprintRect.top < window.innerHeight) {
+            // As blueprint scrolls up into view, calculate how much to push the cards up
+            targetTranslateY = Math.max(0, window.innerHeight - blueprintRect.top);
+        } else {
+            targetTranslateY = 0;
+        }
+    }
+
+    // 2. Loop through cards to apply their scale + uniform translation
+    cardWrappers.forEach((card, index) => {
+        if (!card) return;
+
+        // Calculate standard cumulative scaling (keeps your depth intact)
+        let cumulativeShrink = 0;
+        const scrollRange = 300;
+
+        for (let j = index + 1; j < cardWrappers.length; j++) {
+            const nextCard = cardWrappers[j];
+            const nextStickyTop = 100 + (j * 50);
+            const nextRect = nextCard.getBoundingClientRect();
+            const distanceToSticky = nextRect.top - nextStickyTop;
+
+            if (distanceToSticky <= 0) {
+                cumulativeShrink += 0.03; 
+            } else if (distanceToSticky <= scrollRange) {
+                const progress = 1 - (distanceToSticky / scrollRange);
+                cumulativeShrink += (0.03 * progress);
+            }
+        }
+
+        const currentScale = Math.max(0.80, 1 - cumulativeShrink);
+
+        // Apply the EXACT SAME negative translation to every card so they move together
+        card.style.transform = `translateY(${-targetTranslateY}px) scale(${currentScale})`;
+        card.style.transformOrigin = 'top center';
+        // Remove individual JS transitions here so the browser handles it natively per frame
+        card.style.transition = 'none'; 
+    });
+});
 
 
 
