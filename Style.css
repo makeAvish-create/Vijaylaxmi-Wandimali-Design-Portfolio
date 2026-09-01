@@ -467,9 +467,53 @@ body.reveal-ui .landing-page-cont {
 .contact-landing {
   width: 260px;
   /* border: 1px solid black; */
-  margin: 110px 0 0 0;
+  margin: 30px 0 0 0;
   color: #1E6C98;
   transition: opacity 0.4s ease-in-out;
+}
+
+.tools-box {
+  display: flex;
+  flex-direction: row;
+  gap: 20px;
+  padding: 5px 0;
+  overflow: visible;
+}
+
+.tool-item {
+  position: relative;
+  display: inline-block;
+}
+
+.tool-img {
+  width: 25px;
+}
+
+.tool-text {
+  position: absolute;
+  top: 110%; 
+  left: 50%;
+  transform: translateX(-10px) translateY(-5px); 
+  background: rgba(0, 0, 0, 0.8);
+  color: #ffffff;
+  padding: 4px 8px;
+  font-size: 12px;
+  border-radius: 6px;
+  white-space: nowrap;
+  opacity: 0;
+  pointer-events: none;
+  transition: opacity 0.2s ease, transform 0.2s ease;
+}
+
+.tool-item:hover .tool-text {
+  opacity: 1;
+  transform: translateX(-10px) translateY(0);
+  overflow: visible;
+}
+
+.tool-item:nth-last-child(-n+3) .tool-text {
+    left: auto;
+    right: -10px;
 }
 
 .social-callout p {
@@ -521,7 +565,7 @@ body.reveal-ui .landing-page-cont {
 .resume-btn {
   background-color: #F655A6;
   border: none;
-  margin: 35px 0 0 0;
+  margin: 20px 0 0 0;
   border-radius: 20px;
   padding: 8px 20px;
   color: white;
@@ -601,12 +645,12 @@ body.reveal-ui .landing-page-cont {
 
 .landing.layout-transformed .contact-landing {
   font-size: calc(1rem * 0.8);
-  margin: 20px 0 0 0;
+  margin: 10px 0 0 0;
   width: 100%;
 }
 
 .landing.layout-transformed .resume-btn {
-  margin: 30px 0 0 60px;
+  margin: 15px 0 0 60px;
   padding: 8px 20px;
   font-size: 12px;
 }
@@ -615,12 +659,20 @@ body.reveal-ui .landing-page-cont {
   height: 8px;
 }
 
+.landing.layout-transformed .tool-box {
+  overflow: visible;
+}
+
+.landing.layout-transformed .tool-img {
+  width: 20px;
+}
+
 .landing-star {
   position: fixed;
   z-index: 2;
   top: 50%;
-  left: 50%;
-  transform: translateX(350%);
+  right: -5%;
+  /* transform: translateY(-25%) scale(1); */
   width: 200px;
   height: 200px;
   /* border: 1px solid black; */
