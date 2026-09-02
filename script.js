@@ -338,16 +338,16 @@ window.addEventListener('scroll', () => {
 
             if (distanceToSticky <= 0) {
                 // The card has fully locked in place above us -> add a full layer of shrink (e.g., ~0.03 per layer)
-                cumulativeShrink += 0.03; 
+                cumulativeShrink += 0.07; 
             } else if (distanceToSticky <= scrollRange) {
                 // The card is currently scrolling into place -> add partial/gradual shrink
                 const progress = 1 - (distanceToSticky / scrollRange);
-                cumulativeShrink += (0.03 * progress);
+                cumulativeShrink += (0.07 * progress);
             }
         }
 
         // Base scale is 1, subtract the cumulative shrink for every card stacked on top
-        const finalScale = Math.max(0.80, 1 - cumulativeShrink); // 0.80 prevents it from shrinking past a safe threshold
+        const finalScale = Math.max(0.7, 1 - cumulativeShrink); // 0.80 prevents it from shrinking past a safe threshold
 
         card.style.transform = `scale(${finalScale})`;
         card.style.transformOrigin = 'top center';
@@ -356,7 +356,7 @@ window.addEventListener('scroll', () => {
 });
 
 
-
+// Design blueprint section scroll logic
 let currentTranslateY = 0;
 let targetTranslateY = 0;
 
@@ -414,6 +414,75 @@ window.addEventListener('scroll', () => {
 });
 
 
+// Browser engine code for footer
+function detectEngine() {
+    const ua = navigator.userAgent;
+    let engine = "Chromium"; // Default fallback
+
+    if (ua.includes("Firefox")) {
+        engine = "Gecko";
+    } else if (ua.includes("Safari") && !ua.includes("Chrome") && !ua.includes("Edg")) {
+        engine = "WebKit";
+    } else if (ua.includes("Chrome") || ua.includes("Edg") || ua.includes("Brave") || ua.includes("OPR")) {
+        engine = "Chromium";
+    }
+
+    const engineElement = document.getElementById("engine-value");
+    if (engineElement) {
+        engineElement.textContent = engine;
+    }
+}
+// Run on page load
+detectEngine();
+
+
+// Visitor count logic
+async function updateVisitorCount() {
+    try {
+        // Replace 'your-namespace' and 'your-key' with your unique identifiers 
+        // (Many public APIs or free tiers let you spin up a counter instantly)
+        const response = await fetch('https://api.countapi.xyz/hit/your-portfolio-namespace/visits');
+        const data = await response.json();
+        
+        // Format the number with commas (e.g., 17,709)
+        const formattedCount = data.value.toLocaleString();
+        
+        const visitorElement = document.getElementById('visitor-count');
+        if (visitorElement) {
+            visitorElement.textContent = formattedCount;
+        }
+    } catch (error) {
+        console.error("Could not fetch visitor count:", error);
+        document.getElementById('visitor-count').textContent = "Loading..."; // Fallback
+    }
+}
+
+updateVisitorCount();
+
+
+// Local time for footer script
+function updateLocalTime() {
+    const now = new Date();
+    
+    // Format to a clean 12-hour clock with seconds (e.g., "11:25:28 PM")
+    const timeString = now.toLocaleTimeString('en-US', {
+        hour: '2-digit',
+        minute: '2-digit',
+        second: '2-digit',
+        hour12: true
+    });
+
+    const timeElement = document.getElementById('local-time');
+    if (timeElement) {
+        timeElement.textContent = timeString;
+    }
+}
+
+// Run immediately when page loads
+updateLocalTime();
+
+// Update every second (1000 milliseconds)
+setInterval(updateLocalTime, 1000);
 
 
 

@@ -764,11 +764,11 @@ body.scrolled .landing-sections {
 }
 
 .stacked-shrink {
-    transform: scale(0.8); 
+  transform: scale(0.7); 
 }
 
 .project-card {
-  /* position: relative; */
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 15px;
@@ -788,6 +788,25 @@ body.scrolled .landing-sections {
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   transform-style: preserve-3d;
   transition: transform 0.1s ease-out;
+  overflow: visible;
+}
+
+.project-card-star {
+  position: absolute;
+  top: -15px;
+  right: -15px;
+  width: 25px;
+  height: auto;
+  z-index: 10;
+  pointer-events: none;
+  opacity: 0;
+  transform: scale(0.8) translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+.project-card:hover .project-card-star {
+  opacity: 1;
+  transform: scale(1) translateY(0);
 }
 
 .project-card h4 {
@@ -1122,21 +1141,42 @@ body.scrolled .landing-sections {
   width: 100%;
   height: auto;
   overflow: hidden;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   display: flex;
   flex-direction: column;
-  gap: 40px;
+  gap: 5px;
 }
 
-.design-blp {
-  width: 100%;
-  height: auto;
-  padding: 15px;
+.blueprint-heading {
+  margin-top: 100px;
+  font-size: 30px;
+  color: #1E6C98;
+  font-family: "Libre Baskerville", serif;
+  font-optical-sizing: auto;
+  font-weight: 500;
+  font-style: italic;
+}
+
+.blueprint-container {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 20px;
+  padding: 50px 30px;
+}
+
+.design-blp-wrapper {
+  width: 165px;
+  height: 165px;
+  padding: 10px;
   text-align: left;
   display: flex;
   flex-direction: column;
   align-items: flex-start; 
   justify-content: flex-start;
+  gap: 12px;
   background: linear-gradient(
   135deg, 
   rgba(255, 255, 255, 0.25) 0%, 
@@ -1145,6 +1185,86 @@ body.scrolled .landing-sections {
   backdrop-filter: blur(10px) saturate(100%);
   -webkit-backdrop-filter: blur(10px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  border-radius: 20px;
+  border-radius: 15px;
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+  transition: box-shadow 0.3s ease, transform 0.3s ease;
+  animation: pulseLift 3s ease-in-out infinite;
+}
+
+.design-blp-wrapper:hover {
+  transform: translateY(-5px) scale(1.03);
+  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+}
+
+.blueprint-num {
+  /* border: 1px solid black; */
+  width: 100%;
+  font-size: 15px;
+}
+
+.blueprint-icon {
+  /* border: 1px solid black; */
+  height: 30px;
+  width: 100%;
+}
+
+.blueprint-icon img {
+  width: 30px;
+}
+
+.blueprint-text {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: start;
+}
+
+.blueprint-text h4 {
+  font-size: 12px;
+}
+
+.blueprint-text p {
+  font-size: 12px;
+  text-align: left;
+}
+
+#footer {
+  border: 1px solid black;
+  width: 100%;
+  padding: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 50px;
+  background: linear-gradient(
+  135deg, 
+  rgba(255, 255, 255, 0.25) 0%, 
+  rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(100%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 15px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+}
+
+.footer-top {
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 50px;
+}
+
+.footer-bottom {
+  border: 1px solid black;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-between;
+  gap: 50px;
 }
