@@ -235,11 +235,6 @@ body.reveal-ui .landing-page-cont {
   transition: width 0.6s cubic-bezier(0.65, 0, 0.35, 1);
 }
 
-/* Nav bar animation */
-#nav-bar.nav-scrolled {
-  width: 250px; /* Tweak this pixel value until it perfectly fits just your name */
-}
-
 .name {
   margin: 0 70px 0 0;
   white-space: nowrap;
@@ -250,6 +245,7 @@ body.reveal-ui .landing-page-cont {
   font-optical-sizing: auto;
   font-weight: 500;
   font-style: italic;
+  cursor: pointer;
 }
 
 .logo-svg {
@@ -266,12 +262,6 @@ body.reveal-ui .landing-page-cont {
   visibility: visible;
   white-space: nowrap;
   transition: opacity 0.5s ease, visibility 0.5s ease;
-}
-
-/* Nav bar animation */
-#nav-bar.nav-scrolled .nav-links {
-  opacity: 0;
-  visibility: hidden;
 }
 
 .nav-btn {
@@ -305,11 +295,12 @@ body.reveal-ui .landing-page-cont {
   transition: opacity 0.3s ease, visibility 0.3s ease, transform 0.3s ease;
 }
 
-/*Reveal the SVG when hovering over the WRAPPER */
-.btn-wrapper:hover .btn-hover-svg {
-    opacity: 1;
-    visibility: visible;
-    transform: scale(1) rotate(0deg);
+/* Reveal the SVG on hover OR when its section is active */
+.btn-wrapper:hover .btn-hover-svg,
+.btn-wrapper.active .btn-hover-svg {
+    opacity: 1 !important;
+    visibility: visible !important;
+    transform: scale(1) rotate(0deg) !important;
 }
 
 .landing {
@@ -512,8 +503,8 @@ body.reveal-ui .landing-page-cont {
 }
 
 .tool-item:nth-last-child(-n+3) .tool-text {
-    left: auto;
-    right: -10px;
+  left: auto;
+  right: -10px;
 }
 
 .social-callout p {
@@ -708,7 +699,7 @@ body.reveal-ui .landing-page-cont {
   width: 100%;
   height: auto;
   padding: 20px 30px;
-  gap: 200px;
+  gap: 130px;
   /* border: 1px solid black; */
 }
 
@@ -1236,7 +1227,7 @@ body.scrolled .landing-sections {
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 50px;
+  gap: 20px;
   background: linear-gradient(
   135deg, 
   rgba(255, 255, 255, 0.25) 0%, 
@@ -1250,7 +1241,7 @@ body.scrolled .landing-sections {
 }
 
 .footer-top {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   flex-direction: row;
@@ -1259,8 +1250,26 @@ body.scrolled .landing-sections {
   gap: 50px;
 }
 
+.footer-top-card {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+}
+
+.footer-top-card p {
+  font-size: 10px;
+}
+
+.footer-top-card h4 {
+  font-family: "Alan Sans", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+}
+
 .footer-bottom {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   display: flex;
   flex-direction: row;
