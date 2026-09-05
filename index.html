@@ -11,6 +11,9 @@
   <link rel="preconnect" href="https://fonts.googleapis.com">
   <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
   <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
 </head>
 
 
@@ -21,7 +24,7 @@
     <p>Play & Design</p>
   </div>
   <div class="hero-grid"></div>
-  <p class="Scroll-hint">It's our first interaction. Let's Scrollll!</p>
+  <p class="Scroll-hint">It's our first interaction. Let's Scrrooollll!</p>
   <!-- Hero section - welcome page closed -->
 
 
@@ -45,7 +48,9 @@
           </div>
           <!-- Playground Button -->
           <div class="btn-wrapper" data-target="playground">
-              <button class="nav-btn">Playground</button>
+              <a href="playground.html" style="text-decoration: none; display: inline-block;">
+                <button class="nav-btn">Playground</button>
+              </a>
               <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
           </div>
           <!-- Design X Code Button -->
@@ -73,8 +78,8 @@
           </div>
           <div class="intro">
             <h3>Hi, I'm VJ!</h3>
-            <h4>Product Designer / Builder</h4>
-            <p>Creating strategic digital experiences with clean design and distinct visual character</p>
+            <h4>Product Designer + Front-end Protyping</h4>
+            <p>Creating strategic digital experiences with clean design and distinct visual character.</p>
           </div>
         </div>
         <!-- Landing left closed -->
@@ -125,62 +130,68 @@
             </div>
           </div>
 
-          <div class="social-landing contact-landing">
-            <!-- Callout -->
-            <div class="social-callout">
-              <p>For collabs, chats, or creative chaos:</p>
+          <!-- Social + Resume section -->
+          <div class="social-resume-wrapper">
+            <div class="social-landing contact-landing">
+              <!-- Callout -->
+              <div class="social-callout">
+                <p>For collabs, chats, or creative chaos:</p>
+              </div>
+              
+              <!-- Buttons -->
+              <div class="social-cont">
+                <!-- Email-Button -->
+                <div class="social-btn-wrapper">
+                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vijaylaxmi.wandimali@gmail.com" target="_blank" rel="noopener noreferrer">
+                    <button class="email-btn"><img class="social-btn" src="Assets/mail-svg.svg" alt=""></button>
+                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                  </a>
+                </div>
+                
+                
+                <!-- X-Button -->
+                <div class="social-btn-wrapper">
+                  <a href="https://x.com/VJ_Wandimali" target="_blank" rel="noopener noreferrer">
+                    <button class="x-btn"><img class="social-btn" src="Assets/X-svg.svg" alt=""></button>
+                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                  </a>
+                </div>
+
+                <!-- LinkedIn button -->
+                <div class="social-btn-wrapper">
+                  <a href="https://www.linkedin.com/in/vijaylaxmi-wandimali" target="_blank" rel="noopener noreferrer">
+                    <button class="linkedin-btn"><img class="social-btn" src="Assets/Linkedin-svg.svg" alt=""></button>
+                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                  </a>
+                </div>
+
+                <!-- Behance button -->
+                <div class="social-btn-wrapper">
+                  <a href="https://www.behance.net/vijaylaxmiW" target="_blank" rel="noopener noreferrer">
+                    <button class="behance-btn"><img class="social-btn" src="Assets/Behance-svg.svg" alt=""></button>
+                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                  </a>
+                </div>
+
+                <!-- GitHub button -->
+                <div class="social-btn-wrapper">
+                  <a href="https://github.com/makeAvish-create" target="_blank" rel="noopener noreferrer">
+                    <button class="git-btn"><img class="social-btn" src="Assets/git-svg.svg" alt=""></button>
+                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                  </a>
+                </div> 
+              </div>        
             </div>
-            
-            <!-- Buttons -->
-            <div class="social-cont">
-              <!-- Email-Button -->
-              <div class="social-btn-wrapper">
-                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vijaylaxmi.wandimali@gmail.com" target="_blank" rel="noopener noreferrer">
-                  <button class="email-btn"><img class="social-btn" src="Assets/mail-svg.svg" alt=""></button>
-                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                </a>
-              </div>
-              
-              
-              <!-- X-Button -->
-              <div class="social-btn-wrapper">
-                <a href="https://x.com/VJ_Wandimali" target="_blank" rel="noopener noreferrer">
-                  <button class="x-btn"><img class="social-btn" src="Assets/X-svg.svg" alt=""></button>
-                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                </a>
-              </div>
+            <!-- Social & contact closed -->
 
-              <!-- LinkedIn button -->
-              <div class="social-btn-wrapper">
-                <a href="https://www.linkedin.com/in/vijaylaxmi-wandimali" target="_blank" rel="noopener noreferrer">
-                  <button class="linkedin-btn"><img class="social-btn" src="Assets/Linkedin-svg.svg" alt=""></button>
-                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                </a>
-              </div>
+            <!-- Resume -->
+            <div class="resume-btn-cont">
+              <button class="resume-btn">Resume <img class="CTA-svg"  src="Assets/CTA-svg.svg"></button>
+            </div>
+            <!-- Resume closed -->
 
-              <!-- Behance button -->
-              <div class="social-btn-wrapper">
-                <a href="https://www.behance.net/vijaylaxmiW" target="_blank" rel="noopener noreferrer">
-                  <button class="behance-btn"><img class="social-btn" src="Assets/Behance-svg.svg" alt=""></button>
-                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                </a>
-              </div>
-
-              <!-- GitHub button -->
-              <div class="social-btn-wrapper">
-                <a href="https://github.com/makeAvish-create" target="_blank" rel="noopener noreferrer">
-                  <button class="git-btn"><img class="social-btn" src="Assets/git-svg.svg" alt=""></button>
-                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                </a>
-              </div> 
-            </div>        
           </div>
-          <!-- Social & contact closed -->
-
-          <!-- Resume -->
-          <div class="resume-btn-cont">
-            <button class="resume-btn">Resume <img class="CTA-svg"  src="Assets/CTA-svg.svg"></button>
-          </div>
+          <!-- Social+Resume wrapper closed -->
 
         </div> 
         <!-- Landing right closed -->

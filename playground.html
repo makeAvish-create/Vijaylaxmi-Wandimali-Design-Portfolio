@@ -1,0 +1,67 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Vijaylaxmi Wandimali Portfolio</title>
+  <link rel="stylesheet" href="Style.css">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Alan+Sans:wght@300..900&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Libre+Baskerville:ital,wght@0,400..700;1,400..700&display=swap" rel="stylesheet">
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Figtree:ital,wght@0,300..900;1,300..900&display=swap" rel="stylesheet">
+</head>
+
+<body>
+    <!-- Nav Bar background rotating star-svg -->
+    <div class="star-svg2">
+      <img src="Assets/Star-svg.svg" alt="">
+    </div>
+
+
+    <!-- Nav bar -->
+    <div id="nav-bar">
+      <a href="index.html" onclick="sessionStorage.setItem('skipAction', 'top')" style="text-decoration: none;">
+        <div class="name"><img class="logo-svg" src="Assets/Logo.svg" alt="">Vijaylaxmi Wandimali</div>
+      </a>
+      <div class="nav-links">
+        <!-- Works Button -->
+          <div class="btn-wrapper" data-target="works">
+              <a href="index.html" onclick="sessionStorage.setItem('skipAction', 'works')">
+                <button class="nav-btn works-btn">Works</button>
+              </a>
+              <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
+          </div>
+          <!-- Playground Button -->
+          <div class="btn-wrapper active" data-target="playground">
+              <button class="nav-btn">Playground</button>
+              <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
+          </div>
+          <!-- Design X Code Button -->
+          <div class="btn-wrapper" data-target="design-code">
+              <button class="nav-btn">Design X Code</button>
+              <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
+          </div>
+          <!-- About Button -->
+          <div class="btn-wrapper" data-target="about">
+              <button class="nav-btn">About</button>
+              <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
+          </div>
+      </div>
+    </div>
+    <!-- Nav bar closed -->
+
+
+
+
+
+
+
+
+    
+</body>
+</html>

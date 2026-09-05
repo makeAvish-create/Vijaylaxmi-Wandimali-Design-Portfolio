@@ -5,21 +5,19 @@
 }
 
 html {
-    scroll-behavior: smooth;
-    overscroll-behavior-y: none; /* Prevents bounce-back glitches on trackpads */
+  scroll-behavior: smooth;
+  overscroll-behavior-y: none; 
 }
 
 body {
-  background-color: #fff6fc; /* Blank white canvas */
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, Helvetica, Arial, sans-serif;
+  background-color: #fff6fc; 
   display: flex;
   flex-direction: column;
   width: 100%;
-  min-height: 200vh; /* Ensures the canvas covers the full screen height */
-  overflow-x: hidden; /* Prevents horizontal scrolling on mobile */
-  font-family: "Alan Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
+  min-height: 200vh; 
+  overflow-x: hidden; 
+  font-family: "Figtree", sans-serif;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -68,6 +66,7 @@ body {
   margin: 0;
   pointer-events: none; 
   transition: transform 1.5s cubic-bezier(0.16, 1, 0.3, 1), opacity 1.5s ease-out;
+  
 }
 
 .char-span {
@@ -83,7 +82,7 @@ body {
   justify-content: center;
   font-size: 1.rem;
   font-weight: 500;
-  color: #1E6C98;
+  color: #F655A6;
 }
 
 .hero-grid {
@@ -146,26 +145,28 @@ body.hero-zoomed .play-design-cont {
   /* border: 1px solid black; */
   position: fixed;
   bottom: 0;
-  margin-bottom: 80px;
+  margin-bottom: 150px;
   left: 50%;
   transform: translateX(-50%);
   width: 100%;
   text-align: center;
+  font-family: "Figtree", sans-serif;
   font-size: 17px;
   font-weight: 400;
   color: #222222;
+  font-style: italic;
 }
 
 .Scroll-hint.vanished {
-    opacity: 0;
-    pointer-events: none;
-    transform: translateX(-50%) translateY(20px); /* Drops slightly as it fades out */
+  opacity: 0;
+  pointer-events: none;
+  transform: translateX(-50%) translateY(20px);
 }
 
 .landing-page-cont {
-    opacity: 0;
-    pointer-events: none; 
-    transition: opacity 1s ease-in-out; 
+  opacity: 0;
+  pointer-events: none; 
+  transition: opacity 1s ease-in-out; 
 }
 
 body.reveal-ui .landing-page-cont {
@@ -218,9 +219,8 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   justify-content: space-between;
   align-items: center;
-  font-family: "Alan Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 300;
+  font-family: "Figtree", sans-serif;
+  font-weight: normal;
   font-style: normal;
   background: linear-gradient(
     135deg,
@@ -242,7 +242,7 @@ body.reveal-ui .landing-page-cont {
   align-items: center;
   color: #1E6C98;
   font-family: "Libre Baskerville", serif;
-  font-optical-sizing: auto;
+  font-size: 16px;
   font-weight: 500;
   font-style: italic;
   cursor: pointer;
@@ -256,7 +256,7 @@ body.reveal-ui .landing-page-cont {
 
 .nav-links {
   display: flex;
-  gap: 15px; /* Adjust space between the buttons */
+  gap: 15px;
   align-items: center;
   opacity: 1;
   visibility: visible;
@@ -270,10 +270,10 @@ body.reveal-ui .landing-page-cont {
   padding: 2px 10px;
   cursor: pointer;
   color: #1E6C98;
-  font-family: "Alan Sans", sans-serif;
-  font-optical-sizing: auto;
-  font-weight: 400;
+  font-family: "Figtree", sans-serif;
+  font-weight: normal;
   font-style: normal;
+  font-size: 16px;
 }
 
 .btn-wrapper {
@@ -397,25 +397,27 @@ body.reveal-ui .landing-page-cont {
   color: #1E6C98;
   transition: opacity 0.4s ease-in-out;
   font-family: "Libre Baskerville", serif;
-  font-optical-sizing: auto;
   font-weight: 500;
   font-style: italic;
 }
 
 .intro h4 {
-  margin: 0px 0 10px 0;
+  /* border: 1px solid black; */
+  margin: 7px 0 20px 0;
   font-weight: 400;
-  font-size: 15px;
+  font-size: 16px;
   color: #222222;
-  font-family: "Alan Sans", sans-serif;
-  font-style: normal;
+  font-family: "Figtree", sans-serif;
+  font-weight: normal;
+  font-style: italic;
 }
 
 .intro p {
-  font-weight: 400;
-  font-size: 15px;
+  /* border: 1px solid black; */
+  font-size: 16px;
   color: #222222;
-  font-family: "Alan Sans", sans-serif;
+  font-family: "Figtree", sans-serif;
+  font-weight: normal;
   font-style: normal;
 }
 
@@ -440,7 +442,7 @@ body.reveal-ui .landing-page-cont {
 }
 
 .intro-ans {
-  color: rgb(33, 31, 31);
+  color: #222222;
 }
 
 .exp-btn {
@@ -450,15 +452,29 @@ body.reveal-ui .landing-page-cont {
 
 .content-landing {
   /* border: 1px solid black; */
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
   margin: 0 0 30px 0;
   color: #1E6C98;
   transition: opacity 0.4s ease-in-out;
 }
 
+.social-resume-wrapper {
+  display: flex;
+  flex-direction: row;
+  /* border: 1px solid black; */
+  gap: 25px;
+}
+
 .contact-landing {
+  font-size: 16px;
+  display: flex;
+  flex-direction: column;
+  gap: 20px;
   width: 260px;
   /* border: 1px solid black; */
-  margin: 30px 0 0 0;
   color: #1E6C98;
   transition: opacity 0.4s ease-in-out;
 }
@@ -515,8 +531,8 @@ body.reveal-ui .landing-page-cont {
 .social-cont {
   /* border: 1px solid black; */
   display: flex;
-  justify-content: space-between;
-  margin: 15px 0 0 0;
+  flex-direction: row;
+  gap: 30px;
   transition: opacity 0.4s ease-in-out;
 }
 
@@ -554,10 +570,12 @@ body.reveal-ui .landing-page-cont {
 }
 
 .resume-btn {
+  height: 50px;
+  width: 184px;
   background-color: #F655A6;
   border: none;
-  margin: 20px 0 0 0;
-  border-radius: 20px;
+  border-radius: 100px;
+  margin-top: 10px;
   padding: 8px 20px;
   color: white;
   cursor: pointer;
@@ -576,6 +594,7 @@ body.reveal-ui .landing-page-cont {
 
 .CTA-svg {
   height: 12px;
+  margin-left: 6px;
   /* border: 1px solid black; */
 }
 
@@ -586,10 +605,10 @@ body.reveal-ui .landing-page-cont {
   transform: translateX(0) scale(1); 
   flex-direction: column;
   align-items: flex-start;
-  width: 250px;
+  width: 325px;
   height: auto;
   margin: 0;
-  padding: 20px 10px;
+  padding: 20px 15px;
 }
 
 .landing.layout-transformed .landing-left {
@@ -599,23 +618,24 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing.layout-transformed .window-container {
-  width: 100%;
-  height: 250px;
+  width: 200px;
+  height: 225px;
+  margin: 0px auto;
 }
 
 .landing.layout-transformed .intro {
   width: 100%;
-  font-size: calc(1rem * 0.8);
+  /* font-size: calc(1rem * 0.8); */
 }
 
 .landing.layout-transformed .intro h4 {
-  margin: 0px 0 5px 0;
-  font-size: 12px;
+  margin: 0px 0 10px 0;
+  font-size: 14px;
 }
 
 .landing.layout-transformed .intro p {
   margin: 0px 0 5px 0;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .landing.layout-transformed .landing-right {
@@ -629,25 +649,34 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing.layout-transformed .content-landing {
-  font-size: calc(1rem * 0.8);
-  margin: 0 0 10px 0;
+  font-size: 14px;
+  gap: 3px;
+  margin: 0 0 15px 0;
   width: 100%;
+}
+
+.landing.layout-transformed .social-resume-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
 }
 
 .landing.layout-transformed .contact-landing {
-  font-size: calc(1rem * 0.8);
-  margin: 10px 0 0 0;
+  font-size: 14px;
+  /* margin: 10px 0 0 0; */
   width: 100%;
+  gap: 10px;
 }
 
 .landing.layout-transformed .resume-btn {
-  margin: 15px 0 0 60px;
+  width: auto;
+  height: auto;
   padding: 8px 20px;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .landing.layout-transformed .CTA-svg {
-  height: 8px;
+  height: 12px;
 }
 
 .landing.layout-transformed .tool-box {
@@ -679,13 +708,13 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   flex-direction: column;
   gap: 50px;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: auto;
   height: auto;
   z-index: 20;
   padding: 5px;
   top: 700px;
-  left: 300px;
+  left: 390px;
   right: 40px;
   opacity: 0;
   transform: translateY(30px);
@@ -846,7 +875,7 @@ body.scrolled .landing-sections {
 
 .project-workstream p {
   color: #222222;
-  font-size: 12px;
+  font-size: 14px;
 }
 
 .bullet-star {
@@ -1143,7 +1172,6 @@ body.scrolled .landing-sections {
   font-size: 30px;
   color: #1E6C98;
   font-family: "Libre Baskerville", serif;
-  font-optical-sizing: auto;
   font-weight: 500;
   font-style: italic;
 }
@@ -1263,9 +1291,10 @@ body.scrolled .landing-sections {
 }
 
 .footer-top-card h4 {
-  font-family: "Alan Sans", sans-serif;
-  font-size: 15px;
+  font-family: "Figtree", sans-serif;
+  font-weight: normal;
   font-style: normal;
+  font-size: 15px;
 }
 
 .footer-bottom {
@@ -1276,4 +1305,12 @@ body.scrolled .landing-sections {
   flex-wrap: wrap;
   justify-content: space-between;
   gap: 50px;
+}
+
+/* ================================================ Playground.html Section start ================================================================= */
+/* Keep the star SVG visible at all times for playground.html */
+.btn-wrapper.active .btn-hover-svg {
+  opacity: 1 !important;
+  visibility: visible !important;
+  transform: scale(1) !important;
 }

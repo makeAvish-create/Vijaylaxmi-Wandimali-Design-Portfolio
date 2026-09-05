@@ -2,6 +2,65 @@ document.addEventListener('DOMContentLoaded', () =>
 {
     console.log('Portfolio canvas loaded and ready!');
     
+    // Global variables for animation control states
+    let revealTimer;
+    let isAnimating = false;
+    let sequenceCompleted = false; 
+    let scrollAccumulator = 0;
+
+    // --- CHECK IF WE SHOULD SKIP INTRO ANIMATION COMPLETELY ---
+    const skipAction = sessionStorage.getItem('skipAction');
+    if (skipAction) {
+    sessionStorage.removeItem('skipAction');
+    
+    // 1. Instantly kill all CSS transitions/animations so nothing plays on load
+    const styleBlock = document.createElement('style');
+    styleBlock.id = 'skip-anim-style';
+    styleBlock.innerHTML = `* { transition: none !important; animation: none !important; }`;
+    document.head.appendChild(styleBlock);
+    
+    // 2. Set all states to mimic a completed intro sequence
+    sequenceCompleted = true;
+    document.body.classList.add('hero-zoomed', 'reveal-ui');
+    
+    const heroGrid = document.querySelector('.hero-grid');
+    if (heroGrid) heroGrid.classList.add('exploded');
+    
+    const scrollHint = document.querySelector('.Scroll-hint');
+    if (scrollHint) scrollHint.classList.add('vanished');
+
+    const landingContainer = document.querySelector('.landing');
+    if (landingContainer) {
+        if (skipAction === 'works') {
+            landingContainer.classList.add('layout-transformed');
+        } else {
+            landingContainer.classList.remove('layout-transformed');
+        }
+    }
+
+    const navBar = document.getElementById('nav-bar');
+    if (navBar) {
+        if (skipAction === 'works') {
+            navBar.classList.add('nav-scrolled');
+        } else {
+            navBar.classList.remove('nav-scrolled');
+        }
+    }
+    
+    // 3. Jump straight to the requested position
+    if (skipAction === 'works') {
+        window.scrollTo(0, 650);
+    } else {
+        window.scrollTo(0, 0);
+    }
+    
+    // 4. Remove the transition blocker right after so interactive mouse animations work normally
+    setTimeout(() => {
+        const tempStyle = document.getElementById('skip-anim-style');
+        if (tempStyle) tempStyle.remove();
+    }, 100);
+    }
+
     // Global helper to clamp wheel/trackpad delta values safely across the project
     function getSafeDelta(event) {
         let safeDelta = Math.min(Math.abs(event.deltaY), 20);
@@ -130,11 +189,6 @@ document.addEventListener('DOMContentLoaded', () =>
     }, 100);
 
     // Hero grid Explode animation & nav bar hide & reveal
-    let revealTimer;
-    let isAnimating = false;
-    let sequenceCompleted = false; 
-    let scrollAccumulator = 0;
-
     window.addEventListener('wheel', (e) => {
         const gridContainer = document.querySelector('.hero-grid');
         const landingContainer = document.querySelector('.landing');
@@ -386,51 +440,44 @@ document.addEventListener('DOMContentLoaded', () =>
 
     // --- Nav bar Works button highlight upon works section active ---
     window.addEventListener('scroll', () => {
-    const firstProjectCard = document.getElementById('selected-work');
-    const worksBtnWrapper = document.querySelector('.btn-wrapper[data-target="works"]');
+        const firstProjectCard = document.getElementById('selected-work');
+        const worksBtnWrapper = document.querySelector('.btn-wrapper[data-target="works"]');
 
-    if (!firstProjectCard || !worksBtnWrapper) return;
+        if (!firstProjectCard || !worksBtnWrapper) return;
 
-    const rect = firstProjectCard.getBoundingClientRect();
-    
-    // Triggered only when Selected-work section scrolls deep into the upper-middle view area
-    if (rect.top <= window.innerHeight * 0.6 && rect.bottom >= 0) {
-        worksBtnWrapper.classList.add('active');
-    } else {
-        worksBtnWrapper.classList.remove('active');
-    }
+        const rect = firstProjectCard.getBoundingClientRect();
+        
+        if (rect.top <= window.innerHeight * 0.6 && rect.bottom >= 0) {
+            worksBtnWrapper.classList.add('active');
+        } else {
+            worksBtnWrapper.classList.remove('active');
+        }
     });
-
 
     // --- ABSOLUTE FIXED-POSITION SCROLL FOR WORKS BUTTON ---
     const worksButton = document.querySelector('.works-btn');
 
     if (worksButton) {
-    worksButton.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        // Always jumps/scrolls to exactly 650px from the absolute top of the page
-        window.scrollTo({
-            top: 650, 
-            behavior: 'smooth'
+        worksButton.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 650, 
+                behavior: 'smooth'
+            });
         });
-    });
     }
 
     // --- RESET SCROLL TO TOP ON NAME CLICK ---
     const nameElement = document.querySelector('.name');
 
     if (nameElement) {
-    nameElement.addEventListener('click', (e) => {
-        e.preventDefault();
-        
-        window.scrollTo({
-            top: 0, 
-            behavior: 'smooth'
+        nameElement.addEventListener('click', (e) => {
+            e.preventDefault();
+            window.scrollTo({
+                top: 0, 
+                behavior: 'smooth'
+            });
         });
-    });
-}
-
-
+    }
 
 });
