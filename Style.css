@@ -151,7 +151,7 @@ body.hero-zoomed .play-design-cont {
   width: 100%;
   text-align: center;
   font-family: "Figtree", sans-serif;
-  font-size: 17px;
+  font-size: 16px;
   font-weight: 400;
   color: #222222;
   font-style: italic;
@@ -242,7 +242,7 @@ body.reveal-ui .landing-page-cont {
   align-items: center;
   color: #1E6C98;
   font-family: "Libre Baskerville", serif;
-  font-size: 16px;
+  font-size: 15px;
   font-weight: 500;
   font-style: italic;
   cursor: pointer;
@@ -273,7 +273,7 @@ body.reveal-ui .landing-page-cont {
   font-family: "Figtree", sans-serif;
   font-weight: normal;
   font-style: normal;
-  font-size: 16px;
+  font-size: 15px;
 }
 
 .btn-wrapper {
@@ -405,7 +405,7 @@ body.reveal-ui .landing-page-cont {
   /* border: 1px solid black; */
   margin: 7px 0 20px 0;
   font-weight: 400;
-  font-size: 16px;
+  font-size: 14px;
   color: #222222;
   font-family: "Figtree", sans-serif;
   font-weight: normal;
@@ -414,7 +414,7 @@ body.reveal-ui .landing-page-cont {
 
 .intro p {
   /* border: 1px solid black; */
-  font-size: 16px;
+  font-size: 14px;
   color: #222222;
   font-family: "Figtree", sans-serif;
   font-weight: normal;
@@ -425,7 +425,7 @@ body.reveal-ui .landing-page-cont {
   /* border: 1px solid black; */
   margin: 15px 20px 15px 50px;
   width: 750px;
-  padding: 10px;
+  padding: 10px 10px 0 10px;
   display: flex;
   flex-direction: column;
   transition: opacity 0.4s ease-in-out;
@@ -439,10 +439,12 @@ body.reveal-ui .landing-page-cont {
   font-family: "Libre Baskerville", serif;
   font-weight: 500;
   font-style: italic;
+  font-size: 15px;
 }
 
 .intro-ans {
   color: #222222;
+  font-size: 14px;
 }
 
 .exp-btn {
@@ -452,7 +454,7 @@ body.reveal-ui .landing-page-cont {
 
 .content-landing {
   /* border: 1px solid black; */
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   flex-direction: column;
   gap: 7px;
@@ -469,7 +471,7 @@ body.reveal-ui .landing-page-cont {
 }
 
 .contact-landing {
-  font-size: 16px;
+  font-size: 15px;
   display: flex;
   flex-direction: column;
   gap: 20px;
@@ -570,18 +572,18 @@ body.reveal-ui .landing-page-cont {
 }
 
 .resume-btn {
-  height: 50px;
-  width: 184px;
+  height: 40px;
+  width: auto;
   background-color: #F655A6;
   border: none;
   border-radius: 100px;
-  margin-top: 10px;
+  margin-top: 20px;
   padding: 8px 20px;
   color: white;
   cursor: pointer;
   font-weight: bold;
   font-style: normal;
-  font-size: 16px;
+  font-size: 15px;
   box-shadow: 0px 4px 10px rgba(0, 0, 0, 0.1);
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   animation: pulseLift 3s ease-in-out infinite;
@@ -593,7 +595,7 @@ body.reveal-ui .landing-page-cont {
 }
 
 .CTA-svg {
-  height: 12px;
+  height: 10px;
   margin-left: 6px;
   /* border: 1px solid black; */
 }
@@ -605,7 +607,8 @@ body.reveal-ui .landing-page-cont {
   transform: translateX(0) scale(1); 
   flex-direction: column;
   align-items: flex-start;
-  width: 325px;
+  gap: 25px;
+  width: 300px;
   height: auto;
   margin: 0;
   padding: 20px 15px;
@@ -629,13 +632,13 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing.layout-transformed .intro h4 {
-  margin: 0px 0 10px 0;
-  font-size: 14px;
+  margin: 0px 0 7px 0;
+  /* font-size: 14px; */
 }
 
 .landing.layout-transformed .intro p {
   margin: 0px 0 5px 0;
-  font-size: 14px;
+  /* font-size: 14px; */
 }
 
 .landing.layout-transformed .landing-right {
@@ -649,9 +652,9 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing.layout-transformed .content-landing {
-  font-size: 14px;
+  /* font-size: 14px; */
   gap: 3px;
-  margin: 0 0 15px 0;
+  margin: 0 0 10px 0;
   width: 100%;
 }
 
@@ -662,21 +665,18 @@ body.reveal-ui .landing-page-cont {
 }
 
 .landing.layout-transformed .contact-landing {
-  font-size: 14px;
+  /* font-size: 14px; */
   /* margin: 10px 0 0 0; */
   width: 100%;
-  gap: 10px;
+  gap: 7px;
 }
 
 .landing.layout-transformed .resume-btn {
   width: auto;
   height: auto;
   padding: 8px 20px;
-  font-size: 14px;
-}
-
-.landing.layout-transformed .CTA-svg {
-  height: 12px;
+  margin-top: 5px;
+  /* font-size: 14px; */
 }
 
 .landing.layout-transformed .tool-box {
@@ -708,13 +708,13 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   flex-direction: column;
   gap: 50px;
-  /* border: 1px solid black; */
+  border: 1px solid black;
   width: auto;
   height: auto;
   z-index: 20;
   padding: 5px;
   top: 700px;
-  left: 390px;
+  left: 365px;
   right: 40px;
   opacity: 0;
   transform: translateY(30px);
@@ -890,8 +890,8 @@ body.scrolled .landing-sections {
   width: 200px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transform: scale(0.8) translateY(10px);
+  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
 }
 
 .haati-project-img-1 {
@@ -901,8 +901,10 @@ body.scrolled .landing-sections {
   width: 400px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transform: translateY(15px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .haati-project-img-1 img {
@@ -918,8 +920,10 @@ body.scrolled .landing-sections {
   width: 350px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transform: translateY(15px);
+  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
+                visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
 }
 
 .haati-project-img-2 img {
@@ -931,19 +935,19 @@ body.scrolled .landing-sections {
 .project-card:hover ~ #haati-info {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: scale(1) translateY(0);
 }
 
 .project-card:hover ~ .haati-project-img-1 {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0px);
 }
 
 .project-card:hover ~ .haati-project-img-2 {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  transform: translateY(0px);
 }
 
 #Earth-info {
@@ -1241,7 +1245,7 @@ body.scrolled .landing-sections {
 }
 
 .blueprint-text h4 {
-  font-size: 12px;
+  font-size: 13px;
 }
 
 .blueprint-text p {
@@ -1314,3 +1318,12 @@ body.scrolled .landing-sections {
   visibility: visible !important;
   transform: scale(1) !important;
 }
+
+.playground-wrapper {
+  border: 1px solid black;
+  margin: 100px 50px;
+  width: auto;
+}
+
+
+
