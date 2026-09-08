@@ -99,7 +99,7 @@ body {
   margin: 1px;
   border: 1px solid black;
   box-sizing: border-box; 
-   background: linear-gradient(
+  background: linear-gradient(
     135deg,
     rgba(255, 255, 255, 0.25) 0%,   /* Lower opacity so blurred background shows */
     rgba(255, 255, 255, 0.05) 100%
@@ -1337,7 +1337,7 @@ body.scrolled .landing-sections {
   -webkit-backdrop-filter: blur(10px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 13px;
-  box-shadow: 0 8px 32px 0 rgba(186, 220, 255, 0.626);
+  box-shadow: 0 8px 32px 0 rgba(186, 220, 255, 0.228);
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   animation: pulseLift 3s ease-in-out infinite;
@@ -1345,7 +1345,7 @@ body.scrolled .landing-sections {
 
 .plg-img:hover {
   transform: translateY(-5px) scale(1.03);
-  box-shadow: 0 12px 24px rgba(0, 0, 0, 0.15);
+  box-shadow: 0 12px 24px rgba(35, 40, 48, 0.315);
 }
 
 .playground-wrapper img {
@@ -1505,4 +1505,362 @@ body.scrolled .landing-sections {
 .image-18 {
   width: 110px;
   border-radius: 10px;
+}
+
+.img-wrapper-19 {
+  position: fixed;
+  top: 630px;
+  left: 965px;
+}
+
+.image-19 {
+  width: 85px;
+  border-radius: 10px;
+}
+
+.plg-star img {
+  width: 100%;
+  animation: spin 10s linear infinite;
+}
+
+.star-1 {
+  position: fixed;
+  top: 300px;
+  left: 450px;
+  width: 150px;
+}
+
+.star-2 {
+  position: fixed;
+  top: 610px;
+  left: 1080px;
+  width: 80px;
+}
+
+.star-3 {
+  position: fixed;
+  top: 500px;
+  left: 330px;
+  width: 70px;
+}
+
+.star-4 {
+  position: fixed;
+  top: 210px;
+  left: 1050px;
+  width: 130px;
+}
+
+.empty-square {
+  position: fixed;
+  display: inline-block;
+  width: 25px;
+  height: 25px;
+  margin: 1px;
+  border-radius: 3px;
+  box-sizing: border-box; 
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,   /* Lower opacity so blurred background shows */
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(200%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  transform: translate(var(--repel-x, 0px), var(--repel-y, 0px));
+  transition: transform 0.15s cubic-bezier(0.1, 1, 0.1, 1);
+  will-change: transform;
+}
+
+.sq1 {
+  top: 310px;
+  left: 510px;
+}
+
+.sq2 {
+  top: 310px;
+  left: 540px;
+}
+
+.sq3 {
+  top: 310px;
+  left: 570px;
+}
+
+.sq4 {
+  top: 280px;
+  left: 510px;
+}
+
+.sq5 {
+  top: 280px;
+  left: 540px;
+}
+
+.sq6 {
+  top: 280px;
+  left: 570px;
+}
+
+.sq7 {
+  top: 250px;
+  left: 540px;
+}
+
+.sq8 {
+  top: 250px;
+  left: 570px;
+}
+
+.sq9 {
+  top: 540px;
+  left: 290px;
+}
+
+.sq10 {
+  top: 540px;
+  left: 320px;
+}
+
+.sq11 {
+  top: 540px;
+  left: 350px;
+}
+
+.sq12 {
+  top: 570px;
+  left: 320px;
+}
+
+.sq13 {
+  top: 570px;
+  left: 350px;
+}
+
+.sq14 {
+  top: 560px;
+  left: 510px;
+}
+
+.sq15 {
+  top: 560px;
+  left: 540px;
+}
+
+.sq16 {
+  top: 590px;
+  left: 510px;
+}
+
+.sq17 {
+  top: 590px;
+  left: 540px;
+}
+
+.sq18 {
+  top: 620px;
+  left: 510px;
+}
+
+.sq19 {
+  top: 620px;
+  left: 540px;
+}
+
+.sq20 {
+  top: 650px;
+  left: 510px;
+}
+
+.sq21 {
+  top: 650px;
+  left: 540px;
+}
+
+.sq22 {
+  top: 680px;
+  left: 510px;
+}
+
+.sq23 {
+  top: 680px;
+  left: 540px;
+}
+
+.sq24 {
+  top: 710px;
+  left: 540px;
+}
+
+.sq25 {
+  top: 625px;
+  left: 1065px;
+}
+
+.sq26 {
+  top: 625px;
+  left: 1095px;
+}
+
+.sq27 {
+  top: 625px;
+  left: 1125px;
+}
+
+.sq28 {
+  top: 655px;
+  left: 1065px;
+}
+
+.sq29 {
+  top: 655px;
+  left: 1095px;
+}
+
+.sq30 {
+  top: 655px;
+  left: 1125px;
+}
+
+.sq31 {
+  top: 685px;
+  left: 1065px;
+}
+
+.sq32 {
+  top: 685px;
+  left: 1095px;
+}
+
+.sq33 {
+  top: 685px;
+  left: 1125px;
+}
+
+.sq34 {
+  top: 715px;
+  left: 1065px;
+}
+
+.sq35 {
+  top: 715px;
+  left: 1095px;
+}
+
+.sq36 {
+  top: 745px;
+  left: 1065px;
+}
+
+.sq37 {
+  top: 250px;
+  left: 1090px;
+}
+
+.sq38 {
+  top: 250px;
+  left: 1120px;
+}
+
+.sq39 {
+  top: 250px;
+  left: 1150px;
+}
+
+.sq40 {
+  top: 280px;
+  left: 1140px;
+}
+
+.sq41 {
+  top: 280px;
+  left: 1170px;
+}
+
+.sq42 {
+  top: 280px;
+  left: 1200px;
+}
+
+.sq43 {
+  top: 280px;
+  left: 1230px;
+}
+
+.sq44 {
+  top: 250px;
+  left: 1180px;
+}
+
+.sq45 {
+  top: 250px;
+  left: 1210px;
+}
+
+.sq46 {
+  top: 220px;
+  left: 1090px;
+}
+
+.sq47 {
+  top: 220px;
+  left: 1120px;
+}
+
+.sq48 {
+  top: 220px;
+  left: 1150px;
+}
+
+.sq49 {
+  top: 190px;
+  left: 1090px;
+}
+
+.sq50 {
+  top: 190px;
+  left: 1120px;
+}
+
+@keyframes subtleBreathe {
+    0%, 100% {
+        transform: translateY(0px) scale(1);
+    }
+    50% {
+        transform: translateY(-6px) scale(1.05);
+    }
+}
+
+/* Apply the breathing animation to all image wrappers while keeping your custom top/left intact */
+.plg-img {
+  animation: subtleBreathe 6s ease-in-out infinite;
+  will-change: transform;
+}
+
+/* Stagger the animation delays so they float independently and organically */
+.img-wrapper-1  { animation-delay: 0s; }
+.img-wrapper-2  { animation-delay: 0.5s; }
+.img-wrapper-3  { animation-delay: 1.2s; }
+.img-wrapper-4  { animation-delay: 1.9s; }
+.img-wrapper-5  { animation-delay: 0.1s; }
+.img-wrapper-6  { animation-delay: 1.2s; }
+.img-wrapper-7  { animation-delay: 1.5s; }
+.img-wrapper-8  { animation-delay: 2.2s; }
+.img-wrapper-9  { animation-delay: 0.3s; }
+.img-wrapper-10 { animation-delay: 1.2s; }
+.img-wrapper-11 { animation-delay: 1.6s; }
+.img-wrapper-12 { animation-delay: 2.3s; }
+.img-wrapper-14 { animation-delay: 0.6s; }
+.img-wrapper-18 { animation-delay: 1.2s; }
+.img-wrapper-19 { animation-delay: 2.1s; }
+
+.plg-img img {
+  display: block;
+  height: auto;
+}
+
+
+.plg-img:hover {
+  animation-play-state: paused;
 }

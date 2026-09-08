@@ -477,9 +477,49 @@ document.addEventListener('DOMContentLoaded', () => {
     setInterval(updateLocalTime, 1000);
 
 
+    // ================================================= Playground section ================================================== //
 
+    // ==================================================== Empty Squares Cursor Repel (Debugged) ============================================================ //
+    const emptySquares = document.querySelectorAll('.empty-square');
+    console.log("Empty squares found by script:", emptySquares.length); // Check your F12 console for this number!
 
+    if (emptySquares.length > 0) {
+    window.addEventListener('mousemove', (e) => {
+        const mouseX = e.clientX;
+        const mouseY = e.clientY;
 
+        emptySquares.forEach(square => {
+            const rect = square.getBoundingClientRect();
+            
+            // Skip if the element isn't rendered or has zero dimensions
+            if (rect.width === 0 || rect.height === 0) return;
+
+            const squareCenterX = rect.left + (rect.width / 2);
+            const squareCenterY = rect.top + (rect.height / 2);
+
+            const distanceX = squareCenterX - mouseX;
+            const distanceY = squareCenterY - mouseY;
+            let distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
+
+            if (distance === 0) distance = 1;
+
+            // Increased detection radius to 50px around the square so it's easy to trigger
+            const triggerDistance = 50; 
+
+            if (distance < triggerDistance) {
+                // Calculates push angle and caps the movement at exactly 10px max
+                const power = (1 - (distance / triggerDistance));
+                const pushX = (distanceX / distance) * (power * 10);
+                const pushY = (distanceY / distance) * (power * 10);
+
+                square.style.transform = `translate(${pushX}px, ${pushY}px)`;
+            } else {
+                square.style.transform = `translate(0px, 0px)`;
+            }
+        });
+    });
+    }
+    
 
 
 
