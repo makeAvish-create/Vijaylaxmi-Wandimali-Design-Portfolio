@@ -262,8 +262,10 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Window-container image cursor animation
-        const windowContainer = document.querySelector('.window-container');
-        if (windowContainer) {
+        // ==================================================== Window Container Parallax Effect ============================================================ //
+        const windowContainers = document.querySelectorAll('.window-container, .window-container-plg');
+
+        windowContainers.forEach(windowContainer => {
             const windowImg = windowContainer.querySelector('img');
 
             windowContainer.addEventListener('mousemove', (e) => {
@@ -286,7 +288,9 @@ document.addEventListener('DOMContentLoaded', () => {
                     windowImg.style.transform = `translate(0px, 0px) scale(1)`;
                 }
             });
-        }
+        });
+
+
 
         // Reveal sections wrapper on scroll
         window.addEventListener('scroll', () => {
@@ -521,6 +525,8 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
+
+    
 
 
 
