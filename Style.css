@@ -787,6 +787,11 @@ body.scrolled .landing-sections {
   transform: scale(0.7); 
 }
 
+.project-link {
+  text-decoration: none;
+  color: inherit;
+}
+
 .project-card {
   position: relative;
   display: flex;
