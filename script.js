@@ -262,10 +262,8 @@ document.addEventListener('DOMContentLoaded', () => {
         });
 
         // Window-container image cursor animation
-        // ==================================================== Window Container Parallax Effect ============================================================ //
-        const windowContainers = document.querySelectorAll('.window-container, .window-container-plg');
-
-        windowContainers.forEach(windowContainer => {
+        const windowContainer = document.querySelector('.window-container');
+        if (windowContainer) {
             const windowImg = windowContainer.querySelector('img');
 
             windowContainer.addEventListener('mousemove', (e) => {
@@ -274,12 +272,12 @@ document.addEventListener('DOMContentLoaded', () => {
                 const centerY = rect.top + (rect.height / 2);
                 const mouseX = e.clientX - centerX;
                 const mouseY = e.clientY - centerY;
-                const maxMove = 10; 
+                const maxMove = 10;
                 const moveX = (mouseX / (rect.width / 2)) * maxMove;
                 const moveY = (mouseY / (rect.height / 2)) * maxMove;
-                
+
                 if (windowImg) {
-                    windowImg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`; 
+                    windowImg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
                 }
             });
 
@@ -288,7 +286,7 @@ document.addEventListener('DOMContentLoaded', () => {
                     windowImg.style.transform = `translate(0px, 0px) scale(1)`;
                 }
             });
-        });
+        }
 
 
 
@@ -525,6 +523,32 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
+
+    const windowContainer = document.querySelector('.window-container-plg');
+    if (windowContainer) {
+        const windowImg = windowContainer.querySelector('img');
+
+        windowContainer.addEventListener('mousemove', (e) => {
+            const rect = windowContainer.getBoundingClientRect();
+            const centerX = rect.left + (rect.width / 2);
+            const centerY = rect.top + (rect.height / 2);
+            const mouseX = e.clientX - centerX;
+            const mouseY = e.clientY - centerY;
+            const maxMove = 10;
+            const moveX = (mouseX / (rect.width / 2)) * maxMove;
+            const moveY = (mouseY / (rect.height / 2)) * maxMove;
+
+            if (windowImg) {
+                windowImg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
+            }
+        });
+
+        windowContainer.addEventListener('mouseleave', () => {
+            if (windowImg) {
+                windowImg.style.transform = `translate(0px, 0px) scale(1)`;
+            }
+        });
+    }
 
     
 

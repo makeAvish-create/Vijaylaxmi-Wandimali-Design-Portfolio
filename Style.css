@@ -1365,6 +1365,8 @@ body.scrolled .landing-sections {
 }
 
 .window-container-plg {
+  position: relative;
+  display: block;
   width: 200px; 
   height: 220px; 
   margin: 0px auto;
