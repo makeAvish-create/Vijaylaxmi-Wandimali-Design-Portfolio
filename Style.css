@@ -21,6 +21,58 @@ body {
   font-style: normal;
 }
 
+
+#page-loader {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100vw;
+    height: 100vh;
+    background: #fff6fc;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 99999;
+    transition: opacity 0.5s ease, visibility 0.5s ease;
+    opacity: 1;
+    visibility: visible;
+}
+
+.loader-logo {
+    width: 140px;
+    height: auto;
+}
+
+.loader-logo *, 
+.loader-logo path,
+.loader-logo polyline,
+.loader-logo line {
+    stroke: #ff3366 !important; /* Change this to match your exact pink brand color */
+    stroke-width: 3px !important;  /* Make the stroke thick enough to see clearly */
+    fill: none !important;        
+    stroke-dasharray: 300;       
+    stroke-dashoffset: 300;      
+    animation: drawLogo 2s ease-in-out infinite;
+}
+
+@keyframes drawLogo {
+    0% {
+        stroke-dashoffset: 300;  /* Fully hidden at start */
+    }
+    50% {
+        stroke-dashoffset: 0;    /* Fully drawn in the middle */
+    }
+    100% {
+        stroke-dashoffset: -300; /* Erases/loops out smoothly */
+    }
+}
+
+.loader-hidden {
+    opacity: 0;
+    visibility: hidden;
+    pointer-events: none;
+}
+
 .play-design-cont, 
 .hero-grid {
   position: fixed; 

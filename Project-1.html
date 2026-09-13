@@ -17,229 +17,237 @@
 </head>
 
 <body>
-    <!-- Nav Bar background rotating star-svg -->
-    <div class="star-svg2">
-        <img src="Assets/Star-svg.svg" alt="">
-    </div> 
 
-    <!-- Nav bar -->
-    <div id="nav-bar">
-        <a href="index.html" onclick="sessionStorage.setItem('skipAction', 'top')" style="text-decoration: none;">
-        <div class="name"><img class="logo-svg" src="Assets/Logo.svg" alt="">Vijaylaxmi Wandimali</div>
-        </a>
-        <div class="nav-links">
-        <!-- Works Button -->
-            <div class="btn-wrapper active" data-target="works">
-                <a href="index.html" onclick="sessionStorage.setItem('skipAction', 'works')">
-                <button class="nav-btn works-btn">Works</button>
-                </a>
-                <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
-            </div>
-            <!-- Playground Button -->
-            <div class="btn-wrapper" data-target="playground">
-                <a href="playground.html">
-                    <button class="nav-btn">Playground</button>
-                </a>
-                <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
-            </div>
-            <!-- Design X Code Button -->
-            <div class="btn-wrapper" data-target="design-code">
-                <a href="code.html">
-                    <button class="nav-btn">Design X Code</button>
-                </a>
-                <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
-            </div>
-            <!-- About Button -->
-            <div class="btn-wrapper" data-target="about">
-                <a href="About.html">
-                    <button class="nav-btn">About</button>
-                </a>
-                <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
-            </div>
+  <!-- Custom Logo Preloader -->
+  <div id="page-loader">
+      <img src="Assets/Logo-stroke-svg.svg" alt="Logo" class="loader-logo">
+  </div>
+  <!-- Preloader section closed -->
+
+
+  <!-- Nav Bar background rotating star-svg -->
+  <div class="star-svg2">
+      <img src="Assets/Star-svg.svg" alt="">
+  </div> 
+
+  <!-- Nav bar -->
+  <div id="nav-bar">
+      <a href="index.html" onclick="sessionStorage.setItem('skipAction', 'top')" style="text-decoration: none;">
+      <div class="name"><img class="logo-svg" src="Assets/Logo.svg" alt="">Vijaylaxmi Wandimali</div>
+      </a>
+      <div class="nav-links">
+      <!-- Works Button -->
+          <div class="btn-wrapper active" data-target="works">
+              <a href="index.html" onclick="sessionStorage.setItem('skipAction', 'works')">
+              <button class="nav-btn works-btn">Works</button>
+              </a>
+              <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
+          </div>
+          <!-- Playground Button -->
+          <div class="btn-wrapper" data-target="playground">
+              <a href="playground.html">
+                  <button class="nav-btn">Playground</button>
+              </a>
+              <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
+          </div>
+          <!-- Design X Code Button -->
+          <div class="btn-wrapper" data-target="design-code">
+              <a href="code.html">
+                  <button class="nav-btn">Design X Code</button>
+              </a>
+              <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
+          </div>
+          <!-- About Button -->
+          <div class="btn-wrapper" data-target="about">
+              <a href="About.html">
+                  <button class="nav-btn">About</button>
+              </a>
+              <img src="Assets/Star-svg.svg" class="btn-hover-svg" alt="">
+          </div>
+      </div>
+  </div>
+  <!-- Nav bar closed -->
+
+
+  <!-- Landing & Intro section -->
+  <section id="Landing-intro-plg" class="page-section-plg">
+    <div class="landing-plg">
+      <!-- Landing Left section -->
+      <div class="landing-left-plg">
+        <div class="window-container-plg">
+          <img src="Assets/Vish_image_3.jpeg" alt="Arch Window Image">
+          <img src="Assets/cloud.png" alt="floating cloud" class="cloud-png">
         </div>
-    </div>
-    <!-- Nav bar closed -->
-
-
-    <!-- Landing & Intro section -->
-    <section id="Landing-intro-plg" class="page-section-plg">
-      <div class="landing-plg">
-        <!-- Landing Left section -->
-        <div class="landing-left-plg">
-          <div class="window-container-plg">
-            <img src="Assets/Vish_image_3.jpeg" alt="Arch Window Image">
-            <img src="Assets/cloud.png" alt="floating cloud" class="cloud-png">
-          </div>
-          <div class="intro-plg">
-            <h3>Hi, I'm VJ!</h3>
-            <h4>Product Designer + Front-end Protyping</h4>
-            <p>Creating strategic digital experiences with clean design and distinct visual character.</p>
-          </div>
+        <div class="intro-plg">
+          <h3>Hi, I'm VJ!</h3>
+          <h4>Product Designer + Front-end Protyping</h4>
+          <p>Creating strategic digital experiences with clean design and distinct visual character.</p>
         </div>
-        <!-- Landing left closed -->
+      </div>
+      <!-- Landing left closed -->
 
-        <!-- Landing right section -->
-        <div class="landing-right-plg">
-          <div class="now-landing content-landing-plg">
-            <p class="intro-qstn-plg">Currently building</p>
-            <p class="intro-ans-plg">Shelfaware.</p>
-          </div>
+      <!-- Landing right section -->
+      <div class="landing-right-plg">
+        <div class="now-landing content-landing-plg">
+          <p class="intro-qstn-plg">Currently building</p>
+          <p class="intro-ans-plg">Shelfaware.</p>
+        </div>
 
-          <div class="experience-landing content-landing-plg">
-            <p class="intro-qstn-plg">Selected experience</p>
-            <p class="intro-ans-plg"><a class="exp-btn" href="https://www.creatosaurus.io/">Creatosorous</a> &bull; <a class="exp-btn" href="https://www.visava.in/">Visava</a> &bull; <a class="exp-btn" href="https://www.haqdarshak.com/">Haqdarshak</a> &bull; <a class="exp-btn" href="https://www.linkedin.com/company/haati/about/">Haati</a></p>
-          </div>
+        <div class="experience-landing content-landing-plg">
+          <p class="intro-qstn-plg">Selected experience</p>
+          <p class="intro-ans-plg"><a class="exp-btn" href="https://www.creatosaurus.io/">Creatosorous</a> &bull; <a class="exp-btn" href="https://www.visava.in/">Visava</a> &bull; <a class="exp-btn" href="https://www.haqdarshak.com/">Haqdarshak</a> &bull; <a class="exp-btn" href="https://www.linkedin.com/company/haati/about/">Haati</a></p>
+        </div>
 
-          <div class="skills-landing content-landing-plg">
-            <p class="intro-qstn-plg">Core Capabilities</p>
-            <p class="intro-ans-plg"> UX Strategy & prototyping, Brand Identity, Design systems, Illustraions, HTML, CSS and JavaScript</p>
-          </div>
+        <div class="skills-landing content-landing-plg">
+          <p class="intro-qstn-plg">Core Capabilities</p>
+          <p class="intro-ans-plg"> UX Strategy & prototyping, Brand Identity, Design systems, Illustraions, HTML, CSS and JavaScript</p>
+        </div>
 
-          <div class="tools-landing content-landing-plg">
-            <p class="intro-qstn-plg">What I build with</p>
-            <div class="intro-ans-plg tools-box">
-              <div class="tool-item">
-                <img class="tool-img-plg" src="Assets/Figma-svg.svg" alt="">
-                <span class="tool-text">Figma & Figma AI <br>- UI/UX & Prototyping</span>
-              </div>
-              <div class="tool-item">
-                  <img class="tool-img-plg" src="Assets/Adobe-svg.svg" alt="">
-                  <span class="tool-text">Adobe Creative Suite <br>- Illustrations & custom art</span>
-              </div>
-              <div class="tool-item">
-                  <img class="tool-img-plg" src="Assets/HTML-svg.svg" alt="">
-                  <span class="tool-text">HTML <br>- Basic Web development</span>
-              </div>
-              <div class="tool-item">
-                  <img class="tool-img-plg" src="Assets/CSS-svg.svg" alt="">
-                  <span class="tool-text">CSS <br>- Styling & Animations</span>
-              </div>
-              <div class="tool-item">
-                  <img class="tool-img-plg" src="Assets/Cursor-svg.svg" alt="">
-                  <span class="tool-text">Cursor AI <br>- Final edit in code</span>
-              </div>
-              <div class="tool-item">
-                  <img class="tool-img-plg" src="Assets/Claude-svg.svg" alt="">
-                  <span class="tool-text">Claude <br>- Brainstorming and MCP connection</span>
-              </div>
+        <div class="tools-landing content-landing-plg">
+          <p class="intro-qstn-plg">What I build with</p>
+          <div class="intro-ans-plg tools-box">
+            <div class="tool-item">
+              <img class="tool-img-plg" src="Assets/Figma-svg.svg" alt="">
+              <span class="tool-text">Figma & Figma AI <br>- UI/UX & Prototyping</span>
+            </div>
+            <div class="tool-item">
+                <img class="tool-img-plg" src="Assets/Adobe-svg.svg" alt="">
+                <span class="tool-text">Adobe Creative Suite <br>- Illustrations & custom art</span>
+            </div>
+            <div class="tool-item">
+                <img class="tool-img-plg" src="Assets/HTML-svg.svg" alt="">
+                <span class="tool-text">HTML <br>- Basic Web development</span>
+            </div>
+            <div class="tool-item">
+                <img class="tool-img-plg" src="Assets/CSS-svg.svg" alt="">
+                <span class="tool-text">CSS <br>- Styling & Animations</span>
+            </div>
+            <div class="tool-item">
+                <img class="tool-img-plg" src="Assets/Cursor-svg.svg" alt="">
+                <span class="tool-text">Cursor AI <br>- Final edit in code</span>
+            </div>
+            <div class="tool-item">
+                <img class="tool-img-plg" src="Assets/Claude-svg.svg" alt="">
+                <span class="tool-text">Claude <br>- Brainstorming and MCP connection</span>
             </div>
           </div>
+        </div>
 
-          <!-- Social + Resume section -->
-          <div class="social-resume-wrapper-plg">
-            <div class="social-landing-plg contact-landing-plg">
-              <!-- Callout -->
-              <div class="social-callout-plg">
-                <p>For collabs, chats, or creative chaos:</p>
+        <!-- Social + Resume section -->
+        <div class="social-resume-wrapper-plg">
+          <div class="social-landing-plg contact-landing-plg">
+            <!-- Callout -->
+            <div class="social-callout-plg">
+              <p>For collabs, chats, or creative chaos:</p>
+            </div>
+            
+            <!-- Buttons -->
+            <div class="social-cont-plg">
+              <!-- Email-Button -->
+              <div class="social-btn-wrapper">
+                <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vijaylaxmi.wandimali@gmail.com" target="_blank" rel="noopener noreferrer">
+                  <button class="email-btn"><img class="social-btn" src="Assets/mail-svg.svg" alt=""></button>
+                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                </a>
               </div>
               
-              <!-- Buttons -->
-              <div class="social-cont-plg">
-                <!-- Email-Button -->
-                <div class="social-btn-wrapper">
-                  <a href="https://mail.google.com/mail/?view=cm&fs=1&to=vijaylaxmi.wandimali@gmail.com" target="_blank" rel="noopener noreferrer">
-                    <button class="email-btn"><img class="social-btn" src="Assets/mail-svg.svg" alt=""></button>
-                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                  </a>
-                </div>
-                
-                
-                <!-- X-Button -->
-                <div class="social-btn-wrapper">
-                  <a href="https://x.com/VJ_Wandimali" target="_blank" rel="noopener noreferrer">
-                    <button class="x-btn"><img class="social-btn" src="Assets/X-svg.svg" alt=""></button>
-                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                  </a>
-                </div>
+              
+              <!-- X-Button -->
+              <div class="social-btn-wrapper">
+                <a href="https://x.com/VJ_Wandimali" target="_blank" rel="noopener noreferrer">
+                  <button class="x-btn"><img class="social-btn" src="Assets/X-svg.svg" alt=""></button>
+                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                </a>
+              </div>
 
-                <!-- LinkedIn button -->
-                <div class="social-btn-wrapper">
-                  <a href="https://www.linkedin.com/in/vijaylaxmi-wandimali" target="_blank" rel="noopener noreferrer">
-                    <button class="linkedin-btn"><img class="social-btn" src="Assets/Linkedin-svg.svg" alt=""></button>
-                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                  </a>
-                </div>
+              <!-- LinkedIn button -->
+              <div class="social-btn-wrapper">
+                <a href="https://www.linkedin.com/in/vijaylaxmi-wandimali" target="_blank" rel="noopener noreferrer">
+                  <button class="linkedin-btn"><img class="social-btn" src="Assets/Linkedin-svg.svg" alt=""></button>
+                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                </a>
+              </div>
 
-                <!-- Behance button -->
-                <div class="social-btn-wrapper">
-                  <a href="https://www.behance.net/vijaylaxmiW" target="_blank" rel="noopener noreferrer">
-                    <button class="behance-btn"><img class="social-btn" src="Assets/Behance-svg.svg" alt=""></button>
-                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                  </a>
-                </div>
+              <!-- Behance button -->
+              <div class="social-btn-wrapper">
+                <a href="https://www.behance.net/vijaylaxmiW" target="_blank" rel="noopener noreferrer">
+                  <button class="behance-btn"><img class="social-btn" src="Assets/Behance-svg.svg" alt=""></button>
+                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                </a>
+              </div>
 
-                <!-- GitHub button -->
-                <div class="social-btn-wrapper">
-                  <a href="https://github.com/makeAvish-create" target="_blank" rel="noopener noreferrer">
-                    <button class="git-btn"><img class="social-btn" src="Assets/git-svg.svg" alt=""></button>
-                    <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
-                  </a>
-                </div> 
-              </div>        
-            </div>
-            <!-- Social & contact closed -->
-
-            <!-- Resume -->
-            <div class="resume-btn-cont">
-              <a href="Assets/Vijaylaxmi_Wandimali_Resume- IN.pdf" target="_blank" rel="noopener noreferrer">
-                <button class="resume-btn-plg">Resume <img class="CTA-svg"  src="Assets/CTA-svg.svg"></button>
-              </a>
-            </div>
-            <!-- Resume closed -->
-
+              <!-- GitHub button -->
+              <div class="social-btn-wrapper">
+                <a href="https://github.com/makeAvish-create" target="_blank" rel="noopener noreferrer">
+                  <button class="git-btn"><img class="social-btn" src="Assets/git-svg.svg" alt=""></button>
+                  <img src="Assets/Star-svg.svg" class="social-btn-hover-svg" alt="">
+                </a>
+              </div> 
+            </div>        
           </div>
-          <!-- Social+Resume wrapper closed -->
+          <!-- Social & contact closed -->
 
-        </div> 
-        <!-- Landing left small closed -->
-      
-      </div>
-    </section>
-    <!-- Left side Intro section closed -->
+          <!-- Resume -->
+          <div class="resume-btn-cont">
+            <a href="Assets/Vijaylaxmi_Wandimali_Resume- IN.pdf" target="_blank" rel="noopener noreferrer">
+              <button class="resume-btn-plg">Resume <img class="CTA-svg"  src="Assets/CTA-svg.svg"></button>
+            </a>
+          </div>
+          <!-- Resume closed -->
 
-
-
-
-
-
-
-
-
-
-
-    <!-- Footer sextion -->
-    <div id="footer">
-      <!-- Footer top section -->
-      <div class="footer-top">
-        <div class="footer-build footer-top-card">
-          <p>/build</p>
-          <h4>26-A-1.50</h4>
         </div>
-        <div class="footer-shipped footer-top-card">
-          <p>/shipped</p>
-          <h4>Oct 2026</h4>
-        </div>
-        <div class="footer-engine footer-top-card">
-          <p>/engine</p>
-          <h4 id="engine-value footer-top-card">Loading...</h4>
-        </div>
-        <div class="footer-visitor footer-top-card">
-          <p>/visitors</p>
-          <h4 id="visitor-count">---</h4>
-        </div>
-      </div>
-      <!-- Footer top section closed -->
+        <!-- Social+Resume wrapper closed -->
 
-      <!-- Footer bottom section -->
-      <div class="footer-bottom">
-        <p id="local-time">--:--:--</p>
-        <p>© 2026 Vijaylaxmi Wandimali • All rights reserved</p>
-      </div>
-      <!-- Footer bottom section closed -->
-
+      </div> 
+      <!-- Landing left small closed -->
+    
     </div>
-    <!-- Footer section closed -->
+  </section>
+  <!-- Left side Intro section closed -->
 
 
-    <script src="script.js"></script>
+
+
+
+
+
+
+
+
+
+  <!-- Footer sextion -->
+  <div id="footer">
+    <!-- Footer top section -->
+    <div class="footer-top">
+      <div class="footer-build footer-top-card">
+        <p>/build</p>
+        <h4>26-A-1.50</h4>
+      </div>
+      <div class="footer-shipped footer-top-card">
+        <p>/shipped</p>
+        <h4>Oct 2026</h4>
+      </div>
+      <div class="footer-engine footer-top-card">
+        <p>/engine</p>
+        <h4 id="engine-value footer-top-card">Loading...</h4>
+      </div>
+      <div class="footer-visitor footer-top-card">
+        <p>/visitors</p>
+        <h4 id="visitor-count">---</h4>
+      </div>
+    </div>
+    <!-- Footer top section closed -->
+
+    <!-- Footer bottom section -->
+    <div class="footer-bottom">
+      <p id="local-time">--:--:--</p>
+      <p>© 2026 Vijaylaxmi Wandimali • All rights reserved</p>
+    </div>
+    <!-- Footer bottom section closed -->
+
+  </div>
+  <!-- Footer section closed -->
+
+
+  <script src="script.js"></script>
 </body>

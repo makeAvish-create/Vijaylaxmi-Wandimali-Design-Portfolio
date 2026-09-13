@@ -480,7 +480,6 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ================================================= Playground section ================================================== //
-
     // ==================================================== Empty Squares Cursor Repel (Debugged) ============================================================ //
     const emptySquares = document.querySelectorAll('.empty-square');
     console.log("Empty squares found by script:", emptySquares.length); // Check your F12 console for this number!
@@ -523,7 +522,7 @@ document.addEventListener('DOMContentLoaded', () => {
     }
     
 
-
+    // Window container image animation for pages other than landing page
     const windowContainer = document.querySelector('.window-container-plg');
     if (windowContainer) {
         const windowImg = windowContainer.querySelector('img');
@@ -551,6 +550,65 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     
+
+   // ==================================================== Page Load & Navigation Preloader ============================================================ //
+
+    // Record the exact time the preloader started
+const preloaderStartTime = Date.now();
+const minDisplayTime = 2400; // 2 full loops (1.2s * 2 = 2400ms)
+
+// 1. Handle initial page load
+window.addEventListener('load', () => {
+    const elapsedTime = Date.now() - preloaderStartTime;
+    const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+
+    // Hide only after the page is ready AND at least 2 full loops have played
+    setTimeout(() => {
+        const loader = document.querySelector('#page-loader');
+        if (loader) {
+            loader.classList.add('loader-hidden');
+            setTimeout(() => {
+                loader.remove();
+            }, 500); // Matches CSS fade transition
+        }
+    }, remainingTime);
+});
+
+// 2. Intercept internal page clicks to guarantee 2 loops play before leaving
+document.addEventListener('click', (e) => {
+    const link = e.target.closest('a');
+    
+    if (
+        link &&
+        link.href &&
+        link.href.startsWith(window.location.origin) &&
+        !link.getAttribute('target') &&
+        !link.getAttribute('download') &&
+        link.getAttribute('href') !== '#' &&
+        !link.getAttribute('href').startsWith('mailto:') &&
+        !link.getAttribute('href').startsWith('tel:')
+    ) {
+        e.preventDefault(); // Stop instant navigation
+        const targetUrl = link.href;
+
+        // Recreate preloader if needed
+        let loader = document.querySelector('#page-loader');
+        if (!loader) {
+            loader = document.createElement('div');
+            loader.id = 'page-loader';
+            loader.innerHTML = `<img src="Assets/Logo.svg" alt="Logo" class="loader-logo">`;
+            document.body.prepend(loader);
+        }
+
+        loader.classList.remove('loader-hidden');
+        const clickStartTime = Date.now();
+
+        // Delay navigation to ensure the animation plays for at least 2400ms (2 full loops)
+        setTimeout(() => {
+            window.location.href = targetUrl;
+        }, minDisplayTime);
+    }
+});
 
 
 
