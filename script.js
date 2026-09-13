@@ -553,28 +553,29 @@ document.addEventListener('DOMContentLoaded', () => {
 
    // ==================================================== Page Load & Navigation Preloader ============================================================ //
 
-    // Record the exact time the preloader started
-const preloaderStartTime = Date.now();
-const minDisplayTime = 2400; // 2 full loops (1.2s * 2 = 2400ms)
+   // ==================================================== Preloader Controller ============================================================ //
 
-// 1. Handle initial page load
+    // Define the exact duration of 1 full loop (matches your 1.5s CSS animation)
+const loopDuration = 1500; 
+const preloaderStartTime = Date.now();
+
+// 1. Handle initial page load completion
 window.addEventListener('load', () => {
     const elapsedTime = Date.now() - preloaderStartTime;
-    const remainingTime = Math.max(0, minDisplayTime - elapsedTime);
+    // Calculate how much time is left to guarantee 1 full loop completes
+    const remainingTime = Math.max(0, loopDuration - elapsedTime);
 
-    // Hide only after the page is ready AND at least 2 full loops have played
+    // Hide only after the page is ready AND at least 1 full loop has played
     setTimeout(() => {
         const loader = document.querySelector('#page-loader');
         if (loader) {
             loader.classList.add('loader-hidden');
-            setTimeout(() => {
-                loader.remove();
-            }, 500); // Matches CSS fade transition
+            setTimeout(() => loader.remove(), 500); // Matches CSS fade transition
         }
     }, remainingTime);
 });
 
-// 2. Intercept internal page clicks to guarantee 2 loops play before leaving
+// 2. Intercept internal page clicks to show the preloader and guarantee 1 loop before navigating
 document.addEventListener('click', (e) => {
     const link = e.target.closest('a');
     
@@ -591,22 +592,28 @@ document.addEventListener('click', (e) => {
         e.preventDefault(); // Stop instant navigation
         const targetUrl = link.href;
 
-        // Recreate preloader if needed
+        // Recreate the preloader on the fly if it was removed on the previous page
         let loader = document.querySelector('#page-loader');
         if (!loader) {
             loader = document.createElement('div');
             loader.id = 'page-loader';
-            loader.innerHTML = `<img src="Assets/Logo.svg" alt="Logo" class="loader-logo">`;
+            loader.innerHTML = `
+                <div class="loader-logo">
+                    <svg width="49" height="42" viewBox="0 0 49 42" fill="none" xmlns="http://www.w3.org/2000/svg">
+                        <path d="M37.8105 0.149414H37.8115C40.7072 0.217377 43.6615 1.23684 45.8086 3.26758L45.8096 3.26855C47.7432 5.0746 48.8826 7.93473 48.8467 10.6475C48.8107 13.3556 47.6054 15.8945 44.876 17.1016H44.875C43.2108 17.8381 41.4211 17.6912 39.5635 17.4336C37.7194 17.1779 35.8023 16.8111 33.9512 17.1602H33.9502C31.3433 17.6687 29.3218 19.4906 27.7861 21.7656C26.2502 24.041 25.1881 26.787 24.5029 29.1816C23.3659 33.0371 23.0484 36.9552 22.5791 40.9053C22.5088 40.2392 22.4883 39.5395 22.4883 38.832C22.4883 37.7466 22.5367 36.6197 22.5205 35.6094C22.4961 33.9613 22.4718 32.3119 22.4199 30.6475L22.3584 28.9775C22.1633 24.1342 22.0344 18.5291 23.1514 13.5068C24.2676 8.48783 26.6231 4.07144 31.3818 1.5752L31.3809 1.57422C33.3732 0.556172 35.5917 0.0815266 37.8105 0.149414Z" stroke="#F655A6" stroke-width="1.5" class="svg-elem-1"></path>
+                        <path d="M10.6006 30.749C13.4185 30.749 16.1102 31.9319 18.0986 34.0312V34.0322C19.5747 35.6251 20.5708 37.6256 20.9883 39.7627C21.2006 40.8531 20.4401 41.8506 19.4443 41.8506H1.75684C0.761081 41.8506 0.000592454 40.8531 0.212891 39.7627L0.213867 39.7598C0.598827 37.5914 1.62497 35.5919 3.10059 34.0332C5.08921 31.9328 7.8195 30.749 10.6006 30.749Z" stroke="#F655A6" stroke-width="1.5" class="svg-elem-2"></path>
+                    </svg>
+                </div>`;
             document.body.prepend(loader);
         }
 
+        // Force it visible instantly
         loader.classList.remove('loader-hidden');
-        const clickStartTime = Date.now();
 
-        // Delay navigation to ensure the animation plays for at least 2400ms (2 full loops)
+        // Delay page transition to guarantee the animation runs for at least 1 full loop (1500ms)
         setTimeout(() => {
             window.location.href = targetUrl;
-        }, minDisplayTime);
+        }, loopDuration);
     }
 });
 
