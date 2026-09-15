@@ -1275,13 +1275,13 @@ body.scrolled .landing-sections {
 }
 
 #footer {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: 100%;
   padding: 20px;
   display: flex;
   flex-direction: column;
-  gap: 20px;
-  background: linear-gradient(
+  gap: 110px;
+  /* background: linear-gradient(
   135deg, 
   rgba(255, 255, 255, 0.25) 0%, 
   rgba(255, 255, 255, 0.05) 100%
@@ -1290,17 +1290,18 @@ body.scrolled .landing-sections {
   -webkit-backdrop-filter: blur(10px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.3);
   border-radius: 15px;
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); */
 }
 
 .footer-top {
   /* border: 1px solid black; */
   width: 100%;
+  align-items: center;
+  text-align: center;
   display: flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-between;
-  gap: 50px;
+  flex-direction: column;
+  
+  gap: 10px;
 }
 
 .footer-top-card {
@@ -1311,15 +1312,19 @@ body.scrolled .landing-sections {
   align-items: flex-start;
 }
 
-.footer-top-card p {
-  font-size: 10px;
+.footer-top img {
+  width: 30px;
 }
 
-.footer-top-card h4 {
+.footer-top p {
+  font-size: 14px;
+}
+
+.footer-top h4 {
   font-family: "Figtree", sans-serif;
   font-weight: normal;
   font-style: normal;
-  font-size: 15px;
+  font-size: 16px;
 }
 
 .footer-bottom {
@@ -2338,4 +2343,13 @@ body.scrolled .landing-sections {
 
 .plg-img:hover {
   animation-play-state: paused;
+}
+
+#footer-plg {
+  position: absolute;
+  box-sizing: border-box;
+  left: 390px;
+  right: 20px;
+  /* width: 100%; */
+  margin-top: calc(100vh + 20px);
 }
