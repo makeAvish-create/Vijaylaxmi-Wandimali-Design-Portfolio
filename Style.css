@@ -1338,6 +1338,12 @@ body.scrolled .landing-sections {
 }
 
 /* ================================================ Playground.html Section start ================================================================= */
+
+#playground-body {
+  height: auto; /* or whatever height you need */
+  min-height: 110vh;
+}
+
 /* Keep the star SVG visible at all times for playground.html */
 .btn-wrapper.active .btn-hover-svg {
   opacity: 1 !important;
@@ -1347,8 +1353,18 @@ body.scrolled .landing-sections {
 
 .playground-wrapper {
   /* border: 1px solid black; */
-  margin: 100px 50px;
+  /* margin: 100px 50px; */
   width: auto;
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  /* width: 0; */
+  height: 0;
+  overflow: visible;
+  /* Apply the scroll scale and center it perfectly */
+  transform: translate(-50%, calc(-50% - var(--scroll-y))) scale(var(--scroll-scale));
+  transform-origin: center center;
+  will-change: transform;
 }
 
 .landing-plg {
@@ -1565,10 +1581,12 @@ body.scrolled .landing-sections {
   cursor: pointer;
   transition: box-shadow 0.3s ease, transform 0.3s ease;
   animation: pulseLift 3s ease-in-out infinite;
+  will-change: transform;
 }
 
 .plg-img:hover {
-  transform: translateY(-5px) scale(1.03);
+  animation-play-state: paused;
+  transform: translateY(-5px) scale(calc(var(--scroll-scale) * 1.03));
   box-shadow: 0 12px 24px rgba(35, 40, 48, 0.315);
 }
 
@@ -1842,7 +1860,7 @@ body.scrolled .landing-sections {
   box-sizing: border-box; 
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.25) 0%,   /* Lower opacity so blurred background shows */
+    rgba(255, 255, 255, 0.25) 0%,
     rgba(255, 255, 255, 0.05) 100%
   );
   backdrop-filter: blur(10px) saturate(200%);
@@ -1850,6 +1868,9 @@ body.scrolled .landing-sections {
   border: 1px solid rgba(255, 255, 255, 0.3);
   box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
   transform: translate(var(--repel-x, 0px), var(--repel-y, 0px));
+  transition: transform 0.15s cubic-bezier(0.1, 1, 0.1, 1);
+  will-change: transform;
+  transform: translate(var(--repel-x, 0px), var(--repel-y, 0px)) scale(var(--scroll-scale));
   transition: transform 0.15s cubic-bezier(0.1, 1, 0.1, 1);
   will-change: transform;
 }
@@ -2305,12 +2326,12 @@ body.scrolled .landing-sections {
 }
 
 @keyframes subtleBreathe {
-    0%, 100% {
-        transform: translateY(0px) scale(1);
-    }
-    50% {
-        transform: translateY(-6px) scale(1.04);
-    }
+  0%, 100% {
+      transform: translateY(0px) scale(var(--scroll-scale));
+  }
+  50% {
+      transform: translateY(-6px) scale(calc(var(--scroll-scale) * 1.04));
+  }
 }
 
 /* Apply the breathing animation to all image wrappers while keeping your custom top/left intact */
@@ -2352,4 +2373,26 @@ body.scrolled .landing-sections {
   right: 20px;
   /* width: 100%; */
   margin-top: calc(100vh + 20px);
+  padding-bottom: 20px;
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
+
+
+:root {
+  --scroll-scale: 1;
+  --scroll-y: 0px;
+}
+
+.playground-wrapper .plg-img,
+.playground-wrapper .empty-square {
+  pointer-events: auto; 
+}
+
+.playground-wrapper,
+.star-1, .star-2, .star-3, .star-4 {
+  transform: translate(-50%, calc(-50% - var(--scroll-y))) scale(var(--scroll-scale));
+  transform-origin: center center;
+  will-change: transform;
 }

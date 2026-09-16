@@ -674,6 +674,43 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
 
+    // Scale down & translate up effect to reveal footer on scroll
+    window.addEventListener('scroll', () => {
+    const scrollTop = window.scrollY;
+    
+    // Adjust '400' to control how long the animation takes as you scroll down
+    const maxScroll = 400; 
+    let scrollProgress = Math.min(scrollTop / maxScroll, 1);
+    
+    // 1. Calculate scale (shrinking down to 60% size, tweak as needed)
+    const minScale = 0.6;
+    const currentScale = 1 - (scrollProgress * (1 - minScale));
+    
+    // 2. Calculate upward movement in pixels (e.g., moves up by up to 180px total)
+    const maxUpwardShift = 280;
+    const currentYOffset = scrollProgress * maxUpwardShift;
+
+    // Update both CSS variables on the root
+    document.documentElement.style.setProperty('--scroll-scale', currentScale);
+    document.documentElement.style.setProperty('--scroll-y', `${currentYOffset}px`);
+    });
+
+    
+    // Force browser to stop remembering scroll position on refresh
+    if ('scrollRestoration' in history) {
+    history.scrollRestoration = 'manual';
+    }
+
+    // Instantly jump back to the top on page load/refresh
+    window.addEventListener('beforeunload', () => {
+    window.scrollTo(0, 0);
+    });
+
+    window.addEventListener('load', () => {
+    window.scrollTo(0, 0);
+    });
+
+
 
 
 });
