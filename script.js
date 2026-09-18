@@ -697,18 +697,18 @@ document.addEventListener('DOMContentLoaded', () => {
 
     
     // Force browser to stop remembering scroll position on refresh
-    if ('scrollRestoration' in history) {
-    history.scrollRestoration = 'manual';
-    }
+    // if ('scrollRestoration' in history) {
+    // history.scrollRestoration = 'manual';
+    // }
 
     // Instantly jump back to the top on page load/refresh
-    window.addEventListener('beforeunload', () => {
-    window.scrollTo(0, 0);
-    });
+    // window.addEventListener('beforeunload', () => {
+    // window.scrollTo(0, 0);
+    // });
 
-    window.addEventListener('load', () => {
-    window.scrollTo(0, 0);
-    });
+    // window.addEventListener('load', () => {
+    // window.scrollTo(0, 0);
+    // });
 
 
 
