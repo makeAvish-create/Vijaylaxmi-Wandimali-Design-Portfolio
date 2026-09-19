@@ -710,7 +710,9 @@ document.addEventListener('DOMContentLoaded', () => {
     // window.scrollTo(0, 0);
     // });
 
+    // ============================================================== About page logic =============================================================== //
 
+    console.log("GitHub calendar container initialized.");
 
 
 });

@@ -717,7 +717,7 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   flex-direction: column;
   /* gap: 50px; */
-  /* border: 1px solid black; */
+  border: 1px solid black;
   width: auto;
   height: auto;
   z-index: 20;
@@ -862,6 +862,11 @@ body.scrolled .landing-sections {
   /* border: 1px solid black; */
   width: 100%;
   text-align: left;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 30px;
+  color: #1E6C98;
 }
 
 .project-card-img {
@@ -2403,12 +2408,31 @@ body.scrolled .landing-sections {
   right: 20px;
   /* width: 100%; */
   margin-top: calc(100vh + 20px);
-  padding-bottom: 20px;
+  padding: 50px;
   display: flex;
   flex-direction: column;
   gap: 110px;
 }
 
+.footer-top-plg {
+  /* border: 1px solid black; */
+  width: 100%;
+  align-items: center;
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 20px;
+}
+
+.footer-badge-plg {
+  position: relative;
+  width: 140px;
+  height: 120px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
 
 :root {
   --scroll-scale: 1;
@@ -2425,4 +2449,140 @@ body.scrolled .landing-sections {
   transform: translate(-50%, calc(-50% - var(--scroll-y))) scale(var(--scroll-scale));
   transform-origin: center center;
   will-change: transform;
+}
+
+
+
+/* ============================================================== Haati Project Styling ============================================================== */
+.project-details-wrapper {
+  border: 1px solid black;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: auto;
+  height: auto;
+  z-index: 20;
+  padding: 10px;
+  top: 80px;
+  left: 365px;
+  right: 40px;
+  box-sizing: border-box;
+}
+
+.project-title-info {
+  border: 1px solid black;
+  position: relative;
+  width: auto;
+}
+
+.project-title-info h4 {
+  border: 1px solid black;
+  width: 100%;
+  text-align: left;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 30px;
+  color: #1E6C98;
+}
+
+.project-nav-bar-wrapper {
+  /* border: 1px solid black; */
+  width: auto;
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.project-nav-btn {
+  position: relative;
+  z-index: 10;
+  padding: 10px 20px;
+  width: auto;
+  height: auto;
+  font-size: 14px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(200%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(206, 204, 204, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  border-radius: 10px;
+  cursor: pointer;
+}
+
+.project-nav-btn-star {
+  position: absolute;
+  z-index: 15;
+  top: -7px;   /* Pulls it slightly above the top edge (adjust to taste) */
+  right: -7px;  /* Pulls it slightly past the right edge (adjust to taste) */
+  width: 12px;  /* Set your desired star size */
+  height: auto;
+  pointer-events: none; /* Ensures clicks pass through the image to the button */
+}
+
+
+
+
+/* ========================================================= About me section styling =============================================================== */
+.About-me-wrapper {
+  border: 1px solid black;
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+  width: auto;
+  height: auto;
+  z-index: 20;
+  padding: 10px;
+  top: 80px;
+  left: 365px;
+  right: 40px;
+  box-sizing: border-box;
+}
+
+.About-me-text {
+  border: 1px solid black;
+  position: relative;
+  width: 800px;
+  height: auto;
+  display: flex;
+  flex-direction: column;
+  gap: 15px;
+}
+
+.About-me-text h4 {
+  border: 1px solid black;
+  width: 100%;
+  text-align: left;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 30px;
+  color: #1E6C98;
+}
+
+.About-me-text p {
+  border: 1px solid black;
+  font-size: 14px;
+}
+
+.custom-github-calendar {
+  width: 100%;
+  max-width: 650px;
+  overflow: hidden; /* Clips the container window */
+  background: transparent;
+  position: relative;
+}
+
+#github-svg-calendar {
+  width: 165%; /* Scales the graph up */
+  height: 130px;
+  margin-left: -52%; /* Shifts the view window past Jan–Mar, starting directly at April */
+  border: none;
+  pointer-events: auto; /* Keeps hover interaction functional */
 }
