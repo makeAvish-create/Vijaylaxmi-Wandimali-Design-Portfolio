@@ -717,7 +717,7 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   flex-direction: column;
   /* gap: 50px; */
-  border: 1px solid black;
+  /* border: 1px solid black; */
   width: auto;
   height: auto;
   z-index: 20;
@@ -2529,34 +2529,48 @@ body.scrolled .landing-sections {
 
 
 /* ========================================================= About me section styling =============================================================== */
-.About-me-wrapper {
-  border: 1px solid black;
+.about-content-wrapper {
+  /* border: 1px solid black; */
   position: absolute;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 50px;
   width: auto;
   height: auto;
   z-index: 20;
-  padding: 10px;
+  padding: 0px;
   top: 80px;
   left: 365px;
   right: 40px;
   box-sizing: border-box;
 }
 
+.About-me-wrapper {
+  /* border: 1px solid black; */
+  position: relative;
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+  width: auto;
+  height: auto;
+  z-index: 20;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
 .About-me-text {
-  border: 1px solid black;
+  /* border: 1px solid black; */
   position: relative;
   width: 800px;
   height: auto;
   display: flex;
   flex-direction: column;
-  gap: 15px;
+  gap: 18px;
 }
 
-.About-me-text h4 {
-  border: 1px solid black;
+.About-me-text h3, .wrk-exp h3 {
+  /* border: 1px solid black; */
   width: 100%;
   text-align: left;
   font-family: "Libre Baskerville", serif;
@@ -2566,23 +2580,102 @@ body.scrolled .landing-sections {
   color: #1E6C98;
 }
 
-.About-me-text p {
-  border: 1px solid black;
+.specialization, .my-story, .currently-exploring {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.specialization h4, .my-story h4, .currently-exploring h4, .wrk-exp h4 {
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #F655A6;
+}
+
+.specialization p, .my-story p, .currently-exploring p {
+  /* border: 1px solid black; */
   font-size: 14px;
 }
 
-.custom-github-calendar {
-  width: 100%;
-  max-width: 650px;
-  overflow: hidden; /* Clips the container window */
-  background: transparent;
-  position: relative;
+.Work-experience {
+  /* border: 1px solid black; */
 }
 
-#github-svg-calendar {
-  width: 165%; /* Scales the graph up */
-  height: 130px;
-  margin-left: -52%; /* Shifts the view window past Jan–Mar, starting directly at April */
-  border: none;
-  pointer-events: auto; /* Keeps hover interaction functional */
+.wrk-exp {
+  display: flex;
+  flex-direction: column;
+  gap: 18px;
+}
+
+.experience-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
+.experience-wrapper h4 {
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #F655A6;
+}
+
+.experience-wrapper p {
+  font-size: 12px;
+}
+
+.about-this-website-wrapper {
+  /* border: 1px solid black; */
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+  gap: 30px;
+  width: 100%;
+  padding: 10px;
+  box-sizing: border-box;
+}
+
+.about-website-text h3 {
+  text-align: left;
+  font-family: "Libre Baskerville", serif;
+  font-weight: 500;
+  font-style: italic;
+  font-size: 30px;
+  color: #1E6C98; 
+}
+
+.about-video-wrapper {
+  width: 400px;
+  padding: 10px;
+  border-radius: 22px;
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(200%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(206, 204, 204, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.about-website-video {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 12px;
+}
+
+.about-website-video video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
+
+.about-website-text p {
+  font-size: 14px;
 }
