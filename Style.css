@@ -2636,13 +2636,28 @@ body.scrolled .landing-sections {
   box-sizing: border-box;
 }
 
+.about-website-text {
+  display: flex;
+  flex-direction: column;
+  gap: 7px;
+}
+
 .about-website-text h3 {
   text-align: left;
   font-family: "Libre Baskerville", serif;
   font-weight: 500;
   font-style: italic;
   font-size: 30px;
-  color: #1E6C98; 
+  color: #1E6C98;
+  margin-bottom: 11px; 
+}
+
+.about-website-text h4 {
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
+  font-size: 15px;
+  color: #F655A6;
+  margin-top: 11px;
 }
 
 .about-video-wrapper {
@@ -2678,4 +2693,38 @@ body.scrolled .landing-sections {
 
 .about-website-text p {
   font-size: 14px;
+}
+
+.typograpgy-wrapper {
+  display: flex;
+  flex-direction: row;
+  border: 1px solid black;
+  gap: 40px;
+  justify-content: left;
+}
+
+.typograpgy-wrapper h4 {
+  margin-top: 0px;
+}
+
+.primary-font-wrapper h4 {
+  font-family: "Figtree", sans-serif;
+  font-size: 15px;
+  font-style: normal;
+}
+
+.primary-font-wrapper p {
+  font-family: "Figtree", sans-serif;
+  font-size: 13px;
+}
+
+.secondary-font-wrapper h4 {
+  font-family: "Libre Baskerville", serif;
+  font-style: italic;
+  font-size: 15px;
+}
+
+.secondary-font-wrapper p {
+  font-family: "Figtree", sans-serif;
+  font-size: 13px;
 }
