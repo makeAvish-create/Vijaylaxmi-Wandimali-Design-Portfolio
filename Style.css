@@ -1341,7 +1341,7 @@ body.scrolled .landing-sections {
 }
 
 .badge-svg text {
-  fill: #222;
+  fill: #1E6C98;
   font-family: inherit;
   font-size: 22px;
   font-weight: 500;
@@ -1349,7 +1349,7 @@ body.scrolled .landing-sections {
 }
 
 .footer-star {
-  width: 40px;
+  width: 35px;
 }
 
 .footer-star img {
