@@ -2728,3 +2728,51 @@ body.scrolled .landing-sections {
   font-family: "Figtree", sans-serif;
   font-size: 13px;
 }
+
+
+/* ========================================================= Design X Code Styling ================================================================== */
+.code-content {
+  position: absolute;
+  border: 1px solid black;
+  width: auto;
+  height: auto;
+  z-index: 20;
+  padding: 0px;
+  top: 80px;
+  left: 365px;
+  right: 40px;
+  box-sizing: border-box;
+}
+
+
+.iridescent-video-wrapper-1 {
+  position: relative;
+  width: 400px;
+  /* padding: 5px; */
+  /* border-radius: 17px; */
+  background: linear-gradient(
+    135deg,
+    rgba(255, 255, 255, 0.25) 0%,
+    rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(200%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(206, 204, 204, 0.3);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  cursor: pointer;
+}
+
+.iridescent-video-1 {
+  width: 100%;
+  height: auto;
+  position: relative;
+  overflow: hidden;
+  border-radius: 10px;
+}
+
+.iridescent-video-1 video {
+  width: 100%;
+  height: 100%;
+  display: block;
+  object-fit: cover;
+}
