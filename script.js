@@ -537,7 +537,7 @@ document.addEventListener('DOMContentLoaded', () => {
 
 
     // ================================================= Playground section ================================================== //
-    // ==================================================== Empty Squares Cursor Repel (Debugged) ============================================================ //
+    // ==================================================== Empty Squares Cursor Repel ============================================================ //
     const emptySquares = document.querySelectorAll('.empty-square');
     console.log("Empty squares found by script:", emptySquares.length); // Check your F12 console for this number!
 
@@ -696,23 +696,32 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     
-    // Force browser to stop remembering scroll position on refresh
-    // if ('scrollRestoration' in history) {
-    // history.scrollRestoration = 'manual';
-    // }
+    // ================================================================ Code Page logic =============================================================== //
 
-    // Instantly jump back to the top on page load/refresh
-    // window.addEventListener('beforeunload', () => {
-    // window.scrollTo(0, 0);
-    // });
+    // ================================================================ Code Page logic =============================================================== //
+    
+    const codeGridContainer = document.querySelector('.hero-grid-code');
+    if (codeGridContainer) {
+        for (let i = 0; i < 144; i++) {
+            const square = document.createElement('div');
+            square.classList.add('tiny-square');
+            
+            let col = i % 12;
+            let row = Math.floor(i / 12);
+            
+            let deltaX = col - 5.5;
+            let deltaY = row - 5.5;
+            let distFromCenter = Math.pow(deltaX, 2) + Math.pow(deltaY, 2);
+            
+            // Hide outer edges matching your home page pattern logic, but skip all scroll/explode transform variables
+            if (distFromCenter > 38) {
+                square.style.visibility = 'hidden'; 
+            }
+            
+            codeGridContainer.appendChild(square);
+        }
+    }
 
-    // window.addEventListener('load', () => {
-    // window.scrollTo(0, 0);
-    // });
-
-    // ============================================================== About page logic =============================================================== //
-
-    console.log("GitHub calendar container initialized.");
 
 
 });

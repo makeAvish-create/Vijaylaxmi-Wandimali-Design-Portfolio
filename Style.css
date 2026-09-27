@@ -2755,107 +2755,16 @@ body.scrolled .landing-sections {
 }
 
 
-.content-media-wrapper {
-  border: 1px solid black;
-  position: relative;
+.hero-grid-code {
+  position: relative; 
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, 30%);
   display: grid;
-  grid-template-columns: repeat(3, 1fr); /* 3 equal column tracks */
-  grid-auto-rows: minmax(180px, auto);   /* Flexible row heights */
-  gap: 16px;
+  grid-template-columns: repeat(12, max-content); 
+  width: max-content; 
+  z-index: 2; 
+  /* transition: transform 0.6s cubic-bezier(0.16, 1, 0.3, 1); */
+  /* border: 1px solid black; */
 }
 
-.iridescent-video-wrapper-1 {
-  position: relative;
-  width: 400px;
-  /* padding: 5px; */
-  /* border-radius: 17px; */
-  /* background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  backdrop-filter: blur(10px) saturate(200%);
-  -webkit-backdrop-filter: blur(10px) saturate(200%);
-  border: 1px solid rgba(206, 204, 204, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-  cursor: pointer; */
-}
-
-.iridescent-video-1 {
-  width: 100%;
-  height: auto;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.iridescent-video-1 video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.iridescent-img-wrapper-1 {
-  position: relative;
-  width: 400px;
-  /* padding: 5px; */
-  /* border-radius: 17px; */
-  /* background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  backdrop-filter: blur(10px) saturate(200%);
-  -webkit-backdrop-filter: blur(10px) saturate(200%);
-  border: 1px solid rgba(206, 204, 204, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); */
-  cursor: pointer;
-}
-
-.iridescent-img-1 {
-  width: 100%;
-  height: auto;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.iridescent-img-1 img {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
-
-.iridescent-video-wrapper-2 {
-  position: relative;
-  width: 400px;
-  /* padding: 5px; */
-  /* border-radius: 17px; */
-  /* background: linear-gradient(
-    135deg,
-    rgba(255, 255, 255, 0.25) 0%,
-    rgba(255, 255, 255, 0.05) 100%
-  );
-  backdrop-filter: blur(10px) saturate(200%);
-  -webkit-backdrop-filter: blur(10px) saturate(200%);
-  border: 1px solid rgba(206, 204, 204, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
-  cursor: pointer; */
-}
-
-.iridescent-video-2 {
-  width: 100%;
-  height: auto;
-  position: relative;
-  overflow: hidden;
-  border-radius: 10px;
-}
-
-.iridescent-video-2 video {
-  width: 100%;
-  height: 100%;
-  display: block;
-  object-fit: cover;
-}
