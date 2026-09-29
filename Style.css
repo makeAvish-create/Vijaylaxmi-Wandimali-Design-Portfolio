@@ -2529,6 +2529,11 @@ body.scrolled .landing-sections {
 
 
 /* ========================================================= About me section styling =============================================================== */
+#about-body {
+  height: auto; /* or whatever height you need */
+  min-height: 110vh;
+}
+
 .about-content-wrapper {
   /* border: 1px solid black; */
   position: absolute;
@@ -2578,6 +2583,11 @@ body.scrolled .landing-sections {
   font-style: italic;
   font-size: 30px;
   color: #1E6C98;
+}
+
+.author {
+  font-style: italic;
+  margin-bottom: 10px;
 }
 
 .specialization, .my-story, .currently-exploring {
@@ -2660,8 +2670,15 @@ body.scrolled .landing-sections {
   margin-top: 11px;
 }
 
+.design-syst-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
 .about-video-wrapper {
   width: 400px;
+  height: fit-content;
   padding: 10px;
   border-radius: 22px;
   background: linear-gradient(
@@ -2698,7 +2715,7 @@ body.scrolled .landing-sections {
 .typograpgy-wrapper {
   display: flex;
   flex-direction: row;
-  border: 1px solid black;
+  /* border: 1px solid black; */
   gap: 40px;
   justify-content: left;
 }
@@ -2711,24 +2728,70 @@ body.scrolled .landing-sections {
   font-family: "Figtree", sans-serif;
   font-size: 15px;
   font-style: normal;
+  color: #1E6C98;
 }
 
 .primary-font-wrapper p {
   font-family: "Figtree", sans-serif;
-  font-size: 13px;
+  font-size: 10px;
+  color: #1E6C98;
 }
 
 .secondary-font-wrapper h4 {
   font-family: "Libre Baskerville", serif;
   font-style: italic;
   font-size: 15px;
+  color: #1E6C98;
 }
 
 .secondary-font-wrapper p {
   font-family: "Figtree", sans-serif;
-  font-size: 13px;
+  font-size: 10px;
+  color: #1E6C98;
 }
 
+
+.color-pallete-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 35px;
+}
+
+.color-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 25px;
+}
+
+.col-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 5px;
+  align-items: center;
+}
+
+.color-star {
+  width: 50px;
+}
+
+.col-wrapper p {
+  font-size: 12px;
+  font-style: italic;
+  color: #1E6C98;
+}
+
+#footer-about {
+  position: absolute;
+  box-sizing: border-box;
+  left: 390px;
+  right: 20px;
+  /* width: 100%; */
+  margin-top: calc(100vh + 270px);
+  padding: 50px;
+  display: flex;
+  flex-direction: column;
+  gap: 110px;
+}
 
 /* ========================================================= Design X Code Styling ================================================================== */
 .code-content {
