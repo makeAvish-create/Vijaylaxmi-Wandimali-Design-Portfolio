@@ -183,7 +183,7 @@ document.addEventListener('DOMContentLoaded', () => {
             });
         }, 100);
 
-        // Hero grid Explode animation & nav bar hide & reveal
+        // Hero grid Explode animation & nav bar hide & reveal (Instant single-scroll trigger)
         window.addEventListener('wheel', (e) => {
             const gridContainer = document.querySelector('.hero-grid');
             const landingContainer = document.querySelector('.landing');
@@ -195,17 +195,15 @@ document.addEventListener('DOMContentLoaded', () => {
 
             if (!sequenceCompleted) {
                 window.scrollTo(0, 0);
+                e.preventDefault(); 
 
-                let delta = getSafeDelta(e);
-                scrollAccumulator += delta;
+                // Normalize delta so both mouse wheels and touchpads register smoothly
+                let normalizedDelta = Math.min(Math.abs(e.deltaY), 20);
+                scrollAccumulator += normalizedDelta;
 
-                if (e.deltaY < 0) {
-                    scrollAccumulator = 0;
-                }
-
-                if (scrollAccumulator > 15 && !isAnimating) {
+                // Lowered threshold to 10 so a single mouse tick or quick touchpad flick triggers it instantly
+                if (scrollAccumulator > 10 && !isAnimating) {
                     isAnimating = true;
-                    e.preventDefault(); 
                     
                     gridContainer.classList.add('exploded');
                     window.scrollTo(0, 0);
@@ -224,7 +222,6 @@ document.addEventListener('DOMContentLoaded', () => {
                     }, 1500); 
                 } 
                 
-                e.preventDefault(); 
                 return; 
             }
 
@@ -405,7 +402,7 @@ document.addEventListener('DOMContentLoaded', () => {
             worksButton.addEventListener('click', (e) => {
                 e.preventDefault();
                 window.scrollTo({
-                    top: 650, 
+                    top: 0, 
                     behavior: 'smooth'
                 });
             });
@@ -428,11 +425,12 @@ document.addEventListener('DOMContentLoaded', () => {
     } // End of isHomePage guard
 
 
-    // Standalone logic: Make .section-title follow the exact same targetTranslateY movement as the project cards
+    // Standalone logic: Make both .section-title and .project-classification follow the design-blueprint scroll movement
     const blueprint = document.getElementById('design-blueprint');
     const sectionTitle = document.querySelector('.section-title');
+    const projectClassification = document.querySelector('.project-classification');
 
-    if (blueprint && sectionTitle) {
+    if (blueprint) {
         window.addEventListener('scroll', () => {
             const blueprintRect = blueprint.getBoundingClientRect();
             let targetTranslateY = 0;
@@ -443,10 +441,75 @@ document.addEventListener('DOMContentLoaded', () => {
                 targetTranslateY = 0;
             }
 
-            sectionTitle.style.transform = `translateY(${-targetTranslateY}px)`;
-            sectionTitle.style.transition = 'none';
+            // Apply translation to section title if it exists
+            if (sectionTitle) {
+                sectionTitle.style.transform = `translateY(${-targetTranslateY}px)`;
+                sectionTitle.style.transition = 'none';
+            }
+
+            // Apply the exact same translation to the project classification container
+            if (projectClassification) {
+                projectClassification.style.transform = `translateY(${-targetTranslateY}px)`;
+                projectClassification.style.transition = 'none';
+            }
         });
     }
+
+
+    // --- Project Classification Filtering ---
+    const filterButtons = document.querySelectorAll('.proj-class-btn');
+    const projectCards = document.querySelectorAll('[data-category]');
+
+    // Set initial state on load: Show 'product', hide everything else
+    projectCards.forEach(card => {
+        if (card.getAttribute('data-category') !== 'product') {
+            card.classList.add('hidden');
+        }
+    });
+
+    filterButtons.forEach(button => {
+        button.addEventListener('click', () => {
+            // 1. Update active button styles
+            filterButtons.forEach(btn => btn.classList.remove('active'));
+            button.classList.add('active');
+
+            // 2. Get selected category filter ('product' or 'other')
+            const selectedFilter = button.getAttribute('data-filter');
+
+            // 3. Toggle visibility based on matching category
+            projectCards.forEach(card => {
+                const cardCategory = card.getAttribute('data-category');
+                
+                if (cardCategory === selectedFilter) {
+                    card.classList.remove('hidden');
+                } else {
+                    card.classList.add('hidden');
+                }
+            });
+
+            // 4. RESET SCROLL TRANSFORMS: Restore all cards to original scale/position
+            const cardWrappers = [
+                document.getElementById('project-card-1'),
+                document.getElementById('project-card-2'),
+                document.getElementById('project-card-3'),
+                document.getElementById('project-card-4')
+            ];
+
+            cardWrappers.forEach(card => {
+                if (card) {
+                    card.style.transform = `translateY(0px) scale(1)`;
+                }
+            });
+
+            // 5. SMOOTH SCROLL: Move back up to the top of the projects section (Change 650 to 0 if you want the absolute top of the page)
+            window.scrollTo({
+                top: 0, 
+                behavior: 'smooth'
+            });
+        });
+    });
+
+
 
     // ====================================================== Links to projects ============================================================= //
     const card1 = document.getElementById('Haati-project-card');
@@ -482,41 +545,6 @@ document.addEventListener('DOMContentLoaded', () => {
     }
 
     // Footer section
-    // Browser engine code for footer (Runs globally)
-    function detectEngine() {
-        const ua = navigator.userAgent;
-        let engine = "Chromium"; 
-
-        if (ua.includes("Firefox")) {
-            engine = "Gecko";
-        } else if (ua.includes("Safari") && !ua.includes("Chrome") && !ua.includes("Edg")) {
-            engine = "WebKit";
-        } else if (ua.includes("Chrome") || ua.includes("Edg") || ua.includes("Brave") || ua.includes("OPR")) {
-            engine = "Chromium";
-        }
-
-        const engineElement = document.getElementById("engine-value");
-        if (engineElement) {
-            engineElement.textContent = engine;
-        }
-    }
-    detectEngine();
-
-    // Visitor count logic (Runs globally)
-    async function updateVisitorCount() {
-        try {
-            const response = await fetch('https://api.countapi.xyz/hit/your-portfolio-namespace/visits');
-            if (!response.ok) throw new Error('API offline');
-            const data = await response.json();
-            const element = document.getElementById('visitor-count');
-            if (element) element.textContent = data.value.toLocaleString();
-        } catch (error) {
-            const element = document.getElementById('visitor-count');
-            if (element) element.textContent = "17,709";
-        }
-    }
-    updateVisitorCount();
-
     // Local time for footer script (Runs globally)
     function updateLocalTime() {
         const now = new Date();
@@ -695,8 +723,6 @@ document.addEventListener('DOMContentLoaded', () => {
     document.documentElement.style.setProperty('--scroll-y', `${currentYOffset}px`);
     });
 
-    
-    // ================================================================ Code Page logic =============================================================== //
 
     // ================================================================ Code Page logic =============================================================== //
     
