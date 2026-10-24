@@ -303,7 +303,7 @@ document.addEventListener('DOMContentLoaded', () => {
             const projectContainer = projectCard.closest('[id^="project-card-"]'); 
             if (!projectContainer) return;
 
-            const siblings = projectContainer.querySelectorAll(':scope > div');
+            const siblings = projectContainer.querySelectorAll(':scope > div:not(.Brand-info):not(.haati-project-img-1):not(.haati-project-img-2):not(.haati-project-img-3):not(.vivid-project-img-1):not(.vivid-project-img-2):not(.vivid-project-img-3):not(.thread-project-img-1):not(.thread-project-img-2):not(.thread-project-img-3)');
 
             projectCard.addEventListener('mousemove', (e) => {
                 const rect = projectCard.getBoundingClientRect();
@@ -329,6 +329,8 @@ document.addEventListener('DOMContentLoaded', () => {
                 });
             });
         });
+
+        
 
         // Unified Card Shrinking & Blueprint Translation Logic
         window.addEventListener('scroll', () => {

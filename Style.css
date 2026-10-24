@@ -777,16 +777,34 @@ body.reveal-ui .landing-page-cont {
 .project-classification {
   position: sticky;
   top: 130px;
+  background-color: #FFE8F4;
   /* border: 1px solid black; */
   display: flex;
   flex-direction: row;
-  gap: 30px;
+  gap: 20px;
+  padding: 5px;
+  background: linear-gradient(
+      135deg, 
+      rgba(255, 255, 255, 0.25) 0%, 
+      rgba(255, 255, 255, 0.05) 100%
+  );
+  backdrop-filter: blur(10px) saturate(100%);
+  -webkit-backdrop-filter: blur(10px) saturate(200%);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 2000px;
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  overflow: hidden;
 }
 
 .proj-class-btn {
+  font-family: "Figtree", sans-serif;
+  font-weight: 400;
+  font-size: 12px;
+  color: #7A7A7A;
   background: none;
-  border: 1px solid #1E6C98;
-  padding: 5px;
+  border: none;
+  /* border: 1px solid #1E6C98; */
+  padding: 13px 13.5px;
   border-radius: 100px;
   cursor: pointer;
 }
@@ -798,8 +816,9 @@ body.reveal-ui .landing-page-cont {
 
 /* Style for active category button */
 .proj-class-btn.active {
-  background-color: #F655A6; 
-  color: #fff;
+  background-color: #FAA3CF; 
+  color: #222222;
+  font-weight: bold;
 }
 
 /* Hide cards that don't match the active filter */
@@ -815,26 +834,26 @@ body.reveal-ui .landing-page-cont {
 
 #project-card-1 {
   position: sticky;
-  top: 170px;
+  top: 200px;
   z-index: 15;
   margin-bottom: 110px;
 }
 
 #project-card-2 {
   position: sticky;
-  top: 220px;
+  top: 250px;
   z-index: 20;
 }
 
 #project-card-3 {
   position: sticky;
-  top: 270px;
+  top: 300px;
   z-index: 25;
 }
 
 #project-card-4 {
   position: sticky;
-  top: 320px;
+  top: 350px;
   z-index: 30;
 }
 
@@ -921,6 +940,7 @@ body.reveal-ui .landing-page-cont {
   width: 100%;
   padding: 0;
   height: auto;
+  overflow: hidden;
 }
 
 .project-card-img img {
@@ -962,26 +982,34 @@ body.reveal-ui .landing-page-cont {
 
 #haati-info {
   position: absolute;
-  top: 100px;
-  left: -250px;
-  width: 200px;
+  top: 200px;
+  left: 0px;
+  width: 222px;
   opacity: 0;
   visibility: hidden;
+  z-index: 10;
   transform: scale(0.8) translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .haati-project-img-1 {
   position: absolute;
-  top: 130px;
-  left: 470px;
-  width: 300px;
+  top: 200px;
+  left: 0px;
+  width: 180px;
   opacity: 0;
+  z-index: 10;
   visibility: hidden;
   transform: translateY(15px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .haati-project-img-1 img {
@@ -992,15 +1020,18 @@ body.reveal-ui .landing-page-cont {
 
 .haati-project-img-2 {
   position: absolute;
-  top: 260px;
-  left: -420px;
-  width: 320px;
+  top: 200px;
+  left: 0px;
+  width: 180px;
+  z-index: 10;
   opacity: 0;
   visibility: hidden;
   transform: translateY(15px);
-  transition: opacity 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                transform 0.4s cubic-bezier(0.16, 1, 0.3, 1), 
-                visibility 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .haati-project-img-2 img {
@@ -1009,22 +1040,77 @@ body.reveal-ui .landing-page-cont {
   height: auto;
 }
 
+.haati-project-img-3 {
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  width: 180px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
+}
+
+.haati-project-img-3 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#haati-info,
+.haati-project-img-1,
+.haati-project-img-2,
+.haati-project-img-3 {
+    pointer-events: none;
+}
+
 .project-card:hover ~ #haati-info {
   opacity: 1;
   visibility: visible;
-  transform: scale(1) translateY(0);
+  z-index: 10;
+  top: 70px;
+  left: -290px;
+  width: 222px;
+  transform: scale(1) translateY(0) rotate(-15deg);
 }
 
 .project-card:hover ~ .haati-project-img-1 {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0px);
+  top: 290px;
+  left: -270px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(-20deg);
 }
 
 .project-card:hover ~ .haati-project-img-2 {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0px);
+  top: 260px;
+  left: 480px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(10deg);
+}
+
+.project-card:hover ~ .haati-project-img-3 {
+  opacity: 1;
+  visibility: visible;
+  top: 10px;
+  left: 440px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(5deg);
+}
+
+.Earth-card-img {
+  filter: blur(5px);
 }
 
 #Earth-info {
@@ -1036,6 +1122,64 @@ body.reveal-ui .landing-page-cont {
   visibility: hidden;
   transform: translateY(10px);
   transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+}
+
+.protected-icon {
+  z-index: 200;
+  position: absolute;
+  top: 150px;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 50px;
+  box-shadow: 0 15px 35px rgba(0, 0, 0, 0.15);
+  transition: transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+}
+
+#project-card-2:hover .protected-icon {
+  left: 50%;
+  transform: translateX(-50%) translateY(-80px) scale(0.7);
+}
+
+.protected-access-request-wrapper {
+  position: absolute;
+  display: flex;
+  flex-direction: column;
+  width: 150px;
+  gap: 10px;
+  top: 150px;
+  text-align: center;
+  left: 50%;
+  transform: translateX(-50%) translateY(10px);
+  opacity: 0;
+  visibility: hidden;
+  pointer-events: none; 
+  transition: opacity 0.4s ease, transform 0.4s cubic-bezier(0.175, 0.885, 0.32, 1.275), visibility 0.4s ease;
+}
+
+.protected-access-request-wrapper p {
+  font-size: 12px;
+  font-style: italic;
+  color: #222222;
+  font-weight: bold;
+}
+
+.request-access-btn {
+  color: #fff6fc;
+  background-color: #F655A6;
+  border: none;
+  padding: 5px 8px;
+  font-size: 14px;
+  border-radius: 100px;
+  font-weight: bolder;
+  width: auto;
+  cursor: pointer;
+}
+
+#project-card-2:hover .protected-access-request-wrapper {
+  opacity: 1;
+  visibility: visible;
+  transform: translateX(-50%) translateY(0px);
+  pointer-events: auto; 
 }
 
 .earth-project-img-1 {
@@ -1092,24 +1236,34 @@ body.reveal-ui .landing-page-cont {
 
 #Vivid-info {
   position: absolute;
-  top: 70px;
-  left: -240px;
-  width: 200px;
+  top: 200px;
+  left: 0px;
+  width: 222px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+  transform: scale(0.8) translateY(10px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .vivid-project-img-1 {
   position: absolute;
-  top: 175px;
-  left: 440px;
-  width: 320px;
+  top: 200px;
+  left: 0px;
+  width: 180px;
+  z-index: 10;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .vivid-project-img-1 img {
@@ -1120,13 +1274,18 @@ body.reveal-ui .landing-page-cont {
 
 .vivid-project-img-2 {
   position: absolute;
-  top: 220px;
-  left: -410px;
-  width: 280px;
+  top: 200px;
+  left: 0px;
+  width: 200px;
+  z-index: 10;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .vivid-project-img-2 img {
@@ -1135,44 +1294,105 @@ body.reveal-ui .landing-page-cont {
   height: auto;
 }
 
+.vivid-project-img-3 {
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  width: 180px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
+}
+
+.vivid-project-img-3 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
 .project-card:hover ~ #Vivid-info {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  z-index: 10;
+  top: 70px;
+  left: -290px;
+  width: 222px;
+  transform: scale(1) translateY(0) rotate(-15deg);
+}
+
+#Vivid-info,
+.vivid-project-img-1,
+.vivid-project-img-2,
+.vivid-project-img-3 {
+    pointer-events: none;
 }
 
 .project-card:hover ~ .vivid-project-img-1 {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  top: 290px;
+  left: -270px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(-20deg);
 }
 
 .project-card:hover ~ .vivid-project-img-2 {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  top: 260px;
+  left: 480px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(10deg);
+}
+
+.project-card:hover ~ .vivid-project-img-3 {
+  opacity: 1;
+  visibility: visible;
+  top: 10px;
+  left: 440px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(5deg);
 }
 
 #Thread-info {
   position: absolute;
-  top: 100px;
-  left: -270px;
+  top: 200px;
+  left: 0px;
   width: 250px;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  z-index: 10;
+  transform: scale(0.8) translateY(10px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .thread-project-img-1 {
   position: absolute;
-  top: 80px;
-  left: 450px;
-  width: 200px;
+  top: 200px;
+  left: 0px;
+  width: 180px;
+  z-index: 10;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .thread-project-img-1 img {
@@ -1182,14 +1402,19 @@ body.reveal-ui .landing-page-cont {
 }
 
 .thread-project-img-2 {
-  position: absolute;
-  top: 250px;
-  left: -370px;
-  width: 270px;
+   position: absolute;
+  top: 200px;
+  left: 0px;
+  width: 200px;
+  z-index: 10;
   opacity: 0;
   visibility: hidden;
-  transform: translateY(10px);
-  transition: opacity 0.3s ease, transform 0.3s ease, visibility 0.3s ease;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
 }
 
 .thread-project-img-2 img {
@@ -1198,22 +1423,73 @@ body.reveal-ui .landing-page-cont {
   height: auto;
 }
 
+.thread-project-img-3 {
+  position: absolute;
+  top: 200px;
+  left: 0px;
+  width: 180px;
+  z-index: 10;
+  opacity: 0;
+  visibility: hidden;
+  transform: translateY(15px);
+  transition: opacity 0.7s ease, 
+              transform 0.5s cubic-bezier(0.175, 0.885, 0.32, 1.275), 
+              top 0.5s ease, 
+              left 0.5s ease, 
+              width 0.5s ease;
+}
+
+.thread-project-img-3 img {
+  display: block;
+  width: 100%;
+  height: auto;
+}
+
+#Thread-info,
+.thread-project-img-1,
+.thread-project-img-2,
+.thread-project-img-3 {
+    pointer-events: none;
+}
+
 .project-card:hover ~ #Thread-info {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  top: 90px;
+  left: -300px;
+  width: 250px;
+  z-index: 10;
+  transform: translateY(0px) rotate(-20deg);
 }
 
 .project-card:hover ~ .thread-project-img-1 {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  top: 290px;
+  left: -270px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(0deg);
 }
 
 .project-card:hover ~ .thread-project-img-2 {
   opacity: 1;
   visibility: visible;
-  transform: translateY(0);
+  top: 260px;
+  left: 480px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(10deg);
+}
+
+.project-card:hover ~ .thread-project-img-3 {
+  opacity: 1;
+  visibility: visible;
+  top: 10px;
+  left: 440px;
+  width: 180px;
+  z-index: 10;
+  transform: translateY(0px) rotate(5deg);
 }
 
 .Brand-info p {
@@ -1237,6 +1513,16 @@ body.reveal-ui .landing-page-cont {
 
 .Brand-info h3 {
   color: #1E6C98;
+  font-style: italic;
+  font-family: "Libre Baskerville", serif;
+  font-size: 16px;
+}
+
+.brand-category {
+  text-align: left;
+  font-size: 12px;
+  font-style: italic;
+  color: #7A7A7A;
 }
 
 .playground-main-wrapper {
