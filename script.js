@@ -246,47 +246,6 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
 
-        // Nav bar scroll reveal
-        const navBar = document.getElementById('nav-bar');
-        window.addEventListener('scroll', () => {
-            if (navBar && document.body.classList.contains('reveal-ui')) {
-                if (window.scrollY > window.innerHeight) {
-                    navBar.classList.add('nav-scrolled');
-                } else {
-                    navBar.classList.remove('nav-scrolled');
-                }
-            }
-        });
-
-        // Window-container image cursor animation
-        const windowContainer = document.querySelector('.window-container');
-        if (windowContainer) {
-            const windowImg = windowContainer.querySelector('img');
-
-            windowContainer.addEventListener('mousemove', (e) => {
-                const rect = windowContainer.getBoundingClientRect();
-                const centerX = rect.left + (rect.width / 2);
-                const centerY = rect.top + (rect.height / 2);
-                const mouseX = e.clientX - centerX;
-                const mouseY = e.clientY - centerY;
-                const maxMove = 10;
-                const moveX = (mouseX / (rect.width / 2)) * maxMove;
-                const moveY = (mouseY / (rect.height / 2)) * maxMove;
-
-                if (windowImg) {
-                    windowImg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
-                }
-            });
-
-            windowContainer.addEventListener('mouseleave', () => {
-                if (windowImg) {
-                    windowImg.style.transform = `translate(0px, 0px) scale(1)`;
-                }
-            });
-        }
-
-
-
         // Reveal sections wrapper on scroll
         window.addEventListener('scroll', () => {
             const scrollPosition = window.scrollY;
@@ -296,349 +255,11 @@ document.addEventListener('DOMContentLoaded', () => {
                 document.body.classList.remove('scrolled');
             }
         });
-
-        // Project card magnetic animation
-        const projectCards = document.querySelectorAll('.project-card');
-        projectCards.forEach(projectCard => {
-            const projectContainer = projectCard.closest('[id^="project-card-"]'); 
-            if (!projectContainer) return;
-
-            const siblings = projectContainer.querySelectorAll(':scope > div:not(.Brand-info):not(.haati-project-img-1):not(.haati-project-img-2):not(.haati-project-img-3):not(.vivid-project-img-1):not(.vivid-project-img-2):not(.vivid-project-img-3):not(.thread-project-img-1):not(.thread-project-img-2):not(.thread-project-img-3)');
-
-            projectCard.addEventListener('mousemove', (e) => {
-                const rect = projectCard.getBoundingClientRect();
-                const centerX = rect.left + rect.width / 2;
-                const centerY = rect.top + rect.height / 2;
-                
-                const mouseX = e.clientX - centerX;
-                const mouseY = e.clientY - centerY;
-                
-                const rotateX = (-mouseY / (rect.height / 2)) * 5; 
-                const rotateY = (mouseX / (rect.width / 2)) * 5;
-
-                siblings.forEach(sibling => {
-                    sibling.style.transition = 'none';
-                    sibling.style.transform = `perspective(1000px) rotateX(${rotateX}deg) rotateY(${rotateY}deg) scale3d(1.02, 1.02, 1.02)`;
-                });
-            });
-
-            projectCard.addEventListener('mouseleave', () => {
-                siblings.forEach(sibling => {
-                    sibling.style.transition = 'transform 0.5s ease-in-out';
-                    sibling.style.transform = `perspective(1000px) rotateX(0deg) rotateY(0deg) scale3d(1, 1, 1)`;
-                });
-            });
-        });
-
-        
-
-        // Unified Card Shrinking & Blueprint Translation Logic
-        window.addEventListener('scroll', () => {
-            const cardWrappers = [
-                document.getElementById('project-card-1'),
-                document.getElementById('project-card-2'),
-                document.getElementById('project-card-3'),
-                document.getElementById('project-card-4')
-            ];
-
-            const blueprint = document.getElementById('design-blueprint');
-            let targetTranslateY = 0;
-            
-            if (blueprint) {
-                const blueprintRect = blueprint.getBoundingClientRect();
-                if (blueprintRect.top < window.innerHeight) {
-                    targetTranslateY = Math.max(0, window.innerHeight - blueprintRect.top);
-                } else {
-                    targetTranslateY = 0;
-                }
-            }
-
-            cardWrappers.forEach((card, index) => {
-                if (!card) return;
-
-                let cumulativeShrink = 0;
-                const scrollRange = 300;
-
-                for (let j = index + 1; j < cardWrappers.length; j++) {
-                    const nextCard = cardWrappers[j];
-                    const nextStickyTop = 100 + (j * 50);
-                    const nextRect = nextCard.getBoundingClientRect();
-                    const distanceToSticky = nextRect.top - nextStickyTop;
-
-                    if (distanceToSticky <= 0) {
-                        cumulativeShrink += 0.07; 
-                    } else if (distanceToSticky <= scrollRange) {
-                        const progress = 1 - (distanceToSticky / scrollRange);
-                        cumulativeShrink += (0.07 * progress);
-                    }
-                }
-
-                const currentScale = Math.max(0.7, 1 - cumulativeShrink);
-
-                card.style.transform = `translateY(${-targetTranslateY}px) scale(${currentScale})`;
-                card.style.transformOrigin = 'top center';
-                card.style.transition = 'none'; 
-            });
-        });
-
-        // --- Nav bar Works button highlight upon works section active ---
-        window.addEventListener('scroll', () => {
-            const firstProjectCard = document.getElementById('selected-work');
-            const worksBtnWrapper = document.querySelector('.btn-wrapper[data-target="works"]');
-
-            if (!firstProjectCard || !worksBtnWrapper) return;
-
-            const rect = firstProjectCard.getBoundingClientRect();
-            
-            if (rect.top <= window.innerHeight * 0.6 && rect.bottom >= 0) {
-                worksBtnWrapper.classList.add('active');
-            } else {
-                worksBtnWrapper.classList.remove('active');
-            }
-        });
-
-        // --- ABSOLUTE FIXED-POSITION SCROLL FOR WORKS BUTTON ---
-        const worksButton = document.querySelector('.works-btn');
-
-        if (worksButton) {
-            worksButton.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0, 
-                    behavior: 'smooth'
-                });
-            });
-        }
-
-        // --- RESET SCROLL TO TOP ON NAME CLICK ---
-        const nameElement = document.querySelector('.name');
-
-        if (nameElement) {
-            nameElement.addEventListener('click', (e) => {
-                e.preventDefault();
-                window.scrollTo({
-                    top: 0, 
-                    behavior: 'smooth'
-                });
-            });
-        }
-
-
     } // End of isHomePage guard
 
-
-    // Standalone logic: Make both .section-title and .project-classification follow the design-blueprint scroll movement
-    const blueprint = document.getElementById('design-blueprint');
-    const sectionTitle = document.querySelector('.section-title');
-    const projectClassification = document.querySelector('.project-classification');
-
-    if (blueprint) {
-        window.addEventListener('scroll', () => {
-            const blueprintRect = blueprint.getBoundingClientRect();
-            let targetTranslateY = 0;
-            
-            if (blueprintRect.top < window.innerHeight) {
-                targetTranslateY = Math.max(0, window.innerHeight - blueprintRect.top);
-            } else {
-                targetTranslateY = 0;
-            }
-
-            // Apply translation to section title if it exists
-            if (sectionTitle) {
-                sectionTitle.style.transform = `translateY(${-targetTranslateY}px)`;
-                sectionTitle.style.transition = 'none';
-            }
-
-            // Apply the exact same translation to the project classification container
-            if (projectClassification) {
-                projectClassification.style.transform = `translateY(${-targetTranslateY}px)`;
-                projectClassification.style.transition = 'none';
-            }
-        });
-    }
-
-
-    // --- Project Classification Filtering ---
-    const filterButtons = document.querySelectorAll('.proj-class-btn');
-    const projectCards = document.querySelectorAll('[data-category]');
-
-    // Set initial state on load: Show 'product', hide everything else
-    projectCards.forEach(card => {
-        if (card.getAttribute('data-category') !== 'product') {
-            card.classList.add('hidden');
-        }
-    });
-
-    filterButtons.forEach(button => {
-        button.addEventListener('click', () => {
-            // 1. Update active button styles
-            filterButtons.forEach(btn => btn.classList.remove('active'));
-            button.classList.add('active');
-
-            // 2. Get selected category filter ('product' or 'other')
-            const selectedFilter = button.getAttribute('data-filter');
-
-            // 3. Toggle visibility based on matching category
-            projectCards.forEach(card => {
-                const cardCategory = card.getAttribute('data-category');
-                
-                if (cardCategory === selectedFilter) {
-                    card.classList.remove('hidden');
-                } else {
-                    card.classList.add('hidden');
-                }
-            });
-
-            // 4. RESET SCROLL TRANSFORMS: Restore all cards to original scale/position
-            const cardWrappers = [
-                document.getElementById('project-card-1'),
-                document.getElementById('project-card-2'),
-                document.getElementById('project-card-3'),
-                document.getElementById('project-card-4')
-            ];
-
-            cardWrappers.forEach(card => {
-                if (card) {
-                    card.style.transform = `translateY(0px) scale(1)`;
-                }
-            });
-
-            // 5. SMOOTH SCROLL: Move back up to the top of the projects section (Change 650 to 0 if you want the absolute top of the page)
-            window.scrollTo({
-                top: 0, 
-                behavior: 'smooth'
-            });
-        });
-    });
-
-
-
-    // ====================================================== Links to projects ============================================================= //
-    const card1 = document.getElementById('Haati-project-card');
-    if (card1) {
-        card1.style.cursor = 'pointer';
-        card1.addEventListener('click', () => {
-            window.location.href = 'Project-1.html';
-        });
-    }
-
-    const card2 = document.getElementById('Earth-project-card');
-    if (card2) {
-        card2.style.cursor = 'pointer';
-        card2.addEventListener('click', () => {
-            window.location.href = 'Project-2.html';
-        });
-    }
-
-    const card3 = document.getElementById('Vivid-project-card');
-    if (card3) {
-        card3.style.cursor = 'pointer';
-        card3.addEventListener('click', () => {
-            window.location.href = 'Project-3.html';
-        });
-    }
-
-    const card4 = document.getElementById('Thread-project-card');
-    if (card4) {
-        card4.style.cursor = 'pointer';
-        card4.addEventListener('click', () => {
-            window.location.href = 'Project-4.html';
-        });
-    }
-
-    // Footer section
-    // Local time for footer script (Runs globally)
-    function updateLocalTime() {
-        const now = new Date();
-        const timeString = now.toLocaleTimeString('en-US', {
-            hour: '2-digit',
-            minute: '2-digit',
-            second: '2-digit',
-            hour12: true
-        });
-
-        const timeElement = document.getElementById('local-time');
-        if (timeElement) {
-            timeElement.textContent = timeString;
-        }
-    }
-    updateLocalTime();
-    setInterval(updateLocalTime, 1000);
-
-
-    // ================================================= Playground section ================================================== //
-    // ==================================================== Empty Squares Cursor Repel ============================================================ //
-    const emptySquares = document.querySelectorAll('.empty-square');
-    console.log("Empty squares found by script:", emptySquares.length); // Check your F12 console for this number!
-
-    if (emptySquares.length > 0) {
-    window.addEventListener('mousemove', (e) => {
-        const mouseX = e.clientX;
-        const mouseY = e.clientY;
-
-        emptySquares.forEach(square => {
-            const rect = square.getBoundingClientRect();
-            
-            // Skip if the element isn't rendered or has zero dimensions
-            if (rect.width === 0 || rect.height === 0) return;
-
-            const squareCenterX = rect.left + (rect.width / 2);
-            const squareCenterY = rect.top + (rect.height / 2);
-
-            const distanceX = squareCenterX - mouseX;
-            const distanceY = squareCenterY - mouseY;
-            let distance = Math.sqrt((distanceX * distanceX) + (distanceY * distanceY));
-
-            if (distance === 0) distance = 1;
-
-            // Increased detection radius to 50px around the square so it's easy to trigger
-            const triggerDistance = 50; 
-
-            if (distance < triggerDistance) {
-                // Calculates push angle and caps the movement at exactly 10px max
-                const power = (1 - (distance / triggerDistance));
-                const pushX = (distanceX / distance) * (power * 10);
-                const pushY = (distanceY / distance) * (power * 10);
-
-                square.style.transform = `translate(${pushX}px, ${pushY}px)`;
-            } else {
-                square.style.transform = `translate(0px, 0px)`;
-            }
-        });
-    });
-    }
     
 
-    // Window container image animation for pages other than landing page
-    const windowContainer = document.querySelector('.window-container-plg');
-    if (windowContainer) {
-        const windowImg = windowContainer.querySelector('img');
-
-        windowContainer.addEventListener('mousemove', (e) => {
-            const rect = windowContainer.getBoundingClientRect();
-            const centerX = rect.left + (rect.width / 2);
-            const centerY = rect.top + (rect.height / 2);
-            const mouseX = e.clientX - centerX;
-            const mouseY = e.clientY - centerY;
-            const maxMove = 10;
-            const moveX = (mouseX / (rect.width / 2)) * maxMove;
-            const moveY = (mouseY / (rect.height / 2)) * maxMove;
-
-            if (windowImg) {
-                windowImg.style.transform = `translate(${moveX}px, ${moveY}px) scale(1.05)`;
-            }
-        });
-
-        windowContainer.addEventListener('mouseleave', () => {
-            if (windowImg) {
-                windowImg.style.transform = `translate(0px, 0px) scale(1)`;
-            }
-        });
-    }
-
-    
-
-   // ==================================================== Page Load & Navigation Preloader ============================================================ //
+    // ==================================================== Page Load & Navigation Preloader ============================================================ //
 
     // Define the exact duration of 1 full loop (matches your 1.5s CSS animation)
     const loopDuration = 1500; 
@@ -702,53 +323,128 @@ document.addEventListener('DOMContentLoaded', () => {
         }
     });
 
+    // =================================================== Game Star bounce animation logic ========================================================== //
+    const star = document.querySelector('.Game-star');
 
+    star.style.position = 'fixed';
+    star.style.zIndex = '5';
+    star.style.pointerEvents = 'auto'; // Ensures it catches mouse hover events
 
-    // Scale down & translate up effect to reveal footer on scroll
-    window.addEventListener('scroll', () => {
-    const scrollTop = window.scrollY;
-    
-    // Adjust '400' to control how long the animation takes as you scroll down
-    const maxScroll = 400; 
-    let scrollProgress = Math.min(scrollTop / maxScroll, 1);
-    
-    // 1. Calculate scale (shrinking down to 60% size, tweak as needed)
-    const minScale = 0.6;
-    const currentScale = 1 - (scrollProgress * (1 - minScale));
-    
-    // 2. Calculate upward movement in pixels (e.g., moves up by up to 180px total)
-    const maxUpwardShift = 280;
-    const currentYOffset = scrollProgress * maxUpwardShift;
+    let starWidth = star.clientWidth || 60;
+    let starHeight = star.clientHeight || 60;
 
-    // Update both CSS variables on the root
-    document.documentElement.style.setProperty('--scroll-scale', currentScale);
-    document.documentElement.style.setProperty('--scroll-y', `${currentYOffset}px`);
+    let posX = Math.random() * (window.innerWidth - starWidth);
+    let posY = Math.random() * (window.innerHeight - starHeight);
+
+    let baseSpeed = 1.5;
+    let angle = Math.random() * Math.PI * 2;
+    let velocityX = Math.cos(angle) * baseSpeed;
+    let velocityY = Math.sin(angle) * baseSpeed;
+
+    // Instantly deflects and changes direction when the cursor touches the star
+    star.addEventListener('mouseenter', () => {
+        let newAngle = Math.random() * Math.PI * 2;
+        let burstSpeed = 2.5; // Gives it a fun little speed boost when nudged by the mouse!
+        velocityX = Math.cos(newAngle) * burstSpeed;
+        velocityY = Math.sin(newAngle) * burstSpeed;
     });
 
+    function updateRandomPhysics() {
+        const screenWidth = window.innerWidth;
+        const screenHeight = window.innerHeight;
 
-    // ================================================================ Code Page logic =============================================================== //
+        posX += velocityX;
+        posY += velocityY;
+
+        let hitWall = false;
+        let wallType = '';
+
+        if (posX + starWidth >= screenWidth) {
+            posX = screenWidth - starWidth;
+            hitWall = true;
+            wallType = 'right';
+        } else if (posX <= 0) {
+            posX = 0;
+            hitWall = true;
+            wallType = 'left';
+        }
+
+        if (posY + starHeight >= screenHeight) {
+            posY = screenHeight - starHeight;
+            hitWall = true;
+            wallType = 'bottom';
+        } else if (posY <= 0) {
+            posY = 0;
+            hitWall = true;
+            wallType = 'top';
+        }
+
+        if (hitWall) {
+            let newAngle;
+            if (wallType === 'right') {
+                newAngle = Math.PI + (Math.random() * Math.PI - Math.PI / 2);
+            } else if (wallType === 'left') {
+                newAngle = Math.random() * Math.PI - Math.PI / 2;
+            } else if (wallType === 'bottom') {
+                newAngle = -Math.PI / 2 + (Math.random() * Math.PI - Math.PI / 2);
+            } else if (wallType === 'top') {
+                newAngle = Math.PI / 2 + (Math.random() * Math.PI - Math.PI / 2);
+            }
+
+            velocityX = Math.cos(newAngle) * baseSpeed;
+            velocityY = Math.sin(newAngle) * baseSpeed;
+        }
+
+        star.style.left = `${posX}px`;
+        star.style.top = `${posY}px`;
+
+        requestAnimationFrame(updateRandomPhysics);
+    }
+
+    requestAnimationFrame(updateRandomPhysics);
+    // =================================================== Game Star bounce animation logic ========================================================== //
+
+
+    // ================================================ Profile Star repel and rotate logic ========================================================== //
+   const profileStars = document.querySelectorAll('.Profile-star-1, .Profile-star-2');
+
+profileStars.forEach((star) => {
+    // Each star gets its own independent state
+    let currentAngle = star.classList.contains('Profile-star-2') ? 180 : 25; // Optional: different starting angle for star 2 if desired
+    let currentSelfRot = 0;
     
-    const codeGridContainer = document.querySelector('.hero-grid-code');
-    if (codeGridContainer) {
-        for (let i = 0; i < 144; i++) {
-            const square = document.createElement('div');
-            square.classList.add('tiny-square');
-            
-            let col = i % 12;
-            let row = Math.floor(i / 12);
-            
-            let deltaX = col - 5.5;
-            let deltaY = row - 5.5;
-            let distFromCenter = Math.pow(deltaX, 2) + Math.pow(deltaY, 2);
-            
-            // Hide outer edges matching your home page pattern logic, but skip all scroll/explode transform variables
-            if (distFromCenter > 38) {
-                square.style.visibility = 'hidden'; 
+    const radius = 107; // Matches your 107px ring radius
+    const arcShiftDeg = (20 / radius) * (180 / Math.PI); // ~10.7° shift for 20px arc
+    const spinAmount = 90;
+
+    star.addEventListener('mousemove', (e) => {
+        const rect = star.getBoundingClientRect();
+        
+        const starCenterX = rect.left + rect.width / 2;
+        const starCenterY = rect.top + rect.height / 2;
+        
+        const distX = e.clientX - starCenterX;
+        const distY = e.clientY - starCenterY;
+        const distance = Math.hypot(distX, distY);
+        
+        // Trigger if cursor is within the star or within 5px radial distance
+        if (distance <= (rect.width / 2 + 5)) {
+            if (distY < 0) {
+                // Cursor near top -> Clockwise orbit & spin
+                currentAngle += arcShiftDeg;
+                currentSelfRot += spinAmount;
+            } else {
+                // Cursor near bottom -> Counter-clockwise orbit & reverse spin
+                currentAngle -= arcShiftDeg;
+                currentSelfRot -= spinAmount;
             }
             
-            codeGridContainer.appendChild(square);
+            // Apply properties to the specific star being interacted with
+            star.style.setProperty('--angle', `${currentAngle}deg`);
+            star.style.setProperty('--self-rot', `${currentSelfRot}deg`);
         }
-    }
+    });
+});
 
 
 
