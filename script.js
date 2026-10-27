@@ -408,43 +408,56 @@ document.addEventListener('DOMContentLoaded', () => {
     // ================================================ Profile Star repel and rotate logic ========================================================== //
    const profileStars = document.querySelectorAll('.Profile-star-1, .Profile-star-2');
 
-profileStars.forEach((star) => {
-    // Each star gets its own independent state
-    let currentAngle = star.classList.contains('Profile-star-2') ? 180 : 25; // Optional: different starting angle for star 2 if desired
-    let currentSelfRot = 0;
-    
-    const radius = 107; // Matches your 107px ring radius
-    const arcShiftDeg = (20 / radius) * (180 / Math.PI); // ~10.7° shift for 20px arc
-    const spinAmount = 90;
+    profileStars.forEach((star) => {
+        // Each star gets its own independent state
+        let currentAngle = star.classList.contains('Profile-star-2') ? 180 : 25; // Optional: different starting angle for star 2 if desired
+        let currentSelfRot = 0;
+        
+        const radius = 107; // Matches your 107px ring radius
+        const arcShiftDeg = (20 / radius) * (180 / Math.PI); // ~10.7° shift for 20px arc
+        const spinAmount = 90;
 
-    star.addEventListener('mousemove', (e) => {
-        const rect = star.getBoundingClientRect();
-        
-        const starCenterX = rect.left + rect.width / 2;
-        const starCenterY = rect.top + rect.height / 2;
-        
-        const distX = e.clientX - starCenterX;
-        const distY = e.clientY - starCenterY;
-        const distance = Math.hypot(distX, distY);
-        
-        // Trigger if cursor is within the star or within 5px radial distance
-        if (distance <= (rect.width / 2 + 5)) {
-            if (distY < 0) {
-                // Cursor near top -> Clockwise orbit & spin
-                currentAngle += arcShiftDeg;
-                currentSelfRot += spinAmount;
-            } else {
-                // Cursor near bottom -> Counter-clockwise orbit & reverse spin
-                currentAngle -= arcShiftDeg;
-                currentSelfRot -= spinAmount;
-            }
+        star.addEventListener('mousemove', (e) => {
+            const rect = star.getBoundingClientRect();
             
-            // Apply properties to the specific star being interacted with
-            star.style.setProperty('--angle', `${currentAngle}deg`);
-            star.style.setProperty('--self-rot', `${currentSelfRot}deg`);
-        }
+            const starCenterX = rect.left + rect.width / 2;
+            const starCenterY = rect.top + rect.height / 2;
+            
+            const distX = e.clientX - starCenterX;
+            const distY = e.clientY - starCenterY;
+            const distance = Math.hypot(distX, distY);
+            
+            // Trigger if cursor is within the star or within 5px radial distance
+            if (distance <= (rect.width / 2 + 5)) {
+                if (distY < 0) {
+                    // Cursor near top -> Clockwise orbit & spin
+                    currentAngle += arcShiftDeg;
+                    currentSelfRot += spinAmount;
+                } else {
+                    // Cursor near bottom -> Counter-clockwise orbit & reverse spin
+                    currentAngle -= arcShiftDeg;
+                    currentSelfRot -= spinAmount;
+                }
+                
+                // Apply properties to the specific star being interacted with
+                star.style.setProperty('--angle', `${currentAngle}deg`);
+                star.style.setProperty('--self-rot', `${currentSelfRot}deg`);
+            }
+        });
     });
-});
+
+
+    // ==================================================== Expand button reveal hide logic ============================================================ //
+    const worksTitle = document.querySelector('.intro-works-title');
+    const categoriesSection = document.querySelector('.intro-works-project-categories');
+    const expandBtn = document.querySelector('.expand-btn'); // Optional, if you still want the icon to rotate
+
+    worksTitle.addEventListener('click', () => {
+        categoriesSection.classList.toggle('expanded');
+        if (expandBtn) {
+            expandBtn.classList.toggle('rotated'); // Optional: keeps the arrow rotation working
+        }
+    });                                                                               
 
 
 

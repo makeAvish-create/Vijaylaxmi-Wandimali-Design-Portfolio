@@ -272,6 +272,9 @@ body.reveal-ui .landing-page-cont {
 }
 
 .footer-bottom p {
+  font-family: "Poppins", sans-serif;
+  font-weight: 200;
+  font-style: italic;
   font-size: 12px;
 }
 
@@ -383,6 +386,11 @@ body.reveal-ui .landing-page-cont {
   z-index: 10;
 }
 
+.footer-social-wrapper a {
+  display: flex;
+  align-items: flex-end;
+}
+
 .social-btn {
   pointer-events: auto;
   cursor: pointer;
@@ -401,20 +409,20 @@ body.reveal-ui .landing-page-cont {
   display: flex;
   flex-direction: column;
   gap: 32px;
-  width: 380px;
+  width: 350px;
   align-items: start;
   z-index: 10;
-  border-radius: 20px;
+  /* border-radius: 20px;
   padding: 20px;
   background: linear-gradient(
     135deg,
-    rgba(255, 255, 255, 0.25) 0%,   /* Lower opacity so blurred background shows */
+    rgba(255, 255, 255, 0.25) 0%,
     rgba(255, 255, 255, 0.05) 100%
   );
   backdrop-filter: blur(10px) saturate(200%);
   -webkit-backdrop-filter: blur(10px) saturate(200%);
   border: 1px solid rgba(255, 255, 255, 0.3);
-  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1);
+  box-shadow: 0 8px 32px 0 rgba(0, 0, 0, 0.1); */
 }
 
 .intro-name-wrapper {
@@ -446,9 +454,10 @@ body.reveal-ui .landing-page-cont {
 
 .intro-name-text-wrapper p {
   color: #7A7A7A;
-  font-size: 16px;
+  font-size: 14px;
   font-style: italic;
-  font-family: "Figtree", sans-serif;
+  font-family: "Poppins", sans-serif;
+  font-weight: 300;
 }
 
 .intro-write-up-wrapper {
@@ -460,8 +469,10 @@ body.reveal-ui .landing-page-cont {
 
 .intro-write-up-wrapper p {
   color: #222222;
-  font-size: 14px;
-  font-family: "Figtree", sans-serif;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
 }
 
 .intro-works-wrapper {
@@ -476,13 +487,20 @@ body.reveal-ui .landing-page-cont {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  cursor: pointer;
 }
 
 .intro-works-title h4 {
   color: #1E6C98;
   font-size: 16px;
-  font-family: "Figtree", sans-serif;
-  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.intro-works-divider {
+  width: 100%;
+  height: 0.5px;
+  background-color: #7A7A7A;
 }
 
 .intro-works-project-categories {
@@ -490,12 +508,32 @@ body.reveal-ui .landing-page-cont {
   flex-direction: column;
   gap: 8px;
   width: 100%;
+  max-height: 0;
+  overflow: hidden;
+  opacity: 0;
+  transition: max-height 0.4s ease-in-out, opacity 0.3s ease-in-out;
 }
 
 .intro-works-project-categories p {
   color: #222222;
-  font-size: 14px;
-  font-family: "Figtree", sans-serif;
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  font-style: normal;
+}
+
+.intro-works-project-categories.expanded {
+  max-height: 200px;
+  opacity: 1;
+}
+
+.expand-btn {
+  cursor: pointer;
+  transition: transform 0.3s ease;
+}
+
+.expand-btn.rotated {
+  transform: rotate(180deg);
 }
 
 .intro-play-wrapper {
@@ -510,11 +548,18 @@ body.reveal-ui .landing-page-cont {
   flex-direction: row;
   justify-content: space-between;
   width: 100%;
+  cursor: pointer;
 }
 
 .intro-play-title h4 {
   color: #1E6C98;
   font-size: 16px;
-  font-family: "Figtree", sans-serif;
-  font-weight: bold;
+  font-family: "Poppins", sans-serif;
+  font-weight: 500;
+}
+
+.intro-play-divider {
+  width: 100%;
+  height: 0.5px;
+  background-color: #7A7A7A;
 }
