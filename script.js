@@ -460,5 +460,48 @@ document.addEventListener('DOMContentLoaded', () => {
     });                                                                               
 
 
+    // ================================================== Reveal & close Product work upon click ====================================================== //
+    const productButton = document.querySelector('.Product-button');
+    const closeButton = document.querySelector('.close-btn');
+    const productSection = document.querySelector('.Product-work-section');
+
+    // Open the section on click
+    productButton.addEventListener('click', () => {
+        productSection.classList.add('active');
+    });
+
+    // Close the section on click
+    closeButton.addEventListener('click', () => {
+        productSection.classList.remove('active');
+    });
+
+    // ========================================================== Project switcher logic =========================================================== //
+    const projectCards = document.querySelectorAll('.tiny-project-card-wrapper');
+    const projectPanes = document.querySelectorAll('.project-pane');
+
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // 1. Get the target project ID from the data attribute
+            const targetId = card.getAttribute('data-target');
+
+            // 2. Remove 'active' class from all cards and panes
+            projectCards.forEach(c => c.classList.remove('active'));
+            projectPanes.forEach(pane => pane.classList.remove('active'));
+
+            // 3. Add 'active' class to the clicked card and its matching pane
+            card.classList.add('active');
+            const targetPane = document.getElementById(targetId);
+            if (targetPane) {
+                targetPane.classList.add('active');
+            }
+        });
+    });
+
+
+
+
+
+
+
 
 });
