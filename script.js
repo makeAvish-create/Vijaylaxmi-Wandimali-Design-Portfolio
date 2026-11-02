@@ -460,19 +460,43 @@ document.addEventListener('DOMContentLoaded', () => {
     });                                                                               
 
 
-    // ================================================== Reveal & close Product work upon click ====================================================== //
-    const productButton = document.querySelector('.Product-button');
-    const closeButton = document.querySelector('.close-btn');
+    // ================================================== Reveal & close Product/Else work upon click ====================================================== //
+    // Product Modal Elements
+    const productButtons = document.querySelectorAll('.Product-button');
     const productSection = document.querySelector('.Product-work-section');
+    const productCloseBtn = productSection.querySelector('.Back-btn');
 
-    // Open the section on click
-    productButton.addEventListener('click', () => {
-        productSection.classList.add('active');
+    // Else Modal Elements
+    const elseButtons = document.querySelectorAll('.Else-button');
+    const elseSection = document.querySelector('.Else-work-section');
+    const elseCloseBtn = elseSection.querySelector('.Back-btn');
+
+    // Open Product Modal
+    productButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            productSection.classList.add('active');
+            document.body.classList.add('product-open');
+        });
     });
 
-    // Close the section on click
-    closeButton.addEventListener('click', () => {
+    // Close Product Modal
+    productCloseBtn.addEventListener('click', () => {
         productSection.classList.remove('active');
+        document.body.classList.remove('product-open');
+    });
+
+    // Open Else Modal
+    elseButtons.forEach(btn => {
+        btn.addEventListener('click', () => {
+            elseSection.classList.add('active');
+            document.body.classList.add('product-open'); // Reuses the background hide effect
+        });
+    });
+
+    // Close Else Modal
+    elseCloseBtn.addEventListener('click', () => {
+        elseSection.classList.remove('active');
+        document.body.classList.remove('product-open');
     });
 
     // ========================================================== Project switcher logic =========================================================== //
@@ -496,6 +520,9 @@ document.addEventListener('DOMContentLoaded', () => {
             }
         });
     });
+
+
+    
 
 
 
