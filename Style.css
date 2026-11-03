@@ -872,9 +872,13 @@ body.product-open .footer-top {
 }
 
 .Product-work-section-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 50px;
   overflow: hidden;
   min-height: 0;
-  padding: 20px;
+  /* padding: 20px; */
+  /* border: 1px solid black; */
 }
 
 .Product-button {
@@ -889,10 +893,10 @@ body.product-open .footer-top {
   position: relative;
   width: 150px;
   height: auto;
-  /* border: 1px solid black; */
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
 }
 
@@ -904,6 +908,7 @@ body.product-open .footer-top {
   height: auto;
   gap: 20px;
   align-items: center;
+  margin-top: 20px;
 }
 
 .tiny-project-card-wrapper {
@@ -947,6 +952,50 @@ body.product-open .footer-top {
   z-index: 10;
 }
 
+.tiny-project-card-1 img {
+  position: absolute;
+  width: 50px;
+}
+
+.tiny-project-card-1 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tiny-project-card-2 img {
+  position: absolute;
+  width: 40px;
+}
+
+.tiny-project-card-2 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tiny-project-card-3 img {
+  position: absolute;
+  width: 25px;
+}
+
+.tiny-project-card-3 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.tiny-project-card-4 img {
+  position: absolute;
+  width: 25px;
+}
+
+.tiny-project-card-4 {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
 .project-pane {
   display: none;
   opacity: 0;
@@ -959,8 +1008,9 @@ body.product-open .footer-top {
 }
 
 .project-content-container {
+  /* border: 1px solid black; */
   width: 100%;
-  margin-top: 30px;
+  margin-top: 20px;
 }
 
 .product-project-content-title {
@@ -991,20 +1041,22 @@ body.product-open .footer-top {
   width: 100%;
   margin-top: 50px;
   display: flex;
-  flex-direction: row;
+  flex-direction: column;
   gap: 30px;
+  justify-content: center;
+  align-items: center;
 }
 
 .product-project-hero-img {
-  width: 850px;
+  width: 650px;
   height: auto;
   border-radius: 20px;
 }
 
 .project-vital-info-text {
-  width: 100%;
+  width: 750px;
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   gap: 30px;
   align-items:flex-start;
 }
@@ -1032,12 +1084,13 @@ body.product-open .footer-top {
   font-weight: 400;
   text-align: center;
   color: #222222;
+  text-align: left;
 }
 
 .everything-product-tiny-card {
   width: 50px;
   height: 50px;
-  margin-top: 60px;
+  margin-top: 30px;
   background-color: #FAA3CF;
   border-radius: 10px;
   padding: 3px;
@@ -1060,7 +1113,7 @@ body.product-open .footer-top {
 .everything-else-tiny-card {
   width: 50px;
   height: 50px;
-  margin-top: 60px;
+  margin-top: 30px;
   background-color: #1E6C98;
   border-radius: 10px;
   padding: 3px;
@@ -1151,8 +1204,17 @@ body.product-open .footer-top {
 }
 
 .tiny-card-section-divider {
-  width: 70px;
-  height: 1px;
+  width: 100px;
+  height: 0.5px;
   background-color: #7A7A7A;
-  margin-top: 8px;
+  /* margin-top: 8px; */
+}
+
+.tiny-everything-text {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  text-align: center;
+  color: #7A7A7A;
+  font-style: italic;
 }
