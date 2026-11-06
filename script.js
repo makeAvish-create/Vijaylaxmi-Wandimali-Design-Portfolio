@@ -522,6 +522,18 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
 
+    // Your existing click listener already handles this:
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            // Removes 'active' from all cards -> hides their stars instantly
+            projectCards.forEach(c => c.classList.remove('active'));
+            
+            // Adds 'active' only to the clicked card -> shows its star instantly
+            card.classList.add('active');
+        });
+    });
+
+
     
 
 
