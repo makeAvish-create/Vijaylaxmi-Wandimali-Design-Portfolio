@@ -892,7 +892,7 @@ body.product-open .footer-top {
 }
 
 .product-work-section-nav-wrapper {
-  position: sticky;
+  position: absolute;
   top: 0;
   /* width: 150px; */
   width: 100%;
@@ -1037,13 +1037,26 @@ body.product-open .footer-top {
 }
 
 .project-content-container {
-  border: 1px solid black;
+  position: relative;
+  top: 150px;
+  /* border: 1px solid black; */
   width: 100%;
   height: auto;
   box-sizing: border-box;
   overflow-y: visible;
   z-index: 45;
   /* margin-top: 20px; */
+}
+
+.Product-work-section-transition,
+.project-content-container {
+    &::-webkit-scrollbar {
+        display: none !important;
+        width: 0 !important;
+        height: 0 !important;
+    }
+    -ms-overflow-style: none !important;
+    scrollbar-width: none !important;
 }
 
 .product-project-content-title {
@@ -1313,6 +1326,239 @@ body.product-open .footer-top {
 }
 
 .design-hypo-principle-title {
+  font-weight: 600;
+  color: #222222;
+}
+
+.haati-home-screen-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 18px;
+}
+
+.haati-home-screen-content-img {
+  height: 406px;
+}
+
+.haati-home-screen-text p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-home-screen-content-1, .haati-home-screen-content-2 {
+ display: flex;
+ flex-direction: row;
+ gap: 20px;
+}
+
+.haati-home-screen-content-text-1, .haati-home-screen-content-text-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 172px;
+}
+
+.haati-home-screen-content-text-1 h4, .haati-home-screen-content-text-2 h4 {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-home-screen-content-text-1 p, .haati-home-screen-content-text-2 p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-home-screen-content-text-1-direction {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-home-screen-content-wrapper-divider {
+  width: 0.5px;
+  background-color: #7A7A7A;
+  height: 406px;
+  /* border: 1px solid black; */
+}
+
+.haati-product-card-text {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.haati-product-card-text img {
+  width: 430px;
+}
+
+.haati-product-card-text-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: left;
+  text-align: left;
+}
+
+.haati-product-card-text-wrapper h4 {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+  font-style: italic;
+}
+
+.haati-product-card-text-wrapper p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.haati-product-card-core-inversion-text-wrapper h4 {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+  font-style: italic;
+  margin-bottom: 8px;
+}
+
+.haati-product-card-core-inversion-text-wrapper p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-product-card-core-inversion-text {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+}
+
+.haati-product-card-core-inversion-text img {
+  width: 465px;
+  /* border: 1px solid black; */
+}
+
+.haati-collection-screen-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 18px;
+}
+
+.haati-collection-screen-content-img {
+  height: 406px;
+}
+
+.haati-collection-screen-text p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-collection-screen-content-1, .haati-collection-screen-content-2 {
+ display: flex;
+ flex-direction: row;
+ gap: 20px;
+}
+
+.haati-collection-screen-content-text-1, .haati-collection-screen-content-text-2 {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  width: 172px;
+}
+
+.haati-collection-screen-content-text-1 h4, .haati-collection-screen-content-text-2 h4 {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-collection-screen-content-text-1 p, .haati-collection-screen-content-text-2 p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-collection-screen-content-text-1-direction {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #222222;
+  text-align: left;
+}
+
+.haati-collection-screen-content-wrapper-divider {
+  width: 0.5px;
+  background-color: #7A7A7A;
+  height: 406px;
+  /* border: 1px solid black; */
+}
+
+.haati-collection-screen-video img {
+  width: 880px;
+}
+
+.haati-shop-by-material-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.haati-shop-by-material-wrapper img {
+  width: 470px;
+  margin: 0 auto;
+}
+
+.haati-aha-moments-wrapper, .haati-next-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 16px;
+}
+
+.styled-bullet-list {
+  display: flex;
+  flex-direction: column;
+  /* gap: 12px; */
+  padding-left: 20px;
+  text-align: left;
+  width: 100%;
+  margin-bottom: 50px;
+}
+
+.styled-bullet-list li {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+}
+
+.list-item-title {
   font-weight: 600;
   color: #222222;
 }
