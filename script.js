@@ -500,38 +500,27 @@ document.addEventListener('DOMContentLoaded', () => {
     });
 
     // ========================================================== Project switcher logic =========================================================== //
-    const projectCards = document.querySelectorAll('.tiny-project-card-wrapper');
-    const projectPanes = document.querySelectorAll('.project-pane');
+// ========================================================== Project switcher logic =========================================================== //
+const projectCards = document.querySelectorAll('.tiny-project-card-wrapper');
+const projectPanes = document.querySelectorAll('.project-pane');
 
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // 1. Get the target project ID from the data attribute
-            const targetId = card.getAttribute('data-target');
+projectCards.forEach(card => {
+    card.addEventListener('click', () => {
+        const targetId = card.getAttribute('data-target');
+        if (!targetId) return; // Skip cards without data-target (like Everything Product/Else)
 
-            // 2. Remove 'active' class from all cards and panes
-            projectCards.forEach(c => c.classList.remove('active'));
-            projectPanes.forEach(pane => pane.classList.remove('active'));
+        const targetPane = document.getElementById(targetId);
+        if (!targetPane) return; // If the pane doesn't exist, stop
 
-            // 3. Add 'active' class to the clicked card and its matching pane
-            card.classList.add('active');
-            const targetPane = document.getElementById(targetId);
-            if (targetPane) {
-                targetPane.classList.add('active');
-            }
-        });
+        // 1. Remove active class from all cards and panes
+        projectCards.forEach(c => c.classList.remove('active'));
+        projectPanes.forEach(pane => pane.classList.remove('active'));
+
+        // 2. Add active class to clicked card and its matching pane
+        card.classList.add('active');
+        targetPane.classList.add('active');
     });
-
-
-    // Your existing click listener already handles this:
-    projectCards.forEach(card => {
-        card.addEventListener('click', () => {
-            // Removes 'active' from all cards -> hides their stars instantly
-            projectCards.forEach(c => c.classList.remove('active'));
-            
-            // Adds 'active' only to the clicked card -> shows its star instantly
-            card.classList.add('active');
-        });
-    });
+});
 
 
     
