@@ -875,7 +875,7 @@ body.reveal-ui .landing-page-cont {
   grid-template-rows: 0fr;
   opacity: 0;
   overflow: hidden;
-  overflow-y: auto;
+  /* overflow-y: auto; */
   /* background-color: #fff6fc; */
   /* border: 1px solid #1E6C9880; */
   border-radius: 20px;
@@ -900,6 +900,7 @@ body.product-open .footer-top {
 }
 
 .Product-work-section-wrapper {
+  position: relative;
   display: flex;
   flex-direction: column;
   gap: 30px;
@@ -909,13 +910,24 @@ body.product-open .footer-top {
   /* border: 1px solid black; */
 }
 
+.Product-work-section .project-content-container {
+  position: absolute;
+  inset: 0;                    /* fills the section */
+  top: 0;                      /* cancels the old top: 150px */
+  height: auto;
+  padding-top: 180px;          /* content starts below the nav */
+  overflow-y: auto;
+  -webkit-mask-image: linear-gradient(to bottom, transparent 130px, #000 170px);
+          mask-image: linear-gradient(to bottom, transparent 130px, #000 170px);
+}
+
 .Product-button {
   cursor: pointer;
 }
 
-.Product-work-section.active .Gray-overlay {
+/* .Product-work-section.active .Gray-overlay {
   opacity: 1;
-}
+} */
 
 .product-work-section-nav-wrapper {
   position: absolute;
@@ -928,7 +940,7 @@ body.product-open .footer-top {
   flex-direction: column;
   /* justify-content: center; */
   align-items: center;
-  background-color: #fff6fc;
+  /* background-color: #fff6fc; */
   z-index: 50;
   padding: 20px 0 30px 0;
 }
@@ -943,6 +955,27 @@ body.product-open .footer-top {
   align-items: center;
   /* margin-top: 20px; */
   /* border: 1px solid greenyellow; */
+}
+
+.product-work-section-nav-wrapper { pointer-events: none; }
+.product-work-section-nav-wrapper .Back-btn,
+.product-work-section-nav-wrapper .tiny-project-card-wrapper { pointer-events: auto; }
+
+.Product-work-section .project-content-container {
+  -webkit-mask-image: linear-gradient(
+    to bottom,
+    transparent 130px,
+    #000 170px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
+          mask-image: linear-gradient(
+    to bottom,
+    transparent 130px,
+    #000 170px,
+    #000 calc(100% - 40px),
+    transparent 100%
+  );
 }
 
 .tiny-project-card-wrapper {
@@ -1074,6 +1107,11 @@ body.product-open .footer-top {
   z-index: 45;
   /* margin-top: 20px; */
 }
+
+/* .project-content-container {
+  -webkit-mask-image: linear-gradient(to bottom, transparent 150px, #000 200px);
+          mask-image: linear-gradient(to bottom, transparent 150px, #000 200px);
+} */
 
 .Product-work-section-transition,
 .project-content-container {
@@ -1244,24 +1282,31 @@ body.product-open .footer-top {
 }
 
 .else-work-section-nav-wrapper {
-  position: relative;
-  width: 150px;
+  position: absolute;
+  top: 0;
+  /* width: 150px; */
+  width: 100%;
   height: auto;
-  /* border: 1px solid black; */
+  /* border: 1px solid red; */
   display: flex;
   flex-direction: column;
-  justify-content: center;
+  /* justify-content: center; */
   align-items: center;
+  /* background-color: #fff6fc; */
+  z-index: 50;
+  padding: 20px 0 30px 0;
 }
 
 .else-work-section-nav-element-wrapper {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   position: relative;
   width: auto;
   height: auto;
-  gap: 20px;
+  gap: 10px;
   align-items: center;
+  /* margin-top: 20px; */
+  /* border: 1px solid greenyellow; */
 }
 
 .Else-button {
