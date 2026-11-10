@@ -471,59 +471,69 @@ document.addEventListener('DOMContentLoaded', () => {
     const elseSection = document.querySelector('.Else-work-section');
     const elseCloseBtn = elseSection.querySelector('.Back-btn');
 
-    // Open Product Modal
+    let switchTimer;
+
+    // Open Product Modal (closes Else first if it's open)
     productButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            productSection.classList.add('active');
+            if (elseSection.classList.contains('active')) {
+                elseSection.classList.remove('active');
+                switchTimer = setTimeout(() => productSection.classList.add('active'), 300);
+            } else {
+                productSection.classList.add('active');
+            }
             document.body.classList.add('product-open');
         });
     });
 
-    // Close Product Modal
-    productCloseBtn.addEventListener('click', () => {
-        productSection.classList.remove('active');
-        document.body.classList.remove('product-open');
-    });
-
-    // Open Else Modal
+    // Open Else Modal (closes Product first if it's open)
     elseButtons.forEach(btn => {
         btn.addEventListener('click', () => {
-            elseSection.classList.add('active');
-            document.body.classList.add('product-open'); // Reuses the background hide effect
+            if (productSection.classList.contains('active')) {
+                productSection.classList.remove('active');
+                switchTimer = setTimeout(() => elseSection.classList.add('active'), 300);
+            } else {
+                elseSection.classList.add('active');
+            }
+            document.body.classList.add('product-open');
         });
     });
 
-    // Close Else Modal
-    elseCloseBtn.addEventListener('click', () => {
+    // Close Product/Else Modal (any Back button closes both)
+    document.addEventListener('click', (e) => {
+        if (!e.target.closest('.Back-btn')) return;
+        clearTimeout(switchTimer);
+        productSection.classList.remove('active');
         elseSection.classList.remove('active');
         document.body.classList.remove('product-open');
     });
 
     // ========================================================== Project switcher logic =========================================================== //
-// ========================================================== Project switcher logic =========================================================== //
-const projectCards = document.querySelectorAll('.tiny-project-card-wrapper');
-const projectPanes = document.querySelectorAll('.project-pane');
+    const projectCards = document.querySelectorAll('.tiny-project-card-wrapper');
+    const projectPanes = document.querySelectorAll('.project-pane');
 
-projectCards.forEach(card => {
-    card.addEventListener('click', () => {
-        const targetId = card.getAttribute('data-target');
-        if (!targetId) return; // Skip cards without data-target (like Everything Product/Else)
+    projectCards.forEach(card => {
+        card.addEventListener('click', () => {
+            const targetId = card.getAttribute('data-target');
+            if (!targetId) return; // Skip cards without data-target (like Everything Product/Else)
 
-        const targetPane = document.getElementById(targetId);
-        if (!targetPane) return; // If the pane doesn't exist, stop
+            const targetPane = document.getElementById(targetId);
+            if (!targetPane) return; // If the pane doesn't exist, stop
 
-        // 1. Remove active class from all cards and panes
-        projectCards.forEach(c => c.classList.remove('active'));
-        projectPanes.forEach(pane => pane.classList.remove('active'));
+            // 1. Remove active class from all cards and panes
+            projectCards.forEach(c => c.classList.remove('active'));
+            projectPanes.forEach(pane => pane.classList.remove('active'));
 
-        // 2. Add active class to clicked card and its matching pane
-        card.classList.add('active');
-        targetPane.classList.add('active');
+            // 2. Add active class to clicked card and its matching pane
+            card.classList.add('active');
+            targetPane.classList.add('active');
+            const scroller = targetPane.closest('.project-content-container');
+            if (scroller) scroller.scrollTop = 0;
+        });
     });
-});
 
 
-    
+    document.addEventListener('click', e => console.log(e.target), true);
 
 
 
