@@ -532,6 +532,17 @@ document.addEventListener('DOMContentLoaded', () => {
         });
     });
 
+    // ============================================================== Logo home button logic ============================================================ //
+    const introLogo = document.querySelector('.intro-logo');
+    if (introLogo) {
+        introLogo.addEventListener('click', () => {
+            clearTimeout(switchTimer);
+            productSection.classList.remove('active');
+            elseSection.classList.remove('active');
+            document.body.classList.remove('product-open');
+            window.scrollTo({ top: 0, behavior: 'smooth' });
+        });
+    }
 
     document.addEventListener('click', e => console.log(e.target), true);
 
