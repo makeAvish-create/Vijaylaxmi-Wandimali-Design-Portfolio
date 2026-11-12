@@ -1093,8 +1093,9 @@ body.product-open .footer-top {
   width: 50px;
   height: 50px;
   background-color: #fff6fc;
-  border: 1px solid #FAA3CF;
-  border-radius: 10px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.08);
+  border-radius: 4px;
+  
 }
 
 .tiny-project-card-title {
@@ -1103,6 +1104,14 @@ body.product-open .footer-top {
   font-weight: 400;
   text-align: center;
   width: 100%;
+}
+
+.tiny-project-card-wrapper .tiny-project-card {
+  border: 0.1px solid #ebe9e9;
+}
+
+.tiny-project-card-wrapper.active .tiny-project-card {
+  border: 1.5px solid #FAA3CF;
 }
 
 .Back-btn {
@@ -1117,7 +1126,7 @@ body.product-open .footer-top {
   position: absolute;
   top: -17px;
   right: 31px;
-  width: 15px;
+  width: 12px;
   height: auto;
   z-index: 10;
   pointer-events: none;
@@ -1297,7 +1306,7 @@ body.product-open .footer-top {
   height: 50px;
   /* margin-top: 30px; */
   background-color: #FAA3CF;
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 3px;
   display: flex;
   flex-direction: column;
@@ -1311,8 +1320,8 @@ body.product-open .footer-top {
   height: 15px;
   width: 100%;
   background-color: #1E6C98;
-  /* border: 1px solid #F655A6; */
-  border-radius: 7px;
+  border: 1px solid #F655A6;
+  border-radius: 1px;
 }
 
 .everything-else-tiny-card {
@@ -1320,7 +1329,7 @@ body.product-open .footer-top {
   height: 50px;
   /* margin-top: 30px; */
   background-color: #1E6C98;
-  border-radius: 10px;
+  border-radius: 4px;
   padding: 3px;
   display: flex;
   flex-direction: column;
@@ -1334,8 +1343,8 @@ body.product-open .footer-top {
   height: 15px;
   width: 100%;
   background-color: #FAA3CF;
-  /* border: 1px solid #F655A6; */
-  border-radius: 7px;
+  border: 1px solid #F655A6;
+  border-radius: 1px;
 }
 
 .Else-work-section {
@@ -1411,13 +1420,21 @@ body.product-open .footer-top {
   width: 50px;
   height: 50px;
   background-color: #fff6fc;
-  border: 1px solid #1E6C98;
-  border-radius: 10px;
+  border-radius: 4px;
+  box-shadow: 5px 5px 5px rgba(0, 0, 0, 0.08);
+}
+
+.tiny-project-card-wrapper .tiny-project-card-else {
+  border: 0.1px solid #ebe9e9;
+}
+
+.tiny-project-card-wrapper.active .tiny-project-card-else {
+  border: 1.5px solid #1E6C98;
 }
 
 .tiny-card-section-divider {
-  width: 100px;
-  height: 0.5px;
+  width: 0.5px;
+  height: 100px;
   background-color: #7A7A7A;
   /* margin-top: 8px; */
 }
