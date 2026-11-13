@@ -478,7 +478,7 @@
                     <h4>The maker comes first. The craft follows.</h4>
                     <p>Standard marketplaces hide the maker. Here, below every product page, an “About our Artisan” profile gives the maker’s name, region and years of craft.</p>
                   </div>
-                  <img src="Assets/Haati-maker-img.png" alt="">
+                  <img class="haati-maker-img" src="Assets/Haati-maker-img.png" alt="">
                 </div>
               </div>
 
@@ -629,9 +629,137 @@
             <!-- Project 3 details open -->
             <div class="project-pane" id="product-project-3-tag">
               <div class="product-project-content-title">
-                <h2>Common Thread</h2>
-                <p>An end-to-end brand identity and e-commerce platform connecting eco-friendly Indian artisans directly with global buyers.</p>
+                <h2>Shelfaware</h2>
+                <p>A grocery tracker for people who live alone: plan the cart, see what’s expiring in the fridge, and cook what you already have.</p>
               </div>
+
+              <div class="project-vital-info-wrapper">
+                <div class="project-vital-info-text">
+                  <div class="role-wrapper vital-info-text-wrapper">
+                    <p class="vital-info-title">Role</p>
+                    <p class="vital-info-text">Designer & Builder</p>
+                  </div>
+                  <div class="client-wrapper vital-info-text-wrapper">
+                    <p class="vital-info-title">Status</p>
+                    <p class="vital-info-text">WIP - User testing</p>
+                  </div>
+                  <div class="timeline-wrapper vital-info-text-wrapper">
+                    <p class="vital-info-title">Duration</p>
+                    <p class="vital-info-text">4 Months</p>
+                  </div>
+                  <div class="scope-wrapper vital-info-text-wrapper">
+                    <p class="vital-info-title">Category</p>
+                    <p class="vital-info-text">Consumer Mobile App</p>
+                  </div>
+                  <div class="scope-wrapper vital-info-text-wrapper">
+                    <p class="vital-info-title">Tools</p>
+                    <p class="vital-info-text">Figma, Cursor, Notion, Claude</p>
+                  </div>
+                </div>
+
+                <img class="product-project-hero-img" src="Assets/Vivid-project-hero-img-1.png" alt="">
+              </div>
+              
+              <div class="shelfaware-challenge project-content-section">
+                <h4 class="project-content-section-title">Problem Statement</h4>
+                <div class="haati-challenge-text">
+                  <p class="project-content-section-quote">How might one person keep track of what they have, without it feeling like a chore?</p>
+                  <p>Living alone, it’s hard to keep track of groceries. Food gets bought, pushed to the back of the fridge and forgotten and sometimes thrown out.</p>
+                </div>
+              </div>
+
+              <div class="shelfaware-hypothesis project-content-section">
+                <h4 class="project-content-section-title">Design Hypothesis</h4>
+                <div class="shelfaware-hypothesis-text">
+                  <div class="design-hypo-principles-list">
+                    <p><span class="design-hypo-principle-title">Capture:</span> If crossing items off is a swipe, people will keep the list current.</p>
+                    <p><span class="design-hypo-principle-title">Visibility:</span> If the fridge shows what’s expiring, forgotten food gets used first.</p>
+                    <p><span class="design-hypo-principle-title">Planning:</span> If planning a meal is as easy as pasting a YouTube link, people will actually plan.</p>
+                  </div>
+                </div>
+              </div>
+
+              <div class="shelfaware-three-screen-section project-content-section">
+                <h4 class="project-content-section-title">01/ Three Modes: Cart, Fridge, Plate </h4>
+                <div class="shelfaware-three-mode-cart">
+                  <h4>Cart: capture without effort</h4>
+                  <p>Cart is a normal grocery list with one twist: you swipe an item off as you buy it. That swipe is the moment the app learns what is now in your kitchen, so it had to cost almost nothing. I deliberately did not add a form for each item. It also had to feel good: checking things off a list gives a small dopamine hit, so I recreated that feeling digitally with a swipe instead of a checkmark. I deliberately did not add a form for each item.</p>
+                </div>
+                <img src="Assets/haati-collection-img.png" alt="">
+                <div class="shelfaware-three-mode-fridge">
+                  <h4>Fridge: see what's expiring</h4>
+                  <p>Fridge shows the items from your lists and how long they have left, soonest first. The point is to surface the thing at the back before it becomes a problem. The expiry dates come from a shelf-life repository, covered in the next section.</p>
+                </div>
+                <img src="Assets/haati-collection-img.png" alt="">
+                <div class="shelfaware-three-mode-plate">
+                  <h4>Plate: plan from what you have</h4>
+                  <p>Plate lets you plan meals by day of the week. You can add a recipe by hand or paste a YouTube link, because a lot of people save recipes as videos and I wanted planning to take seconds, not minutes.</p>
+                </div>
+                <img src="Assets/haati-collection-img.png" alt="">
+              </div>
+
+              <div class="shelfaware-decission project-content-section">
+                <h4 class="project-content-section-title">The hard decision: how does the Fridge know when things expire?</h4>
+                <div class="haati-challenge-text">
+                  <p>Cart has no expiry field, by design, so the Fridge has nothing to go on when an item is swiped. Asking for a date on every purchase would break the "no chore" rule. I chose to estimate instead: each item is matched to a bundled shelf-life repository and given a default expiry, and anyone can replace it with the date printed on the pack.</p>
+                </div>
+              </div>
+
+              <div class="shelfaware-numbers project-content-section">
+                <h4 class="project-content-section-title">Where the numbers come from: </h4>
+                <div class="haati-challenge-text">
+                  <p>I checked the USDA FoodKeeper dataset, which is public domain (CC0) and downloadable as JSON. I also read Australian guidance from NSW Health, the NSW Food Authority, Queensland Health, Healthdirect and Australian Eggs. FSANZ regulates what goes on labels (use-by is a safety date, best-before is a quality date) but does not publish a home storage table, so the repository combines several sources.</p>
+                </div>
+              </div>
+
+              <div class="shelfaware-rules project-content-section">
+                <h4 class="project-content-section-title">02/ The rules I set</h4>
+                <div class="shelfaware-rules-text">
+                  <div class="design-hypo-principles-list">
+                    <p><span class="design-hypo-principle-title">Conservative where it matters:</span> For raw meat, seafood, deli meat and leftovers, the default is the low end of the range across sources.</p>
+                    <p><span class="design-hypo-principle-title">The pack date always wins:</span> A date you enter overrides the estimate, and estimated dates carry an "Estimated" badge so they never pass for facts.</p>
+                    <p><span class="design-hypo-principle-title">No guessing: </span> If an item doesn't match anything, the Fridge shows "No expiry set" and asks, instead of applying a generic rule.</p>
+                    <p><span class="design-hypo-principle-title">Honest about confidence: </span> Every entry is tagged sourced, sourced for a broader category, or unverified.</p>
+                  </div>
+                  <p>A single flat rule, such as "vegetables last 4 days", looked tempting and was wrong: it would flag carrots, pumpkin and potatoes as expiring long before they are. Splitting produce into groups fixed that.</p>
+                  <img src="Assets/Shelfaware-rules-img.png" alt="">
+                  <p>The starter repository has 31 entries. 15 are sourced to a specific food, 3 to a broader category, and 13 are still unverified placeholders. I'm checking those against FoodKeeper before anyone should rely on them, and I tell testers these are estimates, not food safety advice.</p>
+                </div>
+              </div>
+
+              <div class="shelfaware-three-screen-section project-content-section">
+                <h4 class="project-content-section-title">03/ Testing: Flow, Features, Bugs </h4>
+                <div class="shelfaware-three-mode-cart">
+                  <p>I'm testing Shelfaware with 10 people who live alone, because they're the people this problem affects. I'm not asking whether they like it. I'm watching whether they keep using it, with one signal per hypothesis.</p>
+                  <img src="Assets/Shelfaware-testing-img.png" alt="">
+                </div>
+                <div class="shelfaware-three-mode-fridge">
+                  <h4>Test length: </h4>
+                  <p> 3 weeks, starting 15 November 2026, which covers about three shopping trips. I set the success bar before any results came in:</p>
+                </div>
+                <div class="design-hypo-principles-list">
+                  <p><span class="design-hypo-principle-title">Capture: </span> at least 6 of 10 add and swipe off items in two or more different weeks.</p>
+                  <p><span class="design-hypo-principle-title">Visibility: </span> at least 5 open the Fridge in the final week, and at least 3 say they used something because it was about to expire. </p>
+                  <p><span class="design-hypo-principle-title">Planning: </span> at least 4 plan three or more meals in a week, with at least 3 using a YouTube link. With 10 testers these are signals, not proof.</p>
+                </div>
+              </div>
+
+              <div class="shelfaware-learning-wrapper project-content-section">
+                <h4 class="project-content-section-title">What I’m learning (updated [date])</h4>
+                <div class="haati-what-i-did-text">
+                  <p>Test results aren't in yet, and I won't write conclusions before they are. I'll update this section with what people actually used, what they ignored, and what surprised me.</p>
+                </div>
+              </div>
+
+              <div class="shelfaware-teachings-wrapper project-content-section">
+                <h4 class="project-content-section-title">What building it has already taught me:</h4>
+                <ul class="Haati-styled-bullet-list">
+                  <li><span class="list-item-title">Removing effort creates a data gap: </span> Making Cart effortless meant Fridge had no expiry dates, and solving that became the most interesting design problem in the project.</li>
+                  <li><span class="list-item-title">Trust needs to be visible: </span> An estimate that looks like a fact is worse than no estimate, so confidence and source are part of the design, not an afterthought.</li>
+                  <li><span class="list-item-title">There was no single authoritative answer: </span> The data I needed was spread across US and Australian sources, and I had to decide which to trust and where to be conservative.</li>
+                </ul>
+              </div>
+
 
             </div>
             <!-- Project 3 details closed -->
