@@ -1468,7 +1468,7 @@ body.product-open .footer-top {
   text-align: left;
 }
 
-.haati-challenge-text, .haati-hypothesis-text, .shelfaware-hypothesis-text, .shelfaware-rules-text {
+.haati-challenge-text, .haati-hypothesis-text, .shelfaware-hypothesis-text, .shelfaware-rules-text, .srishti-hypothesis-text {
   position: relative;
   display: flex;
   flex-direction: column;
@@ -1551,7 +1551,7 @@ body.product-open .footer-top {
   text-align: left;
 }
 
-.haati-home-screen-content-1, .haati-home-screen-content-2 {
+.haati-home-screen-content-1 {
  display: flex;
  flex-direction: column;
  gap: 20px;
@@ -1836,6 +1836,118 @@ body.product-open .footer-top {
 }
 
 .shelfaware-teachings-wrapper {
-  margin-bottom: 80px;
+  margin-bottom: 30px;
 }
 
+.srishti-challenge img, .srishti-progress-view-section img {
+  width: 900px;
+  margin-right: auto;
+  margin-left: auto;
+  /* border: 0.1px solid #ebe9e9; */
+}
+
+.srishti-progress-before-wrapper, .srishti-progress-after-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+}
+
+.srishti-progress-before-wrapper p, .srishti-progress-after-wrapper p, .srishti-progress-text p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+}
+
+.srishti-progress-before-wrapper h4, .srishti-progress-after-wrapper h4 {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #222222;
+  text-align: left;
+  font-style: italic;
+}
+
+.srishti-progress-after-wrapper {
+  margin-top: 16px;
+}
+
+.srishti-progress-view-section p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left; 
+}
+
+.srishti-progress-view-section img {
+  margin-top: 8px;
+  margin-bottom: 16px;
+}
+
+.srishti-plan-section-content-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 40px;
+  margin-top: 18px;
+  /* border: 1px solid black; */
+  margin-left: auto;
+  margin-right: auto;
+  justify-content: center;
+}
+
+.srishti-plan-section-content-1 {
+ display: flex;
+ flex-direction: column;
+ gap: 20px;
+}
+
+.srishti-plan-img {
+  height: 406px;
+  border: 0.1px solid #ebe9e9
+}
+
+.srishti-plan-section p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+}
+
+.srishti-things-go-wrong-section p {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 400;
+  color: #222222;
+  text-align: left;
+  margin-bottom: 16px;
+}
+
+.srishti-error-wrapper, .srishti-update-maintainance-wrapper, .srishti-confirmations-wrapper {
+  display: flex;
+  flex-direction: column;
+  gap: 8px;
+  align-items: left;
+  margin-top: 8px;
+}
+
+.srishti-error-wrapper h4, .srishti-update-maintainance-wrapper h4, .srishti-confirmations-wrapper h4 {
+  font-size: 12px;
+  font-family: "Poppins", sans-serif;
+  font-weight: 600;
+  color: #222222;
+  text-align: left;
+}
+
+.srishti-things-go-wrong-img-wrapper {
+  display: flex;
+  flex-direction: row;
+  gap: 16px;
+}
+
+.srishti-things-go-wrong-img-wrapper img {
+  width: 200px;
+  border: 0.1px solid #ebe9e9
+}
